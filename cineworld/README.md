@@ -9,7 +9,7 @@
 ## 👨‍💻 About the Developer
 **Alabaster Developer** - Full-stack developer specializing in:
 - Modern web applications
-- API integration (TMDB, Vercel)
+- API integration (TMDB)
 - Responsive design
 - Secure backend development
 
@@ -33,7 +33,7 @@ Acesse: [https://cineworld-site.vercel.app](https://cineworld-site.vercel.app)
 - **Front-end:** HTML5, CSS3, JavaScript Vanilla
 - **Back-end:** Node.js, Express.js
 - **API:** TMDB (The Movie Database)
-- **Hosting:** Vercel Hosting
+- **Hosting:** Vercel
 - **Segurança:** Helmet, Rate Limiting, CORS
 
 ## 🔒 License & Usage
