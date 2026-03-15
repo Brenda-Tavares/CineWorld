@@ -26,7 +26,7 @@ Contact: alabasterdeveloper@gmail.com
 
 ## 🚀 Live Demo
 
-Acesse: [https://cineworld.web.app](https://cineworld.web.app)
+Acesse: [https://cineworld-site.vercel.app](https://cineworld-site.vercel.app)
 
 ## 🛠️ Tecnologias
 
