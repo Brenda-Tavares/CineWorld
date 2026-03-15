@@ -454,7 +454,7 @@ async function loadMovies() {
         console.log('>>> loadMovies URL:', url, 'page param:', state.currentPage);
         
         if (state.searchQuery) {
-            url = API_BASE + '/search?q=' + encodeURIComponent(state.searchQuery) + '&page=' + state.currentPage + '&language=' + tmdbLang;
+            url = API_BASE + '/movies?q=' + encodeURIComponent(state.searchQuery) + '&page=' + state.currentPage + '&language=' + tmdbLang;
         } else {
             if (state.currentGenre !== '0') {
                 url += '&genre=' + state.currentGenre;
