@@ -1019,7 +1019,7 @@ body {
     }
     
     .login-btn span {
-        display: none;
+        display: inline;
     }
     
     .login-btn {
