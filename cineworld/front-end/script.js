@@ -48,7 +48,8 @@ const translations = {
         welcome: 'Bem-vindo', sortBy: 'Ordenar',
         contact: 'Contato', contactTitle: 'Fale Conosco', contactDesc: 'Envie suas sugestões, elogios ou reclamações',
         name: 'Nome (opcional)', type: 'Tipo', message: 'Mensagem *', send: 'Enviar',
-        suggestion: 'Sugestão', compliment: 'Elogio', complaint: 'Reclamação', other: 'Outro'
+        suggestion: 'Sugestão', compliment: 'Elogio', complaint: 'Reclamação', other: 'Outro',
+        footer: '© 2026 - Todos os direitos reservados | Desenvolvido por'
     },
     'en': {
         searchPlaceholder: 'Search movies...',
@@ -68,7 +69,8 @@ const translations = {
         welcome: 'Welcome', sortBy: 'Sort',
         contact: 'Contact', contactTitle: 'Contact Us', contactDesc: 'Send your suggestions, compliments or complaints',
         name: 'Name (optional)', type: 'Type', message: 'Message *', send: 'Send',
-        suggestion: 'Suggestion', compliment: 'Compliment', complaint: 'Complaint', other: 'Other'
+        suggestion: 'Suggestion', compliment: 'Compliment', complaint: 'Complaint', other: 'Other',
+        footer: '© 2026 - All rights reserved | Developed by'
     },
     'es': {
         searchPlaceholder: 'Buscar peliculas...',
@@ -85,7 +87,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Ver en', runtime: 'min',
         favorites: 'Favoritos', noFavorites: '¡Aun no tienes favoritos!',
-        welcome: 'Bienvenido', sortBy: 'Ordenar'
+        welcome: 'Bienvenido', sortBy: 'Ordenar',
+        footer: '© 2026 - Todos los derechos reservados | Desarrollado por'
     },
     'zh-CN': {
         searchPlaceholder: '搜索电影...',
@@ -102,7 +105,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '在线观看', runtime: '分钟',
         favorites: '收藏', noFavorites: '还没有收藏！',
-        welcome: '欢迎', sortBy: '排序'
+        welcome: '欢迎', sortBy: '排序',
+        footer: '© 2026 - 版权所有 | 开发'
     },
     'zh-HK': {
         searchPlaceholder: '搜尋電影...',
@@ -119,7 +123,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '線上觀看', runtime: '分鐘',
         favorites: '收藏', noFavorites: '還沒有收藏！',
-        welcome: '歡迎', sortBy: '排序'
+        welcome: '歡迎', sortBy: '排序',
+        footer: '© 2026 - 版權所有 | 開發'
     },
     'ja': {
         searchPlaceholder: '映画を検索...',
@@ -136,7 +141,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '視聴', runtime: '分',
         favorites: 'お気に入り', noFavorites: 'お気に入りはまだありません！',
-        welcome: 'ようこそ', sortBy: '並べ替え'
+        welcome: 'ようこそ', sortBy: '並べ替え',
+        footer: '© 2026 - 全著作権 | 開発'
     },
     'ru': {
         searchPlaceholder: 'Поиск фильмов...',
@@ -153,7 +159,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Смотреть', runtime: 'мин',
         favorites: 'Избранное', noFavorites: 'У вас пока нет избранного!',
-        welcome: 'Добро пожаловать', sortBy: 'Сортировать'
+        welcome: 'Добро пожаловать', sortBy: 'Сортировать',
+        footer: '© 2026 - Все права защищены | Разработано'
     },
     'ko': {
         searchPlaceholder: '영화 검색...',
@@ -170,7 +177,8 @@ const translations = {
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '시청', runtime: '분',
         favorites: '즐겨찾기', noFavorites: '즐겨찾기가 아직 없습니다!',
-        welcome: '환영합니다', sortBy: '정렬'
+        welcome: '환영합니다', sortBy: '정렬',
+        footer: '© 2026 - 모든 권리 보유 | 개발'
     }
 };
 
@@ -309,7 +317,6 @@ function setupEvents() {
             }
         });
         
-        // Permite digitar e buscar ao mesmo tempo
         searchInput.addEventListener('input', function() {
             if (this.value.trim() === '') {
                 performSearch();
@@ -322,17 +329,13 @@ function setupEvents() {
         state.currentLanguage = this.value;
         state.currentPage = 1;
         
-        // Atualiza label de idioma
         const langLabel = document.getElementById('langLabel');
         if (langLabel) {
             langLabel.textContent = t('language') || 'Idioma:';
         }
         
-        // Atualiza o texto do título
-        updateTitle();
-        
-        // Recarrega géneros e filmes
-        loadData();
+        updateURL();
+        window.location.href = window.location.pathname + '?lang=' + state.currentLanguage;
     });
     
     // Login
@@ -447,11 +450,8 @@ async function loadMovies() {
     state.isLoading = true;
     
     try {
-        // Mapeia idioma para formato TMDB
         const tmdbLang = languageMap[state.currentLanguage] || 'pt-BR';
         let url = API_BASE + '/movies?page=' + state.currentPage + '&sort=' + state.currentSort + '&language=' + tmdbLang;
-        
-        console.log('>>> loadMovies URL:', url, 'page param:', state.currentPage);
         
         if (state.searchQuery) {
             url = API_BASE + '/movies?q=' + encodeURIComponent(state.searchQuery) + '&page=' + state.currentPage + '&language=' + tmdbLang;
@@ -467,8 +467,6 @@ async function loadMovies() {
         const response = await fetch(url);
         const data = await response.json();
         
-        console.log('>>> API Response - requested page:', state.currentPage, 'returned page:', data.page, 'total_pages:', data.total_pages, 'results count:', data.results?.length, 'first movie id:', data.results?.[0]?.id);
-        
         if (data.results) {
             state.movies = data.results || [];
             state.totalPages = Math.min(data.total_pages || 1, 500);
@@ -477,11 +475,8 @@ async function loadMovies() {
                 state.currentPage = 500;
             }
             
-            console.log('Before renderMovies');
             renderMovies();
-            console.log('Before updateUI');
             updateUI();
-            console.log('After updateUI');
         }
         
     } catch (error) {
@@ -496,7 +491,6 @@ function renderGenres() {
     const container = document.getElementById('genresList');
     if (!container) return;
     
-    // Opção "Todos" primeiro
     let genresHtml = `
         <div class="genre-item ${state.currentGenre === '0' ? 'active' : ''}" 
              data-id="0">
@@ -515,7 +509,6 @@ function renderGenres() {
     
     container.innerHTML = genresHtml;
     
-    // Popula o select de gêneros no mobile
     const mobileSelect = document.getElementById('genreSelectMobile');
     if (mobileSelect) {
         let optionsHtml = '<option value="0">Todos os Generos</option>';
@@ -586,42 +579,24 @@ function renderMovies() {
 
 // Atualizar textos da interface
 function updateTranslations() {
-    console.log('>>> updateTranslations START <<<');
     try {
         const lang = state.currentLanguage;
         
-        // Busca
         const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.placeholder = t('searchPlaceholder');
-        } else {
-            console.log('searchInput is null');
-        }
+        if (searchInput) searchInput.placeholder = t('searchPlaceholder');
         
-        // Filtros origem
         const filterOriginLabel = document.getElementById('filterOriginLabel');
-        if (filterOriginLabel) {
-            filterOriginLabel.textContent = (t('originLabel') || 'Filmes:');
-        } else {
-            console.log('filterOriginLabel is null');
-        }
+        if (filterOriginLabel) filterOriginLabel.textContent = (t('originLabel') || 'Filmes:');
         
         const filterOriginSelect = document.getElementById('filterOriginSelect');
         if (filterOriginSelect && filterOriginSelect.options.length >= 3) {
             filterOriginSelect.options[0].text = t('all');
             filterOriginSelect.options[1].text = t('national');
             filterOriginSelect.options[2].text = t('international');
-        } else {
-            console.log('filterOriginSelect is null or no options');
         }
         
-        // Filtros ordenação
         const filterSortLabel = document.getElementById('filterSortLabel');
-        if (filterSortLabel) {
-            filterSortLabel.textContent = t('sortBy') + ':';
-        } else {
-            console.log('filterSortLabel is null');
-        }
+        if (filterSortLabel) filterSortLabel.textContent = t('sortBy') + ':';
         
         const filterSortSelect = document.getElementById('filterSortSelect');
         if (filterSortSelect && filterSortSelect.options.length >= 4) {
@@ -629,34 +604,16 @@ function updateTranslations() {
             filterSortSelect.options[1].text = t('bestRated') || t('rating');
             filterSortSelect.options[2].text = t('worstRated') || 'Piores Avaliados';
             filterSortSelect.options[3].text = t('release');
-        } else {
-            console.log('filterSortSelect is null or no options');
         }
         
-        // Generos sidebar
         const genresTitle = document.getElementById('genresTitle');
-        if (genresTitle) {
-            genresTitle.textContent = t('genres');
-        } else {
-            console.log('genresTitle is null');
-        }
+        if (genresTitle) genresTitle.textContent = t('genres');
         
-        // Paginação
         const prevText = document.getElementById('prevText');
-        if (prevText) {
-            prevText.textContent = t('prev');
-        } else {
-            console.log('prevText is null');
-        }
-        
+        if (prevText) prevText.textContent = t('prev');
         const nextText = document.getElementById('nextText');
-        if (nextText) {
-            nextText.textContent = t('next');
-        } else {
-            console.log('nextText is null');
-        }
+        if (nextText) nextText.textContent = t('next');
         
-        // Botão login
         const loginBtn = document.getElementById('authBtn');
         if (loginBtn) {
             const span = loginBtn.querySelector('span');
@@ -666,14 +623,18 @@ function updateTranslations() {
                 } else {
                     span.textContent = t('login');
                 }
-            } else {
-                console.log('loginBtn span is null');
             }
-        } else {
-            console.log('loginBtn is null');
         }
     } catch (e) {
-        console.error('Error in updateTranslations:', e, 'Stack:', e.stack);
+        console.error('Error in updateTranslations:', e);
+    }
+}
+
+// Atualizar footer
+function updateFooter() {
+    const footer = document.querySelector('.site-footer');
+    if (footer) {
+        footer.innerHTML = `<p>${t('footer')} <strong>Alabaster Developer</strong></p>`;
     }
 }
 
@@ -689,7 +650,6 @@ function updateUI() {
         const nextPageBtn = document.getElementById('nextPage');
         if (nextPageBtn) nextPageBtn.disabled = state.currentPage >= state.totalPages;
         
-        // Mostrar indicador de página
         const indicator = document.getElementById('pageIndicator');
         if (indicator) {
             indicator.textContent = state.currentPage + ' / ' + state.totalPages;
@@ -698,6 +658,7 @@ function updateUI() {
         renderPageNumbers();
         updateTitle();
         updateTranslations();
+        updateFooter();
         updateURL();
     } catch (e) {
         console.error('Error in updateUI:', e);
@@ -744,10 +705,8 @@ function renderPageNumbers() {
 }
 
 window.goToPage = function(page) {
-    console.log('goToPage called with:', page, 'current totalPages:', state.totalPages);
     if (page < 1 || page > state.totalPages) return;
     state.currentPage = page;
-    console.log('Calling loadMovies with page:', state.currentPage);
     loadMovies();
 };
 
@@ -756,7 +715,6 @@ function updateTitle() {
         const titleEl = document.getElementById('currentTitle');
         if (!titleEl) return;
         
-        // Se tem busca, mostra o termo procurado
         if (state.searchQuery) {
             titleEl.textContent = 'Resultados para: ' + state.searchQuery;
             return;
@@ -792,7 +750,6 @@ window.showMovieDetails = async function(movieId) {
         if (data.success && data.movie) {
             showMovieModal(data.movie);
         } else {
-            // Fallback para dados locais
             const movie = state.movies.find(m => m.id === movieId);
             if (movie) showMovieModal(movie);
         }
@@ -814,7 +771,6 @@ function showMovieModal(movie) {
     const isFav = favorites.includes(movie.id);
     const hasVotes = movie.vote_count > 0;
     
-    // Plataformas de streaming
     let streamingHtml = '';
     if (movie.streaming && movie.streaming.length > 0) {
         const platformUrls = {
@@ -827,12 +783,8 @@ function showMovieModal(movie) {
             'Apple TV+': 'https://tv.apple.com',
             'Google Play Movies': 'https://play.google.com/store/movies',
             'YouTube': 'https://www.youtube.com',
-            'Spotify': 'https://www.spotify.com',
             'Crunchyroll': 'https://www.crunchyroll.com',
-            'Globoplay': 'https://globoplay.globo.com',
-            'Netflix': 'https://www.netflix.com',
-            'Amazon Prime Video': 'https://www.primevideo.com',
-            'Disney+': 'https://www.disneyplus.com'
+            'Globoplay': 'https://globoplay.globo.com'
         };
         
         streamingHtml = `
@@ -854,12 +806,10 @@ function showMovieModal(movie) {
         `;
     }
     
-    // Link para trailer no YouTube
     const trailerLink = movie.trailer || '';
     
     titleEl.textContent = movie.title;
     
-    // Géneros
     let genresHtml = '';
     if (movie.genres && movie.genres.length > 0) {
         genresHtml = movie.genres.map(g => `<span>${g.name}</span>`).join('');
@@ -969,16 +919,13 @@ function doRegister() {
         return;
     }
     
-    // Get users from localStorage
     const users = JSON.parse(localStorage.getItem('cineworld_users') || '[]');
     
-    // Check if email already exists
     if (users.find(u => u.email === email)) {
         alert('Este email já está cadastrado!');
         return;
     }
     
-    // Create new user
     const newUser = {
         id: 'user_' + Date.now(),
         name: name,
@@ -990,7 +937,6 @@ function doRegister() {
     users.push(newUser);
     localStorage.setItem('cineworld_users', JSON.stringify(users));
     
-    // Auto login
     doLogin({ id: newUser.id, name: newUser.name, email: newUser.email });
     alert('Conta criada com sucesso! Bem-vindo, ' + name + '!');
 }
@@ -1004,10 +950,8 @@ function doLogin() {
         return;
     }
     
-    // Get users from localStorage
     const users = JSON.parse(localStorage.getItem('cineworld_users') || '[]');
     
-    // Find user
     const user = users.find(u => u.email === email && u.password === password);
     
     if (user) {
@@ -1018,7 +962,6 @@ function doLogin() {
         updateAuthUI();
         closeLoginModal();
         
-        // Clear form
         document.getElementById('loginEmail').value = '';
         document.getElementById('loginPassword').value = '';
         
@@ -1070,7 +1013,6 @@ function toggleFavorite(movieId) {
     updateFavoritesCount();
     renderMovies();
     
-    // Atualiza o modal se estiver aberto
     const modal = document.getElementById('movieModal');
     if (modal.classList.contains('open')) {
         const movie = state.movies.find(m => m.id === movieId);
@@ -1133,19 +1075,12 @@ window.closeContactModal = closeContactModal;
 function submitContact(e) {
     e.preventDefault();
     
-    const name = document.getElementById('contactName').value;
-    const type = document.getElementById('contactType').value;
-    const message = document.getElementById('contactMessage').value;
-    
-    // Google Forms URL
     const formUrl = 'https://forms.gle/aH6UcwjVitjkxzpV7';
     
-    // Abre o Google Forms em nova aba
     window.open(formUrl, '_blank');
     
     alert('O formulario foi aberto! Por favor, preencha e envie.');
     
-    // Limpa o formulario
     document.getElementById('contactForm').reset();
     closeContactModal();
 }

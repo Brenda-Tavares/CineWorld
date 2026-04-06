@@ -8,6 +8,15 @@
     box-sizing: border-box;
 }
 
+html, body {
+    min-height: auto;
+    display: block;
+}
+
+body {
+    flex: none;
+}
+
 :root {
     --primary: #1e3a5f;
     --primary-light: #2d5a8a;
@@ -1227,14 +1236,24 @@ body {
 
 /* Footer */
 .site-footer {
-    background: var(--bg-dark);
+    background: transparent;
     color: var(--text-muted);
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
-    font-size: 0.9rem;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
 }
 
 .site-footer strong {
     color: var(--primary);
+}
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 15px;
+        font-size: 0.8rem;
+        margin-top: 20px;
+    }
 }
