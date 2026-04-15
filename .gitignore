@@ -39,3 +39,6 @@ server.py
 .DS_Store
 Thumbs.db
 .vercel
+
+# Private notes
+duvidas_a_serem_sanadas.txt

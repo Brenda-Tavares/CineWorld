@@ -689,7 +689,7 @@ function updateTranslations() {
 function updateFooter() {
     const footer = document.querySelector('.site-footer');
     if (footer) {
-        footer.innerHTML = `<p>${t('footer')} <strong>Alabaster Developer</strong></p>`;
+        footer.innerHTML = `<p>${t('footer')} <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>`;
     }
 }
 
@@ -1308,10 +1308,12 @@ async function askAI() {
         } else {
             await loadMovies();
         }
-} catch (error) {
+    } catch (error) {
         console.error('AI search error:', error);
         document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-exclamation-triangle"></i> <span>Erro na busca: ' + error.message + '</span></div>';
         await loadMovies();
     }
+
+}
 
 window.askAI = askAI;
