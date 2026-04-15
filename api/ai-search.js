@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 const TMDB_API_KEY = '08d264815baddc8059d7a7bd88e18057';
+const GEMINI_API_KEY = 'AIzaSyAb42Lbrz7g5FWLoqmWK5ChQ_4_EY4J7H4';
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
@@ -11,7 +12,7 @@ const languageMap = {
 };
 
 const genreKeywords = {
-    'acao': 28, 'acao': 28, 'action': 28, 'acao': 28,
+    'acao': 28, 'action': 28,
     'comedia': 35, 'comedy': 35,
     'romance': 10749, 'amor': 10749, 'love': 10749,
     'terror': 27, 'horror': 27,
@@ -28,10 +29,43 @@ const genreKeywords = {
 };
 
 const langKeywords = {
-    'coreano': 'ko', 'japones': 'ja', 'chinês': 'zh', 'hindi': 'hi',
+    'coreano': 'ko', 'japones': 'ja', 'japones': 'ja', 'chinês': 'zh', 'hindi': 'hi',
     'brasileiro': 'pt', 'americano': 'en', 'ingles': 'en', 'espanhol': 'es',
     'frances': 'fr'
 };
+
+let geminiWorks = true;
+
+async function getGeminiKeywords(query) {
+    if (!geminiWorks) return null;
+    
+    try {
+        const response = await axios.post(
+            `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+            {
+                contents: [{ parts: [{ text: `Extract 3-5 movie search keywords from this: "${query}". Respond with JSON array like ["keyword1", "keyword2"]` }] }],
+                generationConfig: { temperature: 0.2, maxOutputTokens: 50, responseMimeType: 'application/json' }
+            },
+            { headers: { 'Content-Type': 'application/json' }, timeout: 10000 }
+        );
+        
+        const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const match = text.match(/\[[\s\S]*\]/);
+        
+        if (match) {
+            const keywords = JSON.parse(match[0]);
+            if (Array.isArray(keywords) && keywords.length > 0) {
+                console.log('Gemini keywords:', keywords);
+                return keywords;
+            }
+        }
+        return null;
+    } catch (error) {
+        console.log('Gemini failed:', error.message);
+        geminiWorks = false;
+        return null;
+    }
+}
 
 function extractFilters(query) {
     const q = query.toLowerCase();
@@ -92,20 +126,35 @@ module.exports = async (req, res) => {
             }
         }
         
-        for (const kw of keywords) {
+        const searchTerms = [...keywords];
+        
+        if (geminiWorks) {
+            const geminiKw = await getGeminiKeywords(q);
+            if (geminiKw) {
+                searchTerms.push(...geminiKw);
+            }
+        }
+        
+        const uniqueTerms = [...new Set(searchTerms)];
+        
+        for (const kw of uniqueTerms) {
             if (kw.length < 3 || resultsMap.size >= 15) continue;
             
             const searchParams = { ...baseParams, query: kw };
-            const searchRes = await axios.get(TMDB_BASE + '/search/movie', { params: searchParams });
-            
-            for (const m of searchRes.data.results || []) {
-                if (!resultsMap.has(m.id)) {
-                    resultsMap.set(m.id, {
-                        ...m,
-                        poster_path: m.poster_path ? TMDB_IMAGE + m.poster_path : null,
-                        backdrop_path: m.backdrop_path ? 'https://image.tmdb.org/t/p/w780' + m.backdrop_path : null
-                    });
+            try {
+                const searchRes = await axios.get(TMDB_BASE + '/search/movie', { params: searchParams });
+                
+                for (const m of searchRes.data.results || []) {
+                    if (!resultsMap.has(m.id)) {
+                        resultsMap.set(m.id, {
+                            ...m,
+                            poster_path: m.poster_path ? TMDB_IMAGE + m.poster_path : null,
+                            backdrop_path: m.backdrop_path ? 'https://image.tmdb.org/t/p/w780' + m.backdrop_path : null
+                        });
+                    }
                 }
+            } catch (e) {
+                console.log('Search error:', e.message);
             }
         }
         
