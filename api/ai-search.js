@@ -226,16 +226,14 @@ async function searchWithFilters(keywords, filters, tmdbLang, pageNum) {
     const resultsMap = new Map();
     const baseParams = { api_key: TMDB_API_KEY, language: tmdbLang, page: 1, 'vote_count.gte': 5 };
     
-    if (filters.genre || filters.language || filters.keywords.length > 0 || filters.decade || filters.year) {
-        const discParams = { ...baseParams, sort_by: 'popularity.desc' };
+    if (filters.keywords.length > 0) {
+        const discParams = { ...baseParams, sort_by: 'popularity.desc', with_keywords: filters.keywords.join(',') };
         if (filters.genre) discParams.with_genres = filters.genre;
         if (filters.language) discParams.with_original_language = filters.language;
-        if (filters.keywords.length > 0) discParams.with_keywords = filters.keywords.join(',');
         if (filters.decade) {
             discParams['primary_release_date.gte'] = `${filters.decade[0]}-01-01`;
             discParams['primary_release_date.lte'] = `${filters.decade[1]}-12-31`;
         }
-        if (filters.year) discParams.primary_release_year = filters.year;
         
         try {
             const discRes = await axios.get(TMDB_BASE + '/discover/movie', { params: discParams });
@@ -247,7 +245,25 @@ async function searchWithFilters(keywords, filters, tmdbLang, pageNum) {
                 });
             }
         } catch (e) {
-            console.log('Discover error:', e.message);
+            console.log('Keyword search error:', e.message);
+        }
+    }
+    
+    if (filters.genre && filters.keywords.length === 0) {
+        const discParams = { ...baseParams, sort_by: 'popularity.desc', with_genres: filters.genre };
+        if (filters.language) discParams.with_original_language = filters.language;
+        
+        try {
+            const discRes = await axios.get(TMDB_BASE + '/discover/movie', { params: discParams });
+            for (const m of discRes.data.results || []) {
+                resultsMap.set(m.id, {
+                    ...m,
+                    poster_path: m.poster_path ? TMDB_IMAGE + m.poster_path : null,
+                    backdrop_path: m.backdrop_path ? 'https://image.tmdb.org/t/p/w780' + m.backdrop_path : null
+                });
+            }
+        } catch (e) {
+            console.log('Genre search error:', e.message);
         }
     }
     
@@ -270,7 +286,7 @@ async function searchWithFilters(keywords, filters, tmdbLang, pageNum) {
         }
     }
     
-    if (keywords.length > 0) {
+    if (keywords.length > 0 && resultsMap.size < 5) {
         for (const kw of keywords) {
             if (kw.length < 3 || resultsMap.size >= 15) continue;
             try {
