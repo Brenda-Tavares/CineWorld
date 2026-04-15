@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보 - CineWorld</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0a0f1a !important; }
+        .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page ul { padding-left: 20px; }
+        .legal-page a { color: #e63946; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
+        .back-link:hover { color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub">영화 가이드</span>
+                </div>
+            </a>
+            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="/sobre">Português</option>
+                <option value="/en/sobre">English</option>
+                <option value="/es/sobre">Español</option>
+                <option value="/zh/sobre">中文</option>
+                <option value="/ja/sobre">日本語</option>
+                <option value="/ru/sobre">Русский</option>
+                <option value="/ko/sobre" selected>한국어</option>
+            </select>
+        </div>
+    </header>
+    <div class="legal-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> 홈으로 돌아가기</a>
+        <h1><i class="fas fa-film"></i> CineWorld 정보</h1>
+        <p>CineWorld은 다음 볼 영화를 찾는 데 도움이 되는 영화 발견 웹사이트입니다.</p>
+        <h2><i class="fas fa-star"></i> 우리의 임무</h2>
+        <p>영화 및 시리즈 검색을 촉진하고 새로운 콘텐츠를 발견할 수 있는 직관적인 경험을 제공합니다.</p>
+        <h2><i class="fas fa-heart"></i> 제공 서비스</h2>
+        <ul>
+            <li>영화 및 시리즈 전체 카탈로그</li>
+            <li>스트리밍 플랫폼 정보</li>
+            <li>AI 기반 스마트 검색</li>
+            <li>즐겨찾기 및 기록</li>
+        </ul>
+        <p style="margin-top: 30px;"><em>마지막 업데이트: 2026</em></p>
+    </div>
+</body>
+</html>

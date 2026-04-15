@@ -26,15 +26,27 @@
     <header class="header">
         <div class="header-inner">
             <!-- Logo -->
-            <a href="index.html" class="logo-area" style="text-decoration: none; cursor: pointer;">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
                 <div class="logo-box">
                     <i class="fas fa-play"></i>
                 </div>
                 <div>
                     <div class="logo-text">CINEWORLD</div>
-                    <span class="logo-sub">Seu Guia de Filmes</span>
+                    <span class="logo-sub" id="siteTagline">Seu Guia de Filmes</span>
                 </div>
             </a>
+
+            <!-- Navegacao -->
+            <button class="hamburger-btn" onclick="toggleNavMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/sobre" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="/privacidade" class="nav-link"><i class="fas fa-shield-alt"></i> Privacidade</a>
+                <a href="/termos" class="nav-link"><i class="fas fa-file-contract"></i> Termos</a>
+                <a href="/cookies" class="nav-link"><i class="fas fa-cookie-bite"></i> Cookies</a>
+            </nav>
 
             <!-- Busca -->
             <div class="search-area">
@@ -63,6 +75,10 @@
                 <button class="action-btn" id="favoritesBtn" title="Favoritos">
                     <i class="fas fa-heart"></i>
                     <span class="count" id="favCount">0</span>
+                </button>
+
+                <button class="action-btn" id="themeBtn" title="Alternar Tema" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
                 </button>
 
                 <button class="login-btn" id="authBtn">
@@ -97,6 +113,27 @@
                     <option value="worst">Piores Avaliados</option>
                     <option value="release_desc">Lançamentos</option>
                     <option value="upcoming">Futuros Lançamentos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label" id="filterYearLabel">Ano:</span>
+                <select id="filterYearSelect" class="filter-select">
+                    <option value="">Todos</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2010">2010-2015</option>
+                    <option value="2000">2000-2009</option>
+                    <option value="1990">1990-1999</option>
                 </select>
             </div>
         </div>
@@ -140,9 +177,26 @@
             </button>
         </div>
 
-        <!-- Footer -->
+<!-- Footer -->
         <footer class="site-footer">
-            <p>© 2026 - Todos os direitos reservados | Desenvolvido por <strong>Alabaster Developer</strong></p>
+            <div class="platforms-icons">
+                <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
+                <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
+                <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
+                <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
+                <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
+                <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+            </div>
+            <div class="footer-links">
+                <a href="/sobre">Sobre</a>
+                <span class="footer-divider">|</span>
+                <a href="/privacidade">Privacidade</a>
+                <span class="footer-divider">|</span>
+                <a href="/termos">Termos</a>
+                <span class="footer-divider">|</span>
+                <a href="/cookies">Cookies</a>
+            </div>
+            <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Alabaster Developer</strong></p>
         </footer>
     </main>
 
@@ -266,6 +320,40 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- BOTAO IA FLUTUANTE -->
+    <button class="ai-float-btn" id="aiFloatBtn" title="O que deseja assistir? Pergunte à IA" onclick="toggleAIPanel()">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- PAINEL IA FLUTUANTE -->
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-panel-header">
+            <div class="ai-panel-title">
+                <i class="fas fa-robot"></i>
+                <span>O que deseja assistir?</span>
+            </div>
+            <button class="ai-panel-close" onclick="toggleAIPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="ai-panel-messages" id="aiMessages">
+            <div class="ai-message ai-message-bot">
+                <div class="ai-message-content">
+                    <p>Olá! Sou a assistente de filmes do CineWorld.</p>
+                    <p>Descreva o que você quer assistir:</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">Ex: "filme de ação com robôs", "comédia romântica indiana"</p>
+                </div>
+            </div>
+        </div>
+        <div class="ai-panel-input">
+            <input type="text" id="aiSearchInput" placeholder="Descreva o filme..." onkeydown="if(event.key==='Enter')askAI()">
+            <button onclick="askAI()" title="Buscar">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="ai-panel-results" id="aiResults"></div>
     </div>
 
     <!-- MODAL CONTATO -->

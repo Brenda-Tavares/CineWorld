@@ -30,37 +30,38 @@ const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 
 // Traduções do site
 const translations = {
-    'pt-BR': {
+'pt-BR': {
         searchPlaceholder: 'Buscar filmes...',
-        popular: 'Populares', bestRated: 'Melhores Avaliados', worstRated: 'Piores Avaliados', release: 'Lançamentos',
+        popular: 'Populares', bestRated: 'Melhores Avaliados', worstRated: 'Piores Avaliados', release: 'Lancamentos', upcoming: 'Proximos Lancamentos',
         all: 'Todos', national: 'Nacionais', international: 'Internacionais', originLabel: 'Filmes:',
-        genres: 'Gêneros', movies: 'filmes', page: 'Pagina', of: 'de',
+        genres: 'Generos', movies: 'filmes', page: 'Pagina', of: 'de',
         language: 'Idioma:',
         prev: 'Anterior', next: 'Proxima', details: 'Detalhes',
-        rating: 'Avaliação', year: 'Ano', synopsis: 'Sinopse',
+        rating: 'Avaliacao', year: 'Ano', synopsis: 'Sinopse',
         originalTitle: 'Titulo original', close: 'Fechar',
-        noResults: 'Nenhum filme encontrado', tryAgain: 'Tente outro genero ou busca',
+        noResults: 'Nenhum filme encontrado', tryAgain: 'Tente outro genero ou busca', resultsFor: 'Resultados para',
         login: 'Entrar', logout: 'Sair', loginTitle: 'Entrar',
-        loginDesc: 'Escolha uma opção para continuar',
+        loginDesc: 'Escolha uma opcao para continuar',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Onde Assistir', runtime: 'min',
         favorites: 'Favoritos', noFavorites: 'Voce ainda nao tem favoritos!',
         welcome: 'Bem-vindo', sortBy: 'Ordenar',
-        contact: 'Contato', contactTitle: 'Fale Conosco', contactDesc: 'Envie suas sugestões, elogios ou reclamações',
+        contact: 'Contato', contactTitle: 'Fale Conosco', contactDesc: 'Envie suas sugestoes, elogios ou reclamacoes',
         name: 'Nome (opcional)', type: 'Tipo', message: 'Mensagem *', send: 'Enviar',
-        suggestion: 'Sugestão', compliment: 'Elogio', complaint: 'Reclamação', other: 'Outro',
-        footer: '© 2026 - Todos os direitos reservados | Desenvolvido por'
+        suggestion: 'Sugestao', compliment: 'Elogio', complaint: 'Reclamacao', other: 'Outro',
+        footer: '© 2026 - Todos os direitos reservados | Desenvolvido por',
+        tagline: 'Seu Guia de Filmes'
     },
     'en': {
         searchPlaceholder: 'Search movies...',
-        popular: 'Popular', bestRated: 'Top Rated', worstRated: 'Lowest Rated', release: 'New Releases',
-        all: 'All', national: 'National', international: 'International',
+        popular: 'Popular', bestRated: 'Top Rated', worstRated: 'Lowest Rated', release: 'New Releases', upcoming: 'Upcoming Releases',
+        all: 'All', national: 'National', international: 'International', originLabel: 'Movies:',
         genres: 'Genres', movies: 'movies', page: 'Page', of: 'of',
         language: 'Language:',
         prev: 'Previous', next: 'Next', details: 'Details',
         rating: 'Rating', year: 'Year', synopsis: 'Synopsis',
         originalTitle: 'Original title', close: 'Close',
-        noResults: 'No movies found', tryAgain: 'Try another genre or search',
+        noResults: 'No movies found', tryAgain: 'Try another genre or search', resultsFor: 'Results for',
         login: 'Sign In', logout: 'Sign Out', loginTitle: 'Sign In',
         loginDesc: 'Choose an option to continue',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
@@ -70,115 +71,140 @@ const translations = {
         contact: 'Contact', contactTitle: 'Contact Us', contactDesc: 'Send your suggestions, compliments or complaints',
         name: 'Name (optional)', type: 'Type', message: 'Message *', send: 'Send',
         suggestion: 'Suggestion', compliment: 'Compliment', complaint: 'Complaint', other: 'Other',
-        footer: '© 2026 - All rights reserved | Developed by'
+        footer: '© 2026 - All rights reserved | Developed by',
+        tagline: 'Your Movie Guide'
     },
     'es': {
-        searchPlaceholder: 'Buscar peliculas...',
-        popular: 'Peliculas Populares', rating: 'Mejor Valoradas', release: 'Mas Recientes',
-        all: 'Todos', national: 'Nacionales', international: 'Internacionales',
-        genres: 'Géneros', movies: 'peliculas', page: 'Pagina', of: 'de',
+        searchPlaceholder: 'Buscar películas...',
+        popular: 'Películas Populares', bestRated: 'Mejor Valoradas', worstRated: 'Peor Valoradas', release: 'Estrenos', upcoming: 'Próximos Estrenos',
+        all: 'Todos', national: 'Nacionales', international: 'Internacionales', originLabel: 'Películas:',
+        genres: 'Géneros', movies: 'películas', page: 'Página', of: 'de',
         language: 'Idioma:',
         prev: 'Anterior', next: 'Siguiente', details: 'Detalles',
-        rating: 'Valoracion', year: 'Ano', synopsis: 'Sinopsis',
-        originalTitle: 'Titulo original', close: 'Cerrar',
-        noResults: 'No se encontraron peliculas', tryAgain: 'Intenta otro genero o busqueda',
+        rating: 'Valoración', year: 'Año', synopsis: 'Sinopsis',
+        originalTitle: 'Título original', close: 'Cerrar',
+        noResults: 'No se encontraron películas', tryAgain: 'Intenta otro género o búsqueda', resultsFor: 'Resultados para',
         login: 'Entrar', logout: 'Salir', loginTitle: 'Entrar',
-        loginDesc: 'Elige una opcion para continuar',
+        loginDesc: 'Elige una opción para continuar',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Ver en', runtime: 'min',
-        favorites: 'Favoritos', noFavorites: '¡Aun no tienes favoritos!',
+        favorites: 'Favoritos', noFavorites: '¡Aún no tienes favoritos!',
         welcome: 'Bienvenido', sortBy: 'Ordenar',
-        footer: '© 2026 - Todos los derechos reservados | Desarrollado por'
+        contact: 'Contacto', contactTitle: 'Contáctanos', contactDesc: 'Envía tus sugerencias, elogios o quejas',
+        name: 'Nombre (opcional)', type: 'Tipo', message: 'Mensaje *', send: 'Enviar',
+        suggestion: 'Sugerencia', compliment: 'Elogio', complaint: 'Queja', other: 'Otro',
+        footer: '© 2026 - Todos los derechos reservados | Desarrollado por',
+        tagline: 'Tu Guía de Películas'
     },
     'zh-CN': {
         searchPlaceholder: '搜索电影...',
-        popular: '热门电影', rating: '评分最高', release: '最新',
-        all: '全部', national: '国产', international: '国际',
+        popular: '热门电影', bestRated: '评分最高', worstRated: '评分最低', release: '最新', upcoming: '即将上映',
+        all: '全部', national: '国产', international: '国际', originLabel: '电影:',
         genres: '类型', movies: '部电影', page: '第', of: '页，共',
         language: '语言:',
         prev: '上一页', next: '下一页', details: '详情',
         rating: '评分', year: '年份', synopsis: '简介',
         originalTitle: '原名', close: '关闭',
-        noResults: '未找到电影', tryAgain: '尝试其他类型或搜索',
+        noResults: '未找到电影', tryAgain: '尝试其他类型或搜索', resultsFor: '搜索结果',
         login: '登录', logout: '退出', loginTitle: '登录',
         loginDesc: '选择一个选项继续',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '在线观看', runtime: '分钟',
         favorites: '收藏', noFavorites: '还没有收藏！',
         welcome: '欢迎', sortBy: '排序',
-        footer: '© 2026 - 版权所有 | 开发'
+        contact: '联系', contactTitle: '联系我们', contactDesc: '发送您的建议、表扬或投诉',
+        name: '姓名（可选）', type: '类型', message: '留言 *', send: '发送',
+        suggestion: '建议', compliment: '表扬', complaint: '投诉', other: '其他',
+        footer: '© 2026 - 版权所有 | 开发',
+        tagline: '您的电影指南'
     },
     'zh-HK': {
         searchPlaceholder: '搜尋電影...',
-        popular: '熱門電影', rating: '評分最高', release: '最新',
-        all: '全部', national: '本土', international: '國際',
+        popular: '熱門電影', bestRated: '評分最高', worstRated: '評分最低', release: '最新', upcoming: '即將上映',
+        all: '全部', national: '本土', international: '國際', originLabel: '電影:',
         genres: '類型', movies: '部電影', page: '第', of: '頁，共',
         language: '語言:',
         prev: '上一頁', next: '下一頁', details: '詳情',
         rating: '評分', year: '年份', synopsis: '簡介',
         originalTitle: '原名', close: '關閉',
-        noResults: '未找到電影', tryAgain: '嘗試其他類型或搜尋',
+        noResults: '未找到電影', tryAgain: '嘗試其他類型或搜尋', resultsFor: '搜尋結果',
         login: '登入', logout: '登出', loginTitle: '登入',
         loginDesc: '選擇一個選項繼續',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '線上觀看', runtime: '分鐘',
         favorites: '收藏', noFavorites: '還沒有收藏！',
         welcome: '歡迎', sortBy: '排序',
-        footer: '© 2026 - 版權所有 | 開發'
+        contact: '聯繫', contactTitle: '聯繫我們', contactDesc: '發送您的建議、表揚或投訴',
+        name: '姓名可選', type: '類型', message: '訊息 *', send: '發送',
+        suggestion: '建議', compliment: '表揚', complaint: '投訴', other: '其他',
+        footer: '© 2026 - 版權所有 | 開發',
+        tagline: '您的電影指南'
     },
     'ja': {
         searchPlaceholder: '映画を検索...',
-        popular: '人気映画', rating: '高評価', release: '最新作',
-        all: 'すべて', national: '日本', international: '外国',
+        popular: '人気映画', bestRated: '高評価', worstRated: '低評価', release: '最新作', upcoming: '公開予定',
+        all: 'すべて', national: '日本', international: '外国', originLabel: '映画:',
         genres: 'ジャンル', movies: '映画', page: 'ページ', of: '/',
         language: '言語:',
         prev: '前へ', next: '次へ', details: '詳細',
         rating: '評価', year: '年', synopsis: 'あらすじ',
         originalTitle: '原題', close: '閉じる',
-        noResults: '映画が見つかりません', tryAgain: '他のジャンルで検索',
+        noResults: '映画が見つかりません', tryAgain: '他のジャンルで検索', resultsFor: '検索結果',
         login: 'ログイン', logout: 'ログアウト', loginTitle: 'ログイン',
         loginDesc: 'オプションを選択してください',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '視聴', runtime: '分',
         favorites: 'お気に入り', noFavorites: 'お気に入りはまだありません！',
         welcome: 'ようこそ', sortBy: '並べ替え',
-        footer: '© 2026 - 全著作権 | 開発'
+        contact: 'お問い合わせ', contactTitle: 'お問い合わせ', contactDesc: 'ご要望やお問い合わせを送信',
+        name: '名前任意', type: 'タイプ', message: 'メッセージ *', send: '送信',
+        suggestion: 'ご要望', compliment: 'お問い合わせ', complaint: '苦情', other: 'その他',
+        footer: '© 2026 - 全著作権 | 開発',
+        tagline: 'あなたの映画ガイド'
     },
     'ru': {
         searchPlaceholder: 'Поиск фильмов...',
-        popular: 'Популярные фильмы', rating: 'Лучшие оценки', release: 'Новейшие',
-        all: 'Все', national: 'Национальные', international: 'Международные',
+        popular: 'Популярные фильмы', bestRated: 'Лучшие оценки', worstRated: 'Худшие оценки', release: 'Новейшие', upcoming: 'Скоро в прокате',
+        all: 'Все', national: 'Национальные', international: 'Международные', originLabel: 'Фильмы:',
         genres: 'Жанры', movies: 'фильмов', page: 'Страница', of: 'из',
         language: 'Язык:',
         prev: 'Предыдущая', next: 'Следующая', details: 'Детали',
         rating: 'Рейтинг', year: 'Год', synopsis: 'Описание',
         originalTitle: 'Оригинальное название', close: 'Закрыть',
-        noResults: 'Фильмы не найдены', tryAgain: 'Попробуйте другой жанр или поиск',
+        noResults: 'Фильмы не найдены', tryAgain: 'Попробуйте другой жанр или поиск', resultsFor: 'Результаты для',
         login: 'Войти', logout: 'Выйти', loginTitle: 'Войти',
         loginDesc: 'Выберите вариант',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Смотреть', runtime: 'мин',
         favorites: 'Избранное', noFavorites: 'У вас пока нет избранного!',
         welcome: 'Добро пожаловать', sortBy: 'Сортировать',
-        footer: '© 2026 - Все права защищены | Разработано'
+        contact: 'Контакт', contactTitle: 'Связаться', contactDesc: 'Отправьте ваши предложения, похвалу или жалобы',
+        name: 'Имя необязательно', type: 'Тип', message: 'Сообщение *', send: 'Отправить',
+        suggestion: 'Предложение', compliment: 'Похвала', complaint: 'Жалоба', other: 'Другое',
+        footer: '© 2026 - Все права защищены | Разработано',
+        tagline: 'Ваш гид по фильмам'
     },
     'ko': {
         searchPlaceholder: '영화 검색...',
-        popular: '인기 영화', rating: '높은 평점', release: '최신',
-        all: '전체', national: '국내', international: '해외',
+        popular: '인기 영화', bestRated: '높은 평점', worstRated: '낮은 평점', release: '최신', upcoming: '개봉 예정',
+        all: '전체', national: '국내', international: '해외', originLabel: '영화:',
         genres: '장르', movies: '편', page: '페이지', of: '/',
         language: '언어:',
         prev: '이전', next: '다음', details: '상세정보',
         rating: '평점', year: '연도', synopsis: '시놉시스',
         originalTitle: '원제', close: '닫기',
-        noResults: '영화를 찾을 수 없습니다', tryAgain: '다른 장르 또는 검색을 시도하세요',
+        noResults: '영화를 찾을 수 없습니다', tryAgain: '다른 장르 또는 검색을 시도하세요', resultsFor: '검색 결과',
         login: '로그인', logout: '로그아웃', loginTitle: '로그인',
         loginDesc: '옵션을 선택하세요',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '시청', runtime: '분',
         favorites: '즐겨찾기', noFavorites: '즐겨찾기가 아직 없습니다!',
         welcome: '환영합니다', sortBy: '정렬',
-        footer: '© 2026 - 모든 권리 보유 | 개발'
+        contact: '연락', contactTitle: '연락하기', contactDesc: '제안, 칭찬 또는 불만의 보내기',
+        name: '이름 선택', type: '유형', message: '메시지 *', send: '보내기',
+        suggestion: '제안', compliment: '칭찬', complaint: '불만', other: '기타',
+        footer: '© 2026 - 모든 권리 보유 | 개발',
+        tagline: '나의 영화 가이드'
     }
 };
 
@@ -199,6 +225,7 @@ let state = {
     currentSort: 'popularity',
     currentOrigin: 'all',
     currentLanguage: 'pt-BR',
+    currentYear: '',
     isLoading: false
 };
 
@@ -220,6 +247,7 @@ const languageMap = {
 
 // Inicializacao
 document.addEventListener('DOMContentLoaded', function() {
+    loadTheme();
     initAuth();
     loadFromURL();
     setupEvents();
@@ -248,6 +276,9 @@ function loadFromURL() {
     }
     if (params.has('lang')) {
         state.currentLanguage = params.get('lang');
+    }
+    if (params.has('year')) {
+        state.currentYear = params.get('year');
     }
     
     // Atualiza a UI com os valores da URL
@@ -278,6 +309,9 @@ function updateUIFromState() {
     const sortSelect = document.getElementById('filterSortSelect');
     if (sortSelect) sortSelect.value = state.currentSort;
     
+    const yearSelect = document.getElementById('filterYearSelect');
+    if (yearSelect) yearSelect.value = state.currentYear;
+    
     // Atualiza gêneros
     document.querySelectorAll('.genre-item').forEach(item => {
         item.classList.toggle('active', item.dataset.id === state.currentGenre);
@@ -293,6 +327,7 @@ function updateURL() {
     if (state.currentGenre !== '0') params.set('genre', state.currentGenre);
     if (state.currentOrigin !== 'all') params.set('origin', state.currentOrigin);
     if (state.currentLanguage !== 'pt-BR') params.set('lang', state.currentLanguage);
+    if (state.currentYear) params.set('year', state.currentYear);
     
     const newURL = params.toString() ? '?' + params.toString() : window.location.pathname;
     window.history.replaceState({}, '', newURL);
@@ -358,6 +393,16 @@ function setupEvents() {
         loadMovies();
     });
     
+    // Filtro de ano
+    const yearSelect = document.getElementById('filterYearSelect');
+    if (yearSelect) {
+        yearSelect.addEventListener('change', function() {
+            state.currentYear = this.value;
+            state.currentPage = 1;
+            loadMovies();
+        });
+    }
+    
     // Filtro de gênero (mobile select)
     document.getElementById('genreSelectMobile').addEventListener('change', function() {
         state.currentGenre = this.value;
@@ -399,6 +444,10 @@ function setupEvents() {
             closeMovieModal();
             closeLoginModal();
             closeContactModal();
+            const aiPanel = document.getElementById('aiPanel');
+            if (aiPanel.classList.contains('open')) {
+                aiPanel.classList.remove('open');
+            }
         }
     });
     
@@ -461,6 +510,9 @@ async function loadMovies() {
             }
             if (state.currentOrigin !== 'all') {
                 url += '&origin=' + state.currentOrigin;
+            }
+            if (state.currentYear) {
+                url += '&year=' + state.currentYear;
             }
         }
         
@@ -547,7 +599,7 @@ function renderMovies() {
     container.innerHTML = state.movies.map(movie => {
         const year = movie.release_date ? movie.release_date.split('-')[0] : '';
         const rating = movie.vote_average ? movie.vote_average.toFixed(1) : '';
-        const posterUrl = movie.poster_path ? TMDB_IMAGE_BASE + movie.poster_path : null;
+        const posterUrl = movie.poster_path ? (movie.poster_path.startsWith('http') ? movie.poster_path : TMDB_IMAGE_BASE + movie.poster_path) : null;
         const isFav = favorites.includes(movie.id);
         const hasVotes = movie.vote_count > 0;
         
@@ -716,19 +768,19 @@ function updateTitle() {
         if (!titleEl) return;
         
         if (state.searchQuery) {
-            titleEl.textContent = 'Resultados para: ' + state.searchQuery;
+            titleEl.textContent = t('resultsFor') + ': ' + state.searchQuery;
             return;
         }
         
         const titles = {
-            'pt-BR': { popularity: 'Filmes Populares', rating: 'Melhores Avaliados', worst: 'Piores Avaliados', release: 'Lançamentos' },
-            'en': { popularity: 'Popular Movies', rating: 'Top Rated', worst: 'Lowest Rated', release: 'New Releases' },
-            'es': { popularity: 'Peliculas Populares', rating: 'Mejor Valoradas', worst: 'Peor Valoradas', release: 'Estrenos' },
-            'zh-CN': { popularity: '热门电影', rating: '评分最高', worst: '评分最低', release: '最新' },
-            'zh-HK': { popularity: '熱門電影', rating: '評分最高', worst: '評分最低', release: '最新' },
-            'ja': { popularity: '人気映画', rating: '高評価', worst: '低評価', release: '最新作' },
-            'ru': { popularity: 'Популярные фильмы', rating: 'Лучшие оценки', worst: 'Худшие оценки', release: 'Новейшие' },
-            'ko': { popularity: '인기 영화', rating: '높은 평점', worst: '낮은 평점', release: '최신' }
+            'pt-BR': { popularity: 'Filmes Populares', rating: 'Melhores Avaliados', worst: 'Piores Avaliados', release: 'Lançamentos', upcoming: 'Próximos Lançamentos' },
+            'en': { popularity: 'Popular Movies', rating: 'Top Rated', worst: 'Lowest Rated', release: 'New Releases', upcoming: 'Upcoming Releases' },
+            'es': { popularity: 'Películas Populares', rating: 'Mejor Valoradas', worst: 'Peor Valoradas', release: 'Estrenos', upcoming: 'Próximos Estrenos' },
+            'zh-CN': { popularity: '热门电影', rating: '评分最高', worst: '评分最低', release: '最新', upcoming: '即将上映' },
+            'zh-HK': { popularity: '熱門電影', rating: '評分最高', worst: '評分最低', release: '最新', upcoming: '即將上映' },
+            'ja': { popularity: '人気映画', rating: '高評価', worst: '低評価', release: '最新作', upcoming: '公開予定' },
+            'ru': { popularity: 'Популярные фильмы', rating: 'Лучшие оценки', worst: 'Худшие оценки', release: 'Новейшие', upcoming: 'Скоро в прокате' },
+            'ko': { popularity: '인기 영화', rating: '높은 평점', worst: '낮은 평점', release: '최신', upcoming: '개봉 예정' }
         };
         
         const langTitles = titles[state.currentLanguage] || titles['pt-BR'];
@@ -774,36 +826,98 @@ function showMovieModal(movie) {
     let streamingHtml = '';
     if (movie.streaming && movie.streaming.length > 0) {
         const platformUrls = {
-            'Netflix': 'https://www.netflix.com',
-            'Amazon Prime Video': 'https://www.primevideo.com',
-            'Disney+': 'https://www.disneyplus.com',
-            'HBO Max': 'https://www.max.com',
-            'HBO': 'https://www.hbomax.com',
-            'Paramount+': 'https://www.paramountplus.com',
-            'Apple TV+': 'https://tv.apple.com',
-            'Google Play Movies': 'https://play.google.com/store/movies',
-            'YouTube': 'https://www.youtube.com',
-            'Crunchyroll': 'https://www.crunchyroll.com',
-            'Globoplay': 'https://globoplay.globo.com'
+            'Netflix': 'https://www.netflix.com/search?',
+            'Amazon Prime Video': 'https://www.primevideo.com/search/?phrase=',
+            'Disney+': 'https://www.disneyplus.com/search?query=',
+            'HBO Max': 'https://www.max.com/search?query=',
+            'HBO': 'https://www.hbomax.com/search?query=',
+            'Paramount+': 'https://www.paramountplus.com/search/',
+            'Apple TV+': 'https://tv.apple.com/search?term=',
+            'Google Play Movies': 'https://play.google.com/store/movies/search?query=',
+            'YouTube': 'https://www.youtube.com/results?search_query=',
+            'Crunchyroll': 'https://www.crunchyroll.com/search?q=',
+            'Globoplay': 'https://globoplay.globo.com/busca/?query=',
+            'Claro tv+': 'https://www.claro.com.br/tvplus/busca?termo=',
+            'Oldflix': 'https://oldflix.com/search?query=',
+            'Netflix Standard with Ads': 'https://www.netflix.com/search?'
         };
         
-        streamingHtml = `
-            <div class="modal-platforms">
-                <h4><i class="fas fa-play"></i> Onde Assistir</h4>
-                <div class="streaming-list">
-                    ${movie.streaming.map(p => {
-                        const url = platformUrls[p.name] || `https://www.${p.name.toLowerCase().replace(/\s+/g, '')}.com`;
-                        return `<a href="${url}" 
-                           target="_blank" 
-                           class="stream-tag" 
-                           title="Ir para ${p.name}">
-                            <img src="${p.logo}" alt="${p.name}" onerror="this.style.display='none'">
-                            <span>${p.name}</span>
-                        </a>`;
-                    }).join('')}
-                </div>
-            </div>
-        `;
+        const getPlatformUrl = (platformName, movieTitle) => {
+            const baseUrl = platformUrls[platformName];
+            if (!baseUrl) return null;
+            return baseUrl + encodeURIComponent(movieTitle);
+        };
+        
+        const flatrate = movie.streaming.filter(p => p.type === 'flatrate' && !p.isFree);
+        const flatrateFree = movie.streaming.filter(p => p.type === 'flatrate' && p.isFree);
+        const rent = movie.streaming.filter(p => p.type === 'rent');
+        const buy = movie.streaming.filter(p => p.type === 'buy');
+        const freeAlt = movie.streaming.filter(p => p.type === 'free-alt');
+        
+        let html = '<div class="modal-platforms">';
+        
+        if (flatrate.length > 0 || flatrateFree.length > 0 || freeAlt.length > 0) {
+            html += '<h4><i class="fas fa-play"></i> Assistir</h4>';
+            html += '<div class="streaming-list">';
+            
+            if (freeAlt.length > 0) {
+                html += freeAlt.map(p => {
+                    const url = p.link;
+                    return `<a href="${url}" target="_blank" class="stream-tag stream-free stream-free-alt" title="${p.name} - Opção Gratuita">
+                        <i class="fas fa-play"></i>
+                        <span>${p.name}</span>
+                    </a>`;
+                }).join('');
+            }
+            
+            if (flatrateFree.length > 0) {
+                html += flatrateFree.map(p => {
+                    const url = getPlatformUrl(p.name, movie.title) || p.link;
+                    return `<a href="${url}" target="_blank" class="stream-tag stream-free" title="${p.name} (Gratuito)">
+                        <span>${p.name}</span>
+                        <i class="fas fa-tag" title="Gratuito"></i>
+                    </a>`;
+                }).join('');
+            }
+            
+            if (flatrate.length > 0) {
+                html += flatrate.map(p => {
+                    const url = getPlatformUrl(p.name, movie.title) || p.link;
+                    return `<a href="${url}" target="_blank" class="stream-tag" title="${p.name}">
+                        <span>${p.name}</span>
+                    </a>`;
+                }).join('');
+            }
+            
+            html += '</div>';
+        }
+        
+        if (rent.length > 0) {
+            html += '<h4><i class="fas fa-shopping-cart"></i> Alugar</h4>';
+            html += '<div class="streaming-list">';
+            html += rent.map(p => {
+                const url = getPlatformUrl(p.name, movie.title) || p.link;
+                return `<a href="${url}" target="_blank" class="stream-tag stream-rent" title="Alugar em ${p.name}">
+                    <span>${p.name}</span>
+                </a>`;
+            }).join('');
+            html += '</div>';
+        }
+        
+        if (buy.length > 0) {
+            html += '<h4><i class="fas fa-shopping-bag"></i> Comprar</h4>';
+            html += '<div class="streaming-list">';
+            html += buy.map(p => {
+                const url = getPlatformUrl(p.name, movie.title) || p.link;
+                return `<a href="${url}" target="_blank" class="stream-tag stream-buy" title="Comprar em ${p.name}">
+                    <span>${p.name}</span>
+                </a>`;
+            }).join('');
+            html += '</div>';
+        }
+        
+        html += '</div>';
+        streamingHtml = html;
     }
     
     const trailerLink = movie.trailer || '';
@@ -860,6 +974,10 @@ function showMovieModal(movie) {
 function closeMovieModal() {
     document.getElementById('movieModal').classList.remove('open');
     document.body.style.overflow = '';
+}
+
+function toggleNavMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
 }
 
 // Login
@@ -1058,6 +1176,45 @@ function initAuth() {
     }
 }
 
+// Theme toggle
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    
+    if (isDark) {
+        html.setAttribute('data-theme', 'light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    
+    if (savedTheme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    } else {
+        html.setAttribute('data-theme', 'light');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    }
+}
+
 // Contato
 function openContactModal() {
     document.getElementById('contactModal').classList.add('open');
@@ -1086,3 +1243,72 @@ function submitContact(e) {
 }
 
 window.submitContact = submitContact;
+
+// AI Chat - Painel flutuante
+function toggleAIPanel() {
+    const panel = document.getElementById('aiPanel');
+    panel.classList.toggle('open');
+}
+
+window.toggleAIPanel = toggleAIPanel;
+
+async function askAI() {
+    const input = document.getElementById('aiSearchInput');
+    const query = input.value.trim();
+    if (!query) return;
+    
+    // Close AI panel
+    const panel = document.getElementById('aiPanel');
+    panel.classList.remove('open');
+    
+    // Show loading
+    document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-spinner fa-spin"></i> <span>IA analisando sua busca...</span></div>';
+    
+    // Set search
+    state.searchQuery = query;
+    state.currentPage = 1;
+    state.currentGenre = '0';
+    
+    // Update URL
+    const params = new URLSearchParams();
+    params.set('q', query);
+    window.history.pushState({}, '', '?' + params.toString());
+    
+    // Update title
+    document.getElementById('currentTitle').textContent = t('resultsFor') + ': ' + query;
+    
+    // Load movies using AI search
+    const tmdbLang = languageMap[state.currentLanguage] || 'pt-BR';
+    
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        
+        const url = API_BASE + '/ai-search?q=' + encodeURIComponent(query) + '&page=1&language=' + tmdbLang;
+        
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+        }
+        
+        const data = await response.json();
+        
+        if (data.results && data.results.length > 0) {
+            state.movies = data.results;
+            state.totalPages = Math.min(data.total_pages || 1, 500);
+            renderMovies();
+            updateUI();
+        } else if (data.error) {
+            document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-exclamation-triangle"></i> <span>Erro: ' + data.error + '</span></div>';
+        } else {
+            await loadMovies();
+        }
+} catch (error) {
+        console.error('AI search error:', error);
+        document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-exclamation-triangle"></i> <span>Erro na busca: ' + error.message + '</span></div>';
+        await loadMovies();
+    }
+
+window.askAI = askAI;
