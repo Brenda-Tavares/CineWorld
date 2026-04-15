@@ -153,15 +153,26 @@ function extractFilters(query) {
     }
     
     const queryLower = query.toLowerCase();
-    for (const [kw, ids] of Object.entries(contextKeywords)) {
-        if (queryLower.includes(kw) && ids.length > 0) {
+    
+    const specificKeywords = {
+        'lesbico': [264386, 319872],
+        'lesbiana': [264386, 319872],
+        'lesbian': [264386, 319872],
+        'wlw': [264386, 319872],
+        'gay': [264386],
+        'lgbt': [264386],
+        'trans': [4237],
+        'queer': [264386],
+        'drag': [4240]
+    };
+    
+    for (const [keyword, ids] of Object.entries(specificKeywords)) {
+        if (queryLower.includes(keyword) && ids.length > 0) {
             filters.keywords.push(...ids);
         }
     }
     
-    const themeKeywords = ['lgbt', 'lesbico', 'lesbiana', 'lesbian', 'gay', 'trans', 'queer', 'wlw'];
-    const hasThemeKeyword = themeKeywords.some(t => queryLower.includes(t));
-    if (hasThemeKeyword && !filters.genre) {
+    if (!filters.genre && filters.keywords.length > 0) {
         filters.genre = 10749;
     }
     
@@ -228,41 +239,32 @@ async function callGeminiSmart(query, filters) {
     }
 }
 
-async function searchWithFilters(keywords, filters, tmdbLang, pageNum) {
+async function searchWithFilters(query, keywords, filters, tmdbLang, pageNum) {
     const resultsMap = new Map();
     const baseParams = { api_key: TMDB_API_KEY, language: tmdbLang, page: 1, 'vote_count.gte': 5 };
+    const q = query.toLowerCase();
     
     if (filters.keywords.length > 0) {
-        const keywordSearchTerms = ['lesbian romance', 'lgbt movie', 'gay love', 'wlw'];
-        const hasLgbtKeyword = filters.keywords.some(k => [264386, 319872, 315385].includes(k));
+        let searchTerms = [];
         
-        if (hasLgbtKeyword && filters.genre === 10749) {
-            for (const term of keywordSearchTerms) {
-                if (resultsMap.size >= 15) break;
-                try {
-                    const searchParams = { ...baseParams, query: term, sort_by: 'popularity.desc' };
-                    const searchRes = await axios.get(TMDB_BASE + '/search/movie', { params: searchParams });
-                    for (const m of searchRes.data.results || []) {
-                        resultsMap.set(m.id, {
-                            ...m,
-                            poster_path: m.poster_path ? TMDB_IMAGE + m.poster_path : null,
-                            backdrop_path: m.backdrop_path ? 'https://image.tmdb.org/t/p/w780' + m.backdrop_path : null
-                        });
-                    }
-                } catch (e) {}
-            }
+        if (q.includes('lesbico') || q.includes('lesbiana') || q.includes('lesbian') || q.includes('wlw')) {
+            searchTerms = ['lesbian romance', 'lesbian love', 'wlw movie', 'girl love movie'];
+        } else if (q.includes('gay')) {
+            searchTerms = ['gay romance', 'gay love', 'gay movie'];
+        } else if (q.includes('trans')) {
+            searchTerms = ['trans movie', 'transgender story'];
+        } else if (q.includes('queer')) {
+            searchTerms = ['queer film', 'queer movie'];
         } else {
-            const discParams = { ...baseParams, sort_by: 'popularity.desc', with_keywords: filters.keywords.join(',') };
-            if (filters.genre) discParams.with_genres = filters.genre;
-            if (filters.language) discParams.with_original_language = filters.language;
-            if (filters.decade) {
-                discParams['primary_release_date.gte'] = `${filters.decade[0]}-01-01`;
-                discParams['primary_release_date.lte'] = `${filters.decade[1]}-12-31`;
-            }
-            
+            searchTerms = [query];
+        }
+        
+        for (const term of searchTerms) {
+            if (resultsMap.size >= 15) break;
             try {
-                const discRes = await axios.get(TMDB_BASE + '/discover/movie', { params: discParams });
-                for (const m of discRes.data.results || []) {
+                const searchParams = { ...baseParams, query: term, sort_by: 'popularity.desc' };
+                const searchRes = await axios.get(TMDB_BASE + '/search/movie', { params: searchParams });
+                for (const m of searchRes.data.results || []) {
                     resultsMap.set(m.id, {
                         ...m,
                         poster_path: m.poster_path ? TMDB_IMAGE + m.poster_path : null,
@@ -270,12 +272,12 @@ async function searchWithFilters(keywords, filters, tmdbLang, pageNum) {
                     });
                 }
             } catch (e) {
-                console.log('Keyword search error:', e.message);
+                console.log('Search error:', e.message);
             }
         }
     }
     
-    if ((filters.genre || filters.decade) && resultsMap.size < 5) {
+    if ((filters.genre) && resultsMap.size < 5) {
         const discParams = { ...baseParams, sort_by: 'popularity.desc' };
         if (filters.genre) discParams.with_genres = filters.genre;
         if (filters.language) discParams.with_original_language = filters.language;
@@ -369,7 +371,7 @@ module.exports = async (req, res) => {
             }
         }
         
-        const movies = await searchWithFilters(enhancedKeywords, filters, tmdbLang, pageNum);
+        const movies = await searchWithFilters(q, enhancedKeywords, filters, tmdbLang, pageNum);
         
         let finalResult;
         if (movies.length === 0) {
