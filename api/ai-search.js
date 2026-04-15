@@ -152,8 +152,9 @@ function extractFilters(query) {
         if (q.includes(kw)) { filters.language = code; break; }
     }
     
+    const queryLower = query.toLowerCase();
     for (const [kw, ids] of Object.entries(contextKeywords)) {
-        if (q.includes(kw) && ids.length > 0) {
+        if (queryLower.includes(kw) && ids.length > 0) {
             filters.keywords.push(...ids);
         }
     }
