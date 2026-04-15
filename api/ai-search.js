@@ -159,6 +159,12 @@ function extractFilters(query) {
         }
     }
     
+    const themeKeywords = ['lgbt', 'lesbico', 'lesbiana', 'lesbian', 'gay', 'trans', 'queer', 'wlw'];
+    const hasThemeKeyword = themeKeywords.some(t => queryLower.includes(t));
+    if (hasThemeKeyword && !filters.genre) {
+        filters.genre = 10749;
+    }
+    
     return filters;
 }
 
