@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Firebase (não usado mais)
+firebase-config.js  
+
+# Node
+node_modules/
+package-lock.json
+
+# Vercel
+.vercel/
+.vercel_output/
+
+# Backup files
+*.bak
+*.backup
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+server.py
+
+# OS
+.DS_Store
+Thumbs.db
+.vercel

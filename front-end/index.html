@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineWorld - Descubra filmes do mundo inteiro</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+    <!-- LOADING -->
+    <div id="loading">
+        <div class="loading-spinner">
+            <i class="fas fa-film"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub" id="siteTagline">Seu Guia de Filmes</span>
+                </div>
+            </a>
+
+            <!-- Navegacao -->
+            <button class="hamburger-btn" onclick="toggleNavMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/sobre" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="/privacidade" class="nav-link"><i class="fas fa-shield-alt"></i> Privacidade</a>
+                <a href="/termos" class="nav-link"><i class="fas fa-file-contract"></i> Termos</a>
+                <a href="/cookies" class="nav-link"><i class="fas fa-cookie-bite"></i> Cookies</a>
+            </nav>
+
+            <!-- Busca -->
+            <div class="search-area">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar filmes...">
+                    <button id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Acoes -->
+            <div class="header-actions">
+                <span class="lang-label" id="langLabel">Idioma:</span>
+                <select class="lang-select" id="langSelect">
+                    <option value="pt-BR">Português (Português)</option>
+                    <option value="en">Inglês (English)</option>
+                    <option value="es">Espanhol (Español)</option>
+                    <option value="zh-CN">Mandarim (中文)</option>
+                    <option value="zh-HK">Cantonês (廣東話)</option>
+                    <option value="ja">Japonês (日本語)</option>
+                    <option value="ru">Russo (Русский)</option>
+                    <option value="ko">Coreano (한국어)</option>
+                </select>
+
+                <button class="action-btn" id="favoritesBtn" title="Favoritos">
+                    <i class="fas fa-heart"></i>
+                    <span class="count" id="favCount">0</span>
+                </button>
+
+                <button class="action-btn" id="themeBtn" title="Alternar Tema" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+
+                <button class="login-btn" id="authBtn">
+                    <i class="fas fa-user"></i>
+                    <span>Entrar</span>
+                </button>
+
+                <button class="action-btn" id="contactBtn" title="Contato" onclick="openContactModal()">
+                    <i class="fas fa-envelope"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- FILTROS -->
+    <section class="filters">
+        <div class="filters-inner">
+            <div class="filter-group">
+                <span class="filter-label" id="filterOriginLabel">Filmes:</span>
+                <select id="filterOriginSelect" class="filter-select">
+                    <option value="all">Todos</option>
+                    <option value="BR">Nacionais</option>
+                    <option value="foreign">Internacionais</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label" id="filterSortLabel">Ordenar:</span>
+                <select id="filterSortSelect" class="filter-select">
+                    <option value="popularity">Populares</option>
+                    <option value="rating_desc">Melhores Avaliados</option>
+                    <option value="worst">Piores Avaliados</option>
+                    <option value="release_desc">Lançamentos</option>
+                    <option value="upcoming">Futuros Lançamentos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label" id="filterYearLabel">Ano:</span>
+                <select id="filterYearSelect" class="filter-select">
+                    <option value="">Todos</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2010">2010-2015</option>
+                    <option value="2000">2000-2009</option>
+                    <option value="1990">1990-1999</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIDEBAR + CONTEUDO -->
+    <div class="main-layout">
+        <!-- SIDEBAR GENEROS (Desktop) -->
+        <aside class="sidebar desktop-only">
+            <h3 class="sidebar-title" id="genresTitle">Gêneros</h3>
+            <div class="genres-list" id="genresList">
+                <!-- Generos carregados via JS -->
+            </div>
+        </aside>
+
+        <!-- SELECT DE GENEROS (Mobile) -->
+        <select id="genreSelectMobile" class="genre-select-mobile">
+                    <option value="0">Todos os Gêneros</option>
+        </select>
+
+        <!-- CONTEUDO -->
+        <main class="container">
+        <div class="content-header">
+            <h1 class="content-title" id="currentTitle">Filmes Populares</h1>
+            <span class="results-count" id="moviesCount">Carregando...</span>
+        </div>
+
+        <div class="movies-grid" id="moviesGrid">
+            <!-- Filmes carregados via JS -->
+        </div>
+
+        <!-- Paginacao -->
+        <div class="pagination">
+            <button id="prevPage" disabled>
+                <i class="fas fa-chevron-left"></i> <span id="prevText">Anterior</span>
+            </button>
+            <div class="page-numbers" id="pageNumbers"></div>
+            <span id="pageIndicator" class="page-indicator"></span>
+            <button id="nextPage" disabled>
+                <span id="nextText">Proxima</span> <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+<!-- Footer -->
+        <footer class="site-footer">
+            <div class="platforms-icons">
+                <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
+                <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
+                <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
+                <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
+                <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
+                <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+            </div>
+            <div class="footer-links">
+                <a href="/sobre">Sobre</a>
+                <span class="footer-divider">|</span>
+                <a href="/privacidade">Privacidade</a>
+                <span class="footer-divider">|</span>
+                <a href="/termos">Termos</a>
+                <span class="footer-divider">|</span>
+                <a href="/cookies">Cookies</a>
+            </div>
+            <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>
+        </footer>
+    </main>
+
+    <!-- MODAL FILME -->
+    <div class="modal" id="movieModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">Detalhes</h2>
+                <button class="modal-close" onclick="closeMovieModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- MODAL LOGIN / CADASTRO -->
+    <div class="modal" id="loginModal">
+        <div class="modal-box" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2 id="loginModalTitle">Entrar</h2>
+                <button class="modal-close" onclick="closeLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <!-- Formulário de Login -->
+                <div id="loginForm">
+                    <p style="color: var(--text-light); margin-bottom: 20px; text-align: center;">
+                        Entre com sua conta
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" id="loginEmail" placeholder="Email" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <input type="password" id="loginPassword" placeholder="Senha" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <button onclick="doLogin()" style="
+                        width: 100%; padding: 14px; margin-bottom: 12px;
+                        border: none; border-radius: 8px; font-size: 0.95rem;
+                        font-weight: 600; cursor: pointer;
+                        background: var(--primary); color: white;">
+                        Entrar
+                    </button>
+                    <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
+                        Não tem conta? 
+                        <a href="#" onclick="showRegister(event)" style="color: var(--accent);">Cadastre-se</a>
+                    </p>
+                </div>
+                
+                <!-- Botão Google Login (só no login) -->
+                <div id="g_id_onload"
+                     data-client_id="599900390263-2aeqg8nqgpr4l8dtmlvm1colpgerir1b.apps.googleusercontent.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-callback="handleGoogleLogin"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="signin_with"
+                     data-shape="rectangular"
+                     data-logo_alignment="center"
+                     style="display: flex; justify-content: center; margin-top: 20px;">
+                </div>
+
+                <!-- Formulário de Cadastro -->
+                <div id="registerForm" style="display: none;">
+                    <p style="color: var(--text-light); margin-bottom: 20px; text-align: center;">
+                        Crie sua conta
+                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" id="registerName" placeholder="Nome" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" id="registerEmail" placeholder="Email" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="password" id="registerPassword" placeholder="Senha" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <input type="password" id="registerConfirmPassword" placeholder="Confirmar Senha" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                    </div>
+                    <button onclick="doRegister()" style="
+                        width: 100%; padding: 14px; margin-bottom: 12px;
+                        border: none; border-radius: 8px; font-size: 0.95rem;
+                        font-weight: 600; cursor: pointer;
+                        background: var(--accent); color: white;">
+                        Cadastrar
+                    </button>
+                    <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
+                        Já tem conta? 
+                        <a href="#" onclick="showLogin(event)" style="color: var(--accent);">Entre</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTAO IA FLUTUANTE -->
+    <button class="ai-float-btn" id="aiFloatBtn" title="O que deseja assistir? Pergunte à IA" onclick="toggleAIPanel()">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- PAINEL IA FLUTUANTE -->
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-panel-header">
+            <div class="ai-panel-title">
+                <i class="fas fa-robot"></i>
+                <span>O que deseja assistir?</span>
+            </div>
+            <button class="ai-panel-close" onclick="toggleAIPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="ai-panel-messages" id="aiMessages">
+            <div class="ai-message ai-message-bot">
+                <div class="ai-message-content">
+                    <p>Olá! Sou a assistente de filmes do CineWorld.</p>
+                    <p>Descreva o que você quer assistir:</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">Ex: "filme de ação com robôs", "comédia romântica indiana"</p>
+                </div>
+            </div>
+        </div>
+        <div class="ai-panel-input">
+            <input type="text" id="aiSearchInput" placeholder="Descreva o filme..." onkeydown="if(event.key==='Enter')askAI()">
+            <button onclick="askAI()" title="Buscar">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="ai-panel-results" id="aiResults"></div>
+    </div>
+
+    <!-- MODAL CONTATO -->
+    <div class="modal" id="contactModal">
+        <div class="modal-box" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 id="contactTitle">Fale Conosco</h2>
+                <button class="modal-close" onclick="closeContactModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-light); margin-bottom: 20px;" id="contactDesc">
+                    Envie suas sugestões, elogios ou reclamações
+                </p>
+                
+                <form id="contactForm" onsubmit="submitContact(event)">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-light); font-size: 0.9rem;">Nome (opcional)</label>
+                        <input type="text" id="contactName" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        " placeholder="Seu nome">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-light); font-size: 0.9rem;">Tipo *</label>
+                        <select id="contactType" style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                        ">
+                            <option value="suggestion">Sugestão</option>
+                            <option value="compliment">Elogio</option>
+                            <option value="complaint">Reclamação</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-light); font-size: 0.9rem;">Mensagem *</label>
+                        <textarea id="contactMessage" rows="5" required style="
+                            width: 100%; padding: 12px;
+                            background: var(--bg-hover); border: 1px solid var(--border);
+                            border-radius: 8px; color: white; font-size: 0.95rem;
+                            resize: vertical; font-family: inherit;
+                        " placeholder="Digite sua mensagem..."></textarea>
+                    </div>
+                    
+                    <button type="submit" style="
+                        width: 100%; padding: 14px;
+                        background: var(--primary); border: none;
+                        border-radius: 8px; color: white;
+                        font-size: 1rem; font-weight: 600; cursor: pointer;
+                    ">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/front-end/script.js"></script>
+</body>
+</html>

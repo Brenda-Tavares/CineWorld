@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies - CineWorld</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0a0f1a !important; }
+        .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page ul { padding-left: 20px; }
+        .legal-page a { color: #e63946; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
+        .back-link:hover { color: #ff6b6b; }
+        @media (max-width: 600px) {
+            .legal-page { padding: 20px 15px 60px; }
+            .legal-page h1 { font-size: 1.5rem; }
+            .legal-page h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub">Seu Guia de Filmes</span>
+                </div>
+            </a>
+            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="/cookies" selected>Português</option>
+                <option value="/en/cookies">English</option>
+                <option value="/es/cookies">Español</option>
+                <option value="/zh/cookies">中文</option>
+                <option value="/ja/cookies">日本語</option>
+                <option value="/ru/cookies">Русский</option>
+                <option value="/ko/cookies">한국어</option>
+            </select>
+        </div>
+    </header>
+    <div class="legal-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para home</a>
+        <h1><i class="fas fa-cookie-bite"></i> Política de Cookies</h1>
+        <p>Cookies são pequenos arquivos de texto armazenados no seu dispositivo quando você visita nosso site.</p>
+        <h2><i class="fas fa-list"></i> Tipos de Cookies que Utilizamos</h2>
+        <ul>
+            <li><strong>Cookies essenciais:</strong> Necessários para o site funcionar corretamente</li>
+            <li><strong>Cookies de análise:</strong> Google Analytics para entender como o site é usado</li>
+            <li><strong>Cookies de funcionalidade:</strong> Para lembrar suas preferências</li>
+        </ul>
+        <h2><i class="fas fa-cog"></i> Gerenciar Cookies</h2>
+        <p>Você pode alterar suas preferências de cookies a qualquer momento através das configurações do seu navegador.</p>
+        <h2><i class="fas fa-clock"></i> Período de Retenção</h2>
+        <p>Os cookies têm duração variável. Cookies de análise são mantidos por até 14 meses.</p>
+        <p style="margin-top: 30px;"><em>Última atualização: 2026</em></p>
+    </div>
+
+    <footer class="site-footer">
+        <div class="platforms-icons">
+            <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
+            <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
+            <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
+            <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
+            <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
+            <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+        </div>
+        <div class="footer-links">
+            <a href="/sobre">Sobre</a>
+            <span class="footer-divider">|</span>
+            <a href="/privacidade">Privacidade</a>
+            <span class="footer-divider">|</span>
+            <a href="/termos">Termos</a>
+            <span class="footer-divider">|</span>
+            <a href="/cookies">Cookies</a>
+        </div>
+        <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>
+    </footer>
+</body>
+</html>

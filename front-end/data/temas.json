@@ -1,0 +1,18 @@
+{
+  "temas": [
+    {
+      "id": "cinema-brasileiro",
+      "nome": "Cinema Brasileiro",
+      "descricao": "A riqueza do cinema nacional, das chanchadas aos dramas contemporâneos.",
+      "cor": "#2E8B57",
+      "icone": "🇧🇷"
+    },
+    {
+      "id": "filmes-internacionais", 
+      "nome": "Filmes Internacionais",
+      "descricao": "Produções cinematográficas de todo o mundo com histórias cativantes.",
+      "cor": "#d32f2f",
+      "icone": "🌎"
+    }
+  ]
+}

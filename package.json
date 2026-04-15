@@ -1,0 +1,13 @@
+{
+  "name": "cineworld-site",
+  "version": "1.0.0",
+  "description": "CineWorld Movie Discovery App",
+  "private": true,
+  "scripts": {
+    "vercel-build": "echo 'Building...'"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "@vercel/node": "^3.0.0"
+  }
+}

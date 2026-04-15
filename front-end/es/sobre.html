@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de - CineWorld</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0a0f1a !important; }
+        .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page ul { padding-left: 20px; }
+        .legal-page a { color: #e63946; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
+        .back-link:hover { color: #ff6b6b; }
+        @media (max-width: 600px) {
+            .legal-page { padding: 20px 15px 60px; }
+            .legal-page h1 { font-size: 1.5rem; }
+            .legal-page h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub">Tu Guía de Películas</span>
+                </div>
+            </a>
+            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="/sobre">Português</option>
+                <option value="/en/sobre">English</option>
+                <option value="/es/sobre" selected>Español</option>
+                <option value="/zh/sobre">中文</option>
+                <option value="/ja/sobre">日本語</option>
+                <option value="/ru/sobre">Русский</option>
+                <option value="/ko/sobre">한국어</option>
+            </select>
+        </div>
+    </header>
+    <div class="legal-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver a inicio</a>
+        <h1><i class="fas fa-film"></i> Acerca de CineWorld</h1>
+        <p>CineWorld es un sitio de descubrimiento de películas que te ayuda a encontrar tu próxima película para ver.</p>
+        <h2><i class="fas fa-star"></i> Nuestra Misión</h2>
+        <p>Facilitar la búsqueda de películas y series, proporcionando una experiencia intuitiva para descubrir nuevo contenido.</p>
+        <h2><i class="fas fa-heart"></i> Qué Ofrecemos</h2>
+        <ul>
+            <li>Catálogo completo de películas y series</li>
+            <li>Información sobre plataformas de streaming</li>
+            <li>Búsqueda inteligente con IA</li>
+            <li>Favoritos e historial</li>
+        </ul>
+        <p style="margin-top: 30px;"><em>Última actualización: 2026</em></p>
+    </div>
+</body>
+</html>

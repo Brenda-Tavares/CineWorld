@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - CineWorld</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0a0f1a !important; }
+        .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page a { color: #e63946; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
+        .back-link:hover { color: #ff6b6b; }
+        @media (max-width: 600px) {
+            .legal-page { padding: 20px 15px 60px; }
+            .legal-page h1 { font-size: 1.5rem; }
+            .legal-page h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub">Seu Guia de Filmes</span>
+                </div>
+            </a>
+            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="/sobre" selected>Português</option>
+                <option value="/en/sobre">English</option>
+                <option value="/es/sobre">Español</option>
+                <option value="/zh/sobre">中文</option>
+                <option value="/ja/sobre">日本語</option>
+                <option value="/ru/sobre">Русский</option>
+                <option value="/ko/sobre">한국어</option>
+            </select>
+        </div>
+    </header>
+    <div class="legal-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para home</a>
+        <h1><i class="fas fa-film"></i> Sobre o CineWorld</h1>
+        <p>O CineWorld é um site de descoberta de filmes que ajuda você a encontrar o próximo filme para assistir.</p>
+        <h2><i class="fas fa-star"></i> Nossa Missão</h2>
+        <p>Facilitar a busca por filmes e séries, proporcionando uma experiência intuitiva para descobrir novos conteúdos.</p>
+        <h2><i class="fas fa-heart"></i> O Que Oferecemos</h2>
+        <ul style="color: #a8b2c1; line-height: 1.8; padding-left: 20px;">
+            <li>Catálogo completo de filmes e séries</li>
+            <li>Informações sobre plataformas de streaming</li>
+            <li>Busca inteligente com IA</li>
+            <li>Favoritos e histórico</li>
+        </ul>
+        <p style="margin-top: 30px;"><em>Última atualização: 2026</em></p>
+    </div>
+
+    <footer class="site-footer">
+        <div class="platforms-icons">
+            <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
+            <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
+            <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
+            <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
+            <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
+            <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+        </div>
+        <div class="footer-links">
+            <a href="/sobre">Sobre</a>
+            <span class="footer-divider">|</span>
+            <a href="/privacidade">Privacidade</a>
+            <span class="footer-divider">|</span>
+            <a href="/termos">Termos</a>
+            <span class="footer-divider">|</span>
+            <a href="/cookies">Cookies</a>
+        </div>
+        <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>
+    </footer>
+</body>
+</html>

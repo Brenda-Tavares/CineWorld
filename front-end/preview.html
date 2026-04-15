@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineWorld - Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .preview-badge {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-badge">MODO PREVIEW</div>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <h1 class="cineworld-logo">
+                    <span class="letter-c">C</span>
+                    <span class="letter-i">I</span>
+                    <span class="letter-n">N</span>
+                    <span class="letter-e">E</span>
+                    <span class="letter-w">W</span>
+                    <span class="letter-o">O</span>
+                    <span class="letter-r">R</span>
+                    <span class="letter-l">L</span>
+                    <span class="letter-d">D</span>
+                </h1>
+                <p class="logo-subtitle">by Brenda Tavares | AlabasterDev</p>
+            </div>
+            
+            <div class="header-controls">
+                <div class="language-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang">PT-BR</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" data-lang="pt-BR">🇧🇷 Português (BR)</button>
+                        <button class="lang-option" data-lang="en">🇺🇸 English</button>
+                        <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+                        <button class="lang-option" data-lang="zh-CN">🇨🇳 中文 (简体)</button>
+                        <button class="lang-option" data-lang="zh-HK">🇭🇰 中文 (繁體)</button>
+                        <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+                        <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+                        <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar filmes...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="sort-buttons">
+                    <button class="sort-btn active"><i class="fas fa-fire"></i><span class="sort-text">Populares</span></button>
+                    <button class="sort-btn"><i class="fas fa-star"></i><span class="sort-text">Melhores</span></button>
+                    <button class="sort-btn"><i class="fas fa-star-half-alt"></i><span class="sort-text">Piores</span></button>
+                    <button class="sort-btn"><i class="fas fa-calendar-alt"></i><span class="sort-text">Recentes</span></button>
+                    <button class="sort-btn"><i class="fas fa-history"></i><span class="sort-text">Antigos</span></button>
+                </div>
+
+                <div class="preferences-dropdown">
+                    <button class="pref-btn" id="prefBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="pref-text">Preferidos</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="pref-menu" id="prefMenu">
+                        <div class="pref-header"><i class="fas fa-star"></i> Priorizar Filmes</div>
+                        <button class="pref-option active" data-pref="all"><i class="fas fa-globe"></i> Todos os idiomas</button>
+                        <button class="pref-option" data-pref="pt-BR"><span class="flag">🇧🇷</span> Nacional (BR)</button>
+                        <button class="pref-option" data-pref="en"><span class="flag">🇺🇸</span> Hollywood</button>
+                        <button class="pref-option" data-pref="foreign"><i class="fas fa-plane"></i> Internacionais</button>
+                        <div class="pref-divider"></div>
+                        <div class="pref-header"><i class="fas fa-sort-amount-down"></i> Ordenação</div>
+                        <button class="pref-option sort-pref active" data-sort-pref="popularity"><i class="fas fa-fire"></i> Mais populares</button>
+                        <button class="pref-option sort-pref" data-sort-pref="rating"><i class="fas fa-star"></i> Melhor avaliados</button>
+                        <button class="pref-option sort-pref" data-sort-pref="release"><i class="fas fa-calendar"></i> Mais recentes</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-container">
+            <aside class="sidebar">
+                <h2><i class="fas fa-list"></i> Gêneros</h2>
+                <div class="genres-list">
+                    <div class="genre-item active"><span class="genre-icon">🎬</span><span class="genre-name">Todos</span></div>
+                    <div class="genre-item"><span class="genre-icon">🎭</span><span class="genre-name">Ação</span></div>
+                    <div class="genre-item"><span class="genre-icon">😂</span><span class="genre-name">Comédia</span></div>
+                    <div class="genre-item"><span class="genre-icon">👻</span><span class="genre-name">Terror</span></div>
+                    <div class="genre-item"><span class="genre-icon">❤️</span><span class="genre-name">Romance</span></div>
+                    <div class="genre-item"><span class="genre-icon">🚀</span><span class="genre-name">Ficção</span></div>
+                </div>
+            </aside>
+            
+            <section class="content-area">
+                <div class="content-header">
+                    <h2>🎬 Filmes Populares</h2>
+                    <div class="counters">
+                        <span>12 filmes</span>
+                        <span>Página 1</span>
+                    </div>
+                </div>
+                
+                <p class="description">Descubra os melhores filmes organizados por gênero.</p>
+                
+                <div class="movies-grid">
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder"><i class="fas fa-film"></i></div>
+                            <div class="movie-rating"><i class="fas fa-star"></i> 8.7</div>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Um Sonho de Liberdade</h3>
+                            <div class="movie-meta">
+                                <span class="movie-year">1994</span>
+                                <span class="movie-country">EUA</span>
+                            </div>
+                            <p class="movie-overview">Um banqueiro é condenado por um crime que não cometeu...</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder"><i class="fas fa-film"></i></div>
+                            <div class="movie-rating"><i class="fas fa-star"></i> 8.7</div>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">O Poderoso Chefão</h3>
+                            <div class="movie-meta">
+                                <span class="movie-year">1972</span>
+                                <span class="movie-country">EUA</span>
+                            </div>
+                            <p class="movie-overview">História da família mafiosa Corleone...</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder"><i class="fas fa-film"></i></div>
+                            <div class="movie-rating"><i class="fas fa-star"></i> 8.6</div>
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">Cidade de Deus</h3>
+                            <div class="movie-meta">
+                                <span class="movie-year">2002</span>
+                                <span class="movie-country">Brasil</span>
+                            </div>
+                            <p class="movie-overview">Dois jovens seguem caminhos diferentes na Cidade de Deus...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

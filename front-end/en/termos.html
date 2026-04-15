@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - CineWorld</title>
+    <link rel="stylesheet" href="/front-end/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0a0f1a !important; }
+        .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page ul { padding-left: 20px; }
+        .legal-page a { color: #e63946; text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
+        .back-link:hover { color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-area" style="text-decoration: none; cursor: pointer;">
+                <div class="logo-box">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div>
+                    <div class="logo-text">CINEWORLD</div>
+                    <span class="logo-sub">Your Movie Guide</span>
+                </div>
+            </a>
+            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="/termos">Português</option>
+                <option value="/en/termos" selected>English</option>
+                <option value="/es/termos">Español</option>
+                <option value="/zh/termos">中文</option>
+                <option value="/ja/termos">日本語</option>
+                <option value="/ru/termos">Русский</option>
+                <option value="/ko/termos">한국어</option>
+            </select>
+        </div>
+    </header>
+    <div class="legal-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to home</a>
+        <h1><i class="fas fa-file-contract"></i> Terms of Use</h1>
+        <p>By accessing and using CineWorld, you agree to these terms.</p>
+        <h2><i class="fas fa-info-circle"></i> Site Use</h2>
+        <p>CineWorld is provided for personal and non-commercial use. You can browse and search for information about movies and series.</p>
+        <h2><i class="fas fa-ban"></i> Restrictions</h2>
+        <ul>
+            <li>Prohibited to reproduce content without authorization</li>
+            <li>Prohibited to use for illegal purposes</li>
+            <li>Prohibited to attempt unauthorized data access</li>
+        </ul>
+        <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
+        <p>The site provides information from third parties (TMDB). We do not guarantee the accuracy of the information.</p>
+        <h2><i class="fas fa-shield-alt"></i> Intellectual Property</h2>
+        <p>All content belongs to respective owners. Use is for informational purposes only.</p>
+        <h2><i class="fas fa-envelope"></i> Contact</h2>
+        <p>For questions about these terms, use the site's contact page.</p>
+        <p style="margin-top: 30px;"><em>Last updated: 2026</em></p>
+    </div>
+</body>
+</html>
