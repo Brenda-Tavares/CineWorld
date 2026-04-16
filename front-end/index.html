@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineWorld - Descubra filmes do mundo inteiro</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CineWorld - Descubra filmes do mundo inteiro. Encontre streaming, avaliações, sinopses e mais. Assista onde e quando quiser.">
+    <meta name="keywords" content="filmes, cinema, streaming, series, lançamentos, avaliações, críticas, TMDB">
+    <meta name="author" content="Brenda Tavares - AlabasterDev">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CineWorld - Descubra filmes do mundo inteiro">
+    <meta property="og:description" content="Encontre filmes para assistir. Busca inteligente, streaming options e muito mais.">
+    <meta property="og:url" content="https://cineworld-site.vercel.app/">
+    <meta property="og:site_name" content="CineWorld">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CineWorld - Descubra filmes do mundo inteiro">
+    <meta name="twitter:description" content="Encontre filmes para assistir. Busca inteligente, streaming options e muito mais.">
+    
+    <!-- Favicon - Custom SVG Logo - proportional and centered -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%23dc2626'/%3E%3Cpath d='M180 120 L380 256 L180 392 Z' fill='white'/%3E%3C/svg%3E">
+    
     <link rel="stylesheet" href="/front-end/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -48,16 +69,6 @@
                 <a href="/cookies" class="nav-link"><i class="fas fa-cookie-bite"></i> Cookies</a>
             </nav>
 
-            <!-- Busca -->
-            <div class="search-area">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Buscar filmes...">
-                    <button id="searchBtn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
             <!-- Acoes -->
             <div class="header-actions">
                 <span class="lang-label" id="langLabel">Idioma:</span>
@@ -92,6 +103,16 @@
             </div>
         </div>
     </header>
+
+    <!-- BUSCA CENTRALIZADA -->
+    <section class="main-search">
+        <div class="search-box-large">
+            <input type="text" id="mainSearchInput" placeholder="O que você quer assistir hoje?">
+            <button id="mainSearchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </section>
 
     <!-- FILTROS -->
     <section class="filters">
@@ -180,12 +201,44 @@
 <!-- Footer -->
         <footer class="site-footer">
             <div class="platforms-icons">
-                <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
-                <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
-                <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
-                <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
-                <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
-                <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+                <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix" class="platform-netflix">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="8" fill="#E50914"/>
+                        <path d="M12 12L36 24L12 36V12Z" fill="white"/>
+                    </svg>
+                </a>
+                <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video" class="platform-prime">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="8" fill="#00A8E1"/>
+                        <polygon points="16,12 36,24 16,36" fill="white"/>
+                    </svg>
+                </a>
+                <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+" class="platform-disney">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="8" fill="#113CCF"/>
+                        <text x="24" y="32" font-family="Arial" font-size="22" font-weight="bold" fill="white" text-anchor="middle">D+</text>
+                    </svg>
+                </a>
+                <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max" class="platform-hbo">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="8" fill="#000000"/>
+                        <text x="24" y="30" font-family="Arial Black" font-size="16" font-weight="900" fill="white" text-anchor="middle">HBO</text>
+                    </svg>
+                </a>
+                <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay" class="platform-globo">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="20" fill="#009C3B"/>
+                        <circle cx="24" cy="24" r="8" fill="white"/>
+                        <path d="M20 18L28 24L20 30V18Z" fill="#009C3B"/>
+                    </svg>
+                </a>
+                <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV" class="platform-pluto">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="20" fill="#212121"/>
+                        <circle cx="24" cy="24" r="12" fill="#FFDD00"/>
+                        <line x1="24" y1="12" x2="24" y2="36" stroke="#212121" stroke-width="4"/>
+                    </svg>
+                </a>
             </div>
             <div class="footer-links">
                 <a href="/sobre">Sobre</a>

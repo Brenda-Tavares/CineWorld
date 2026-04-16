@@ -37,20 +37,20 @@ body {
 }
 
 [data-theme="light"] {
-    --primary: #2563eb;
-    --primary-light: #3b82f6;
-    --secondary: #f8fafc;
+    --primary: #1e40af;
+    --primary-light: #2563eb;
+    --secondary: #e2e8f0;
     --accent: #dc2626;
     
-    --bg-dark: #ffffff;
+    --bg-dark: #94a3b8;
     --bg-card: #f1f5f9;
-    --bg-hover: #e2e8f0;
+    --bg-hover: #cbd5e1;
     
     --text-white: #0f172a;
-    --text-light: #475569;
-    --text-muted: #64748b;
+    --text-light: #1e293b;
+    --text-muted: #475569;
     
-    --border: rgba(0, 0, 0, 0.08);
+    --border: rgba(30, 64, 175, 0.2);
 }
 
 html {
@@ -193,6 +193,123 @@ body {
 
 .search-box button:hover {
     background: var(--primary-light);
+}
+
+/* Busca Centralizada */
+.main-search {
+    background: var(--bg-card);
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-box-large {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-dark);
+    border-radius: 30px;
+    border: 2px solid var(--primary);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.search-box-large:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.15);
+}
+
+.search-box-large input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    color: var(--text-white);
+    font-size: 1rem;
+}
+
+.search-box-large input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-box-large input:focus {
+    outline: none;
+}
+
+.search-box-large button {
+    background: var(--primary);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-box-large button:hover {
+    background: var(--accent);
+}
+
+/* Responsive busca centralizada */
+@media (max-width: 768px) {
+    .main-search {
+        padding: 12px 15px;
+    }
+    
+    .search-box-large {
+        max-width: 100%;
+        border-radius: 12px;
+    }
+    
+    .search-box-large input {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .search-box-large button {
+        padding: 10px 15px;
+    }
+    
+    .header-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 8px 0;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .header-actions {
+        gap: 6px;
+    }
+    
+    .lang-label {
+        display: none;
+    }
+    
+    .lang-select {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .action-btn, .login-btn {
+        padding: 8px;
+    }
+    
+    .login-btn span {
+        display: none;
+    }
 }
 
 /* Actions */
@@ -922,6 +1039,38 @@ body {
     cursor: pointer;
 }
 
+/* Estilo para Assistir (Flatrate) - Cor diferente */
+.stream-tag:not(.stream-rent):not(.stream-buy):not(.stream-free):not(.stream-free-alt) {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.stream-tag:not(.stream-rent):not(.stream-buy):not(.stream-free):not(.stream-free-alt) span {
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.stream-tag:not(.stream-rent):not(.stream-buy):not(.stream-free):not(.stream-free-alt)::after {
+    content: "Assinatura";
+    font-size: 0.65rem;
+    background: #3b82f6;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+/* Estilo para Flatrate gratuito */
+.stream-tag.stream-free {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.stream-tag.stream-free span {
+    color: #22c55e;
+    font-weight: 500;
+}
+
 .stream-tag:hover {
     background: var(--primary);
     color: white;
@@ -1294,7 +1443,7 @@ body {
 .platforms-icons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--border);
@@ -1304,22 +1453,39 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 48px;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-light);
-    font-size: 0.75rem;
-    font-weight: 600;
+    border-radius: 10px;
     text-decoration: none;
     transition: all 0.3s ease;
+    padding: 6px;
+}
+
+.platforms-icons a svg {
+    width: 100%;
+    height: 100%;
+    max-width: 44px;
+    max-height: 36px;
 }
 
 .platforms-icons a:hover {
     background: var(--primary);
     border-color: var(--primary);
-    color: white;
+    transform: translateY(-2px);
+}
+
+/* Platform brand colors - removed, SVGs have their own colors */
+
+.platforms-icons a:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.platforms-icons a:hover svg {
+    filter: brightness(0) invert(1);
 }
 }
     border-top: 1px solid var(--border);

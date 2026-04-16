@@ -6,12 +6,13 @@
     <title>Política de Cookies - CineWorld</title>
     <link rel="stylesheet" href="/front-end/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background: #0a0f1a !important; }
+        body { background: var(--bg-dark) !important; }
         .legal-page { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
-        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 15px; }
-        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: #e63946; }
-        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: #a8b2c1; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 30px; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
+        .legal-page h2 { font-size: 1.3rem; margin: 30px 0 15px; color: var(--accent); }
+        .legal-page p, .legal-page li { line-height: 1.8; margin-bottom: 15px; color: var(--text-light); }
         .legal-page ul { padding-left: 20px; }
         .legal-page a { color: #e63946; text-decoration: none; }
         .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; color: #e63946; text-decoration: none; font-weight: 500; }
@@ -65,12 +66,24 @@
 
     <footer class="site-footer">
         <div class="platforms-icons">
-            <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">N</a>
-            <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">PV</a>
-            <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">DP</a>
-            <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max">HBO</a>
-            <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">GP</a>
-            <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">PT</a>
+            <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix" class="platform-netflix">
+                <svg viewBox="0 0 560 400" fill="#d81f26"><path d="m159.282 239.199c-5.01.88-10.107 1.143-15.381 1.846l-16.084-47.109v49.131c-5.01.527-9.58 1.23-14.326 1.933v-90h13.36l18.281 51.065v-51.065h14.15zm27.686-51.24c5.45 0 13.799-.264 18.809-.264v14.062c-6.241 0-13.535 0-18.809.264v20.918c8.262-.527 16.524-1.231 24.873-1.495v13.534l-38.936 3.077v-83.056h38.936v14.063h-24.873zm77.168-18.896h-14.59v64.687c-4.746 0-9.492 0-14.062.175v-64.863h-14.59v-14.063h43.242l-.001 14.063zm22.851 17.93h19.248v14.062h-19.248v31.905h-13.8v-77.959h39.288v14.063h-25.489v17.93zm48.34 33.662c7.998.175 16.084.792 23.906 1.23v13.887c-12.568-.792-25.137-1.582-37.969-1.846v-78.926h14.062v65.654zm35.771 16.084c4.482.264 9.229.528 13.799 1.054v-82.793h-13.799v81.738zm75.411-81.738-17.842 42.803 17.842 47.197c-5.275-.703-10.547-1.67-15.821-2.549l-10.107-26.015-10.282 23.906c-5.099-.88-10.02-1.143-15.117-1.847l18.105-41.221-16.348-42.275h15.117l9.229 23.643 9.844-23.643h15.381z"/></svg>
+            </a>
+            <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video" class="platform-prime">
+                <svg viewBox="0 0 560 400"><g fill-rule="nonzero"><g fill="#232f3e"><path d="m315.45 184.164c.315-1.049.63-2.046.945-3.096 2.414-8.134 4.828-16.216 7.242-24.351l.315-.945c.263-.944 1.155-1.521 2.099-1.521h7.977c1.995 0 2.415.577 1.732 2.466l-3.148 8.344c-3.517 9.132-7.033 18.316-10.549 27.448-.105.315-.262.629-.367.944-.368 1.102-1.47 1.837-2.624 1.732-2.31-.052-4.619-.052-6.928 0-1.627.053-2.571-.682-3.149-2.152-1.312-3.463-2.676-6.979-3.988-10.443-3.149-8.24-6.35-16.479-9.499-24.771-.315-.63-.525-1.364-.682-2.047-.158-1.049.21-1.574 1.259-1.574 2.992-.052 5.983 0 8.922 0 1.259 0 1.837.84 2.152 1.942.577 1.994 1.154 4.041 1.784 6.035 2.152 7.295 4.251 14.642 6.402 21.937-.052.052 0 .052.105.052z"/><path d="m352.607 174.718v18.893c-.105 1.049-.578 1.522-1.627 1.574-2.834.053-5.616.053-8.45 0-1.049 0-1.522-.525-1.627-1.522-.052-.315-.052-.682-.052-.997v-36.316c.052-1.627.472-2.099 2.099-2.099h7.557c1.627 0 2.1.472 2.1 2.099z"/><path d="m346.781 135.41c1.05-.105 2.099.105 3.097.525 2.046.787 3.463 2.676 3.568 4.881.42 4.775-2.781 7.189-7.032 7.084-.577 0-1.155-.105-1.732-.21-3.254-.787-4.933-3.306-4.618-6.927.262-2.886 2.519-5.038 5.615-5.3.367-.053.735-.105 1.102-.053z"/></g><g fill="#00a8e1"><path d="m278.017 264.403c-2.864-.155-5.728-.26-8.592-.469-7.662-.577-15.272-1.731-22.724-3.463-25.768-5.983-48.387-18.001-68.119-35.477-1.837-1.627-3.569-3.306-5.353-4.986-.42-.367-.787-.892-.997-1.417-.315-.734-.158-1.522.367-2.099s1.365-.787 2.099-.472c.473.21.945.42 1.365.682 18.84 11.651 39.412 20.153 60.982 25.191 7.242 1.679 14.537 2.991 21.884 3.936 10.549 1.312 21.202 1.784 31.803 1.417 5.721-.158 11.388-.683 17.056-1.417 13.225-1.68 26.293-4.671 38.941-8.869 6.665-2.205 13.172-4.724 19.522-7.663.945-.524 2.1-.682 3.149-.419 1.732.419 2.782 2.204 2.362 3.936-.053.209-.158.472-.263.682-.419.787-.997 1.469-1.731 1.994-6.036 4.723-12.543 8.869-19.418 12.333-12.963 6.56-26.818 11.231-41.092 13.907-8.224 1.467-16.499 2.358-24.827 2.675l-.049.002v.21h-6.298v-.21z"/></g></g></svg>
+            </a>
+            <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+" class="platform-disney">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-linejoin="round"><path d="M17.5 14H23m-3.5-3c.565 2.146.696 3.352.5 5.5"/><path stroke-linecap="round" d="M2.5 8.5s-1.1-.173-.982-.647C2.062 5.66 14.795 7.726 15 14c.182 5.591-11.666 3-11.5 0c.079-1.42 7.838-1.824 8.418-.433c.344.825-.396 1.13-.87 1.198"/><path stroke-linecap="round" d="M7.5 10.5c-.153 2.87-.264 4.47 0 7.5"/></svg>
+            </a>
+            <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max" class="platform-hbo">
+                <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="8" fill="#000000"/><text x="24" y="30" font-family="Arial Black" font-size="16" font-weight="900" fill="white" text-anchor="middle">HBO</text></svg>
+            </a>
+            <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay" class="platform-globo">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#009C3B"/><circle cx="24" cy="24" r="8" fill="white"/><path d="M20 18L28 24L20 30V18Z" fill="#009C3B"/></svg>
+            </a>
+            <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV" class="platform-pluto">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#212121"/><circle cx="24" cy="24" r="12" fill="#FFDD00"/><line x1="24" y1="12" x2="24" y2="36" stroke="#212121" stroke-width="4"/></svg>
+            </a>
         </div>
         <div class="footer-links">
             <a href="/sobre">Sobre</a>

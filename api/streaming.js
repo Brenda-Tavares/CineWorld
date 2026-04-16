@@ -26,8 +26,8 @@ module.exports = async (req, res) => {
         const providers = response.data.results;
         let streaming = [];
         
-        // Serviços gratuitos conhecidos
-        const freeServices = ['YouTube', 'Tubi', 'Pluto TV', ' Peacock', 'Peacock', ' Crackle', 'Crackle', 'Viki', 'Rakuten', 'Kanopy', 'Freevee', 'Xumo', 'Plex', 'Hoopla'];
+        // Serviços gratuitos conhecidos - removido Viki por dados frequentemente desatualizados
+        const freeServices = ['YouTube', 'Tubi', 'Pluto TV', 'Peacock', 'Crackle', 'Rakuten', 'Kanopy', 'Freevee', 'Xumo', 'Plex', 'Hoopla'];
         
         // Brasil
         if (providers.BR) {
@@ -58,14 +58,17 @@ module.exports = async (req, res) => {
         // Verificar se é gratuito
         const checkFree = (name) => freeServices.some(free => name.toLowerCase().includes(free.toLowerCase()));
         
-        // Pegar só nome e logo
+        // Pegar só nome e logo - usa Google como verificação
         const result = streaming.map(p => ({
             name: p.provider_name,
             logo: p.logo_path ? 'https://image.tmdb.org/t/p/w92' + p.logo_path : null,
             type: p.type || 'flatrate',
             isFree: checkFree(p.provider_name),
-            link: `https://www.google.com/search?q=${encodeURIComponent(p.provider_name + ' ' + movie_id + ' filme')}`
+            link: `https://www.google.com/search?q=${encodeURIComponent('filme ' + movie_id + ' ' + p.provider_name + ' streaming')}
         }));
+        
+        // Adicionar mensagem de verificação
+        console.log('Streaming providers loaded. Note: Some providers may show outdated availability.');
         
         res.json({ success: true, streaming: result });
     } catch (error) {

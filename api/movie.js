@@ -49,8 +49,8 @@ module.exports = async (req, res) => {
             videosRes = { data: { results: [] } };
         }
         
-        // Processa streaming
-        const freeStreamingServices = ['Tubi', 'Pluto TV', 'Peacock', 'Crackle', 'Viki', 'Rakuten', 'Kanopy', 'Freevee', 'Xumo', 'Plex', 'Hoopla', 'Muse', 'Mubi', 'RetroPlex', 'Shudder', 'Screambox', 'Fandor', 'Filmrise', 'Popcornflix', 'Yidio', 'Vudu', 'CONtv', 'Dekkoo', 'Revry', 'Asiancrush', 'Hi-YAH', 'Viki'];
+        // Processa streaming - apenas plataformas 100% gratuitas
+        const freeStreamingServices = ['Tubi', 'Pluto TV', 'Peacock', 'Crackle'];
         const checkFreeStreaming = (name) => freeStreamingServices.some(free => name.toLowerCase().includes(free.toLowerCase()));
         
         // Mapeamento de links diretos para plataformas populares
@@ -103,14 +103,29 @@ module.exports = async (req, res) => {
         };
         
         const getPlatformLink = (name, movieTitle) => {
-            // Verifica se é uma plataforma conhecida
+            // Normaliza o nome da plataforma
+            const normalizedName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            
+            // Mapeamento de plataformas conhecidas
             for (const [platform, url] of Object.entries(platformLinks)) {
                 if (name.toLowerCase().includes(platform.toLowerCase())) {
                     return url;
                 }
             }
-            // Fallback: busca no Google
-            return `https://www.google.com/search?q=${encodeURIComponent(name + ' ' + movieTitle + ' filme')}`;
+            
+            // Tenta criar URL baseada em palavras-chave do nome
+            const searchName = name.toLowerCase();
+            if (searchName.includes('netflix')) return 'https://www.netflix.com';
+            if (searchName.includes('prime') || searchName.includes('amazon')) return 'https://www.primevideo.com';
+            if (searchName.includes('disney') || searchName.includes('plus')) return 'https://www.disneyplus.com';
+            if (searchName.includes('hbo')) return 'https://www.hbomax.com';
+            if (searchName.includes('globoplay') || searchName.includes('globo')) return 'https://globoplay.globo.com';
+            if (searchName.includes('apple') || searchName.includes('tv')) return 'https://tv.apple.com';
+            if (searchName.includes('youtube')) return 'https://www.youtube.com';
+            if (searchName.includes('play') || searchName.includes('google')) return 'https://play.google.com/store/movies';
+            
+            // Se plataforma não reconhecida, retorna null (não mostra link)
+            return null;
         };
         
         let streaming = [];
@@ -142,22 +157,6 @@ module.exports = async (req, res) => {
             addProviders(providers.US.flatrate, 'flatrate');
             addProviders(providers.US.rent, 'rent');
             addProviders(providers.US.buy, 'buy');
-        }
-        
-        // Add free alternatives only if no streaming paid available
-        const hasPaidStreaming = streaming.some(s => s.type === 'flatrate' && !s.isFree);
-        
-        if (!hasPaidStreaming) {
-            const freeAlternatives = [
-                { name: 'Stremio', logo: null, link: 'https://www.stremio.com/', isFree: true, type: 'free-alt' },
-                { name: 'Pluto TV', logo: null, link: 'https://pluto.tv/', isFree: true, type: 'free-alt' },
-                { name: 'Tubi', logo: null, link: 'https://tubi.tv/', isFree: true, type: 'free-alt' },
-                { name: 'Google Play', logo: null, link: 'https://play.google.com/store/movies', isFree: true, type: 'free-alt' },
-                { name: 'Plex', logo: null, link: 'https://www.plex.tv/', isFree: true, type: 'free-alt' },
-                { name: 'Viki', logo: null, link: 'https://www.viki.com/', isFree: true, type: 'free-alt' },
-                { name: 'Crackle', logo: null, link: 'https://www.crackle.com/', isFree: true, type: 'free-alt' }
-            ];
-            streaming = [...streaming, ...freeAlternatives];
         }
         
         // Busca trailer

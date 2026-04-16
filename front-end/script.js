@@ -50,7 +50,9 @@ const translations = {
         name: 'Nome (opcional)', type: 'Tipo', message: 'Mensagem *', send: 'Enviar',
         suggestion: 'Sugestao', compliment: 'Elogio', complaint: 'Reclamacao', other: 'Outro',
         footer: '© 2026 - Todos os direitos reservados | Desenvolvido por',
-        tagline: 'Seu Guia de Filmes'
+        tagline: 'Seu Guia de Filmes',
+        about: 'Sobre', privacy: 'Privacidade', terms: 'Termos', cookies: 'Cookies',
+        watch: 'Assistir', rent: 'Alugar', buy: 'Comprar'
     },
     'en': {
         searchPlaceholder: 'Search movies...',
@@ -72,7 +74,9 @@ const translations = {
         name: 'Name (optional)', type: 'Type', message: 'Message *', send: 'Send',
         suggestion: 'Suggestion', compliment: 'Compliment', complaint: 'Complaint', other: 'Other',
         footer: '© 2026 - All rights reserved | Developed by',
-        tagline: 'Your Movie Guide'
+        tagline: 'Your Movie Guide',
+        about: 'About', privacy: 'Privacy', terms: 'Terms', cookies: 'Cookies',
+        watch: 'Watch', rent: 'Rent', buy: 'Buy'
     },
     'es': {
         searchPlaceholder: 'Buscar películas...',
@@ -94,7 +98,9 @@ const translations = {
         name: 'Nombre (opcional)', type: 'Tipo', message: 'Mensaje *', send: 'Enviar',
         suggestion: 'Sugerencia', compliment: 'Elogio', complaint: 'Queja', other: 'Otro',
         footer: '© 2026 - Todos los derechos reservados | Desarrollado por',
-        tagline: 'Tu Guía de Películas'
+        tagline: 'Tu Guía de Películas',
+        about: 'Sobre', privacy: 'Privacidad', terms: 'Términos', cookies: 'Cookies',
+        watch: 'Ver', rent: 'Alquilar', buy: 'Comprar'
     },
     'zh-CN': {
         searchPlaceholder: '搜索电影...',
@@ -116,7 +122,9 @@ const translations = {
         name: '姓名（可选）', type: '类型', message: '留言 *', send: '发送',
         suggestion: '建议', compliment: '表扬', complaint: '投诉', other: '其他',
         footer: '© 2026 - 版权所有 | 开发',
-        tagline: '您的电影指南'
+        tagline: '您的电影指南',
+        about: '关于', privacy: '隐私', terms: '条款', cookies: 'Cookies',
+        watch: '观看', rent: '租借', buy: '购买'
     },
     'zh-HK': {
         searchPlaceholder: '搜尋電影...',
@@ -138,7 +146,9 @@ const translations = {
         name: '姓名可選', type: '類型', message: '訊息 *', send: '發送',
         suggestion: '建議', compliment: '表揚', complaint: '投訴', other: '其他',
         footer: '© 2026 - 版權所有 | 開發',
-        tagline: '您的電影指南'
+        tagline: '您的電影指南',
+        about: '關於', privacy: '隱私', terms: '條款', cookies: 'Cookies',
+        watch: '觀看', rent: '租用', buy: '購買'
     },
     'ja': {
         searchPlaceholder: '映画を検索...',
@@ -160,7 +170,9 @@ const translations = {
         name: '名前任意', type: 'タイプ', message: 'メッセージ *', send: '送信',
         suggestion: 'ご要望', compliment: 'お問い合わせ', complaint: '苦情', other: 'その他',
         footer: '© 2026 - 全著作権 | 開発',
-        tagline: 'あなたの映画ガイド'
+        tagline: 'あなたの映画ガイド',
+        about: 'について', privacy: 'プライバシー', terms: '利用規約', cookies: 'Cookies',
+        watch: '視聴', rent: 'レンタル', buy: '購入'
     },
     'ru': {
         searchPlaceholder: 'Поиск фильмов...',
@@ -182,7 +194,9 @@ const translations = {
         name: 'Имя необязательно', type: 'Тип', message: 'Сообщение *', send: 'Отправить',
         suggestion: 'Предложение', compliment: 'Похвала', complaint: 'Жалоба', other: 'Другое',
         footer: '© 2026 - Все права защищены | Разработано',
-        tagline: 'Ваш гид по фильмам'
+        tagline: 'Ваш гид по фильмам',
+        about: 'О нас', privacy: 'Конфиденциальность', terms: 'Условия', cookies: 'Cookies',
+        watch: 'Смотреть', rent: 'Аренда', buy: 'Купить'
     },
     'ko': {
         searchPlaceholder: '영화 검색...',
@@ -204,7 +218,9 @@ const translations = {
         name: '이름 선택', type: '유형', message: '메시지 *', send: '보내기',
         suggestion: '제안', compliment: '칭찬', complaint: '불만', other: '기타',
         footer: '© 2026 - 모든 권리 보유 | 개발',
-        tagline: '나의 영화 가이드'
+        tagline: '나의 영화 가이드',
+        about: '정보', privacy: '개인정보', terms: '이용약관', cookies: 'Cookies',
+        watch: '시청', rent: '대여', buy: '구매'
     }
 };
 
@@ -244,6 +260,24 @@ const languageMap = {
     'ru': 'ru-RU',
     'ko': 'ko-KR'
 };
+
+// Paths para páginas legais por idioma
+const legalPagePaths = {
+    'pt-BR': { about: '/sobre', privacy: '/privacidade', terms: '/termos', cookies: '/cookies' },
+    'en': { about: '/en/sobre', privacy: '/en/privacidade', terms: '/en/termos', cookies: '/en/cookies' },
+    'es': { about: '/es/sobre', privacy: '/es/privacidade', terms: '/es/termos', cookies: '/es/cookies' },
+    'zh-CN': { about: '/zh/sobre', privacy: '/zh/privacidade', terms: '/zh/termos', cookies: '/zh/cookies' },
+    'zh-HK': { about: '/zh/sobre', privacy: '/zh/privacidade', terms: '/zh/termos', cookies: '/zh/cookies' },
+    'ja': { about: '/ja/sobre', privacy: '/ja/privacidade', terms: '/ja/termos', cookies: '/ja/cookies' },
+    'ru': { about: '/ru/sobre', privacy: '/ru/privacidade', terms: '/ru/termos', cookies: '/ru/cookies' },
+    'ko': { about: '/ko/sobre', privacy: '/ko/privacidade', terms: '/ko/termos', cookies: '/ko/cookies' }
+};
+
+function getLegalPageUrl(pageType) {
+    const lang = state.currentLanguage;
+    const paths = legalPagePaths[lang] || legalPagePaths['pt-BR'];
+    return paths[pageType] || paths.about;
+}
 
 // Inicializacao
 document.addEventListener('DOMContentLoaded', function() {
@@ -335,7 +369,25 @@ function updateURL() {
 
 // Eventos
 function setupEvents() {
-    // Busca
+    // Busca principal centralizada
+    const mainSearchBtn = document.getElementById('mainSearchBtn');
+    const mainSearchInput = document.getElementById('mainSearchInput');
+    
+    if (mainSearchBtn) {
+        mainSearchBtn.addEventListener('click', function() {
+            performMainSearch();
+        });
+    }
+    
+    if (mainSearchInput) {
+        mainSearchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                performMainSearch();
+            }
+        });
+    }
+    
+    // Busca antiga (mantém para compatibilidade)
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
     
@@ -464,6 +516,66 @@ function performSearch() {
     state.currentPage = 1;
     state.currentGenre = '0';
     loadMovies();
+}
+
+// Busca centralizada
+function performMainSearch() {
+    const input = document.getElementById('mainSearchInput');
+    const query = input ? input.value.trim() : '';
+    if (!query) return;
+    
+    // Show loading
+    document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-spinner fa-spin"></i> <span>Buscando filmes...</span></div>';
+    
+    // Use AI search for better results
+    useAISearch(query);
+}
+
+async function useAISearch(query) {
+    state.searchQuery = query;
+    state.currentPage = 1;
+    state.currentGenre = '0';
+    
+    // Update URL
+    const params = new URLSearchParams();
+    params.set('q', query);
+    window.history.pushState({}, '', '?' + params.toString());
+    
+    // Update title
+    document.getElementById('currentTitle').textContent = t('resultsFor') + ': ' + query;
+    
+    // Load movies using AI search
+    const tmdbLang = languageMap[state.currentLanguage] || 'pt-BR';
+    
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 20000);
+        
+        const url = API_BASE + '/ai-search?q=' + encodeURIComponent(query) + '&page=1&language=' + tmdbLang;
+        
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+        }
+        
+        const data = await response.json();
+        
+        if (data.results && data.results.length > 0) {
+            state.movies = data.results;
+            state.totalPages = Math.min(data.total_pages || 1, 500);
+            renderMovies();
+            updateUI();
+        } else if (data.error) {
+            document.getElementById('moviesGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><i class="fas fa-exclamation-triangle"></i> <span>Erro: ' + data.error + '</span></div>';
+        } else {
+            await loadMovies();
+        }
+    } catch (error) {
+        console.error('Search error:', error);
+        await loadMovies();
+    }
 }
 
 // Carregar dados
@@ -689,7 +801,50 @@ function updateTranslations() {
 function updateFooter() {
     const footer = document.querySelector('.site-footer');
     if (footer) {
-        footer.innerHTML = `<p>${t('footer')} <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>`;
+        footer.innerHTML = `
+            <div class="platforms-icons">
+                <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix" class="platform-netflix">
+                    <svg viewBox="0 0 560 400" fill="#d81f26"><path d="m159.282 239.199c-5.01.88-10.107 1.143-15.381 1.846l-16.084-47.109v49.131c-5.01.527-9.58 1.23-14.326 1.933v-90h13.36l18.281 51.065v-51.065h14.15zm27.686-51.24c5.45 0 13.799-.264 18.809-.264v14.062c-6.241 0-13.535 0-18.809.264v20.918c8.262-.527 16.524-1.231 24.873-1.495v13.534l-38.936 3.077v-83.056h38.936v14.063h-24.873zm77.168-18.896h-14.59v64.687c-4.746 0-9.492 0-14.062.175v-64.863h-14.59v-14.063h43.242l-.001 14.063zm22.851 17.93h19.248v14.062h-19.248v31.905h-13.8v-77.959h39.288v14.063h-25.489v17.93zm48.34 33.662c7.998.175 16.084.792 23.906 1.23v13.887c-12.568-.792-25.137-1.582-37.969-1.846v-78.926h14.062v65.654zm35.771 16.084c4.482.264 9.229.528 13.799 1.054v-82.793h-13.799v81.738zm75.411-81.738-17.842 42.803 17.842 47.197c-5.275-.703-10.547-1.67-15.821-2.549l-10.107-26.015-10.282 23.906c-5.099-.88-10.02-1.143-15.117-1.847l18.105-41.221-16.348-42.275h15.117l9.229 23.643 9.844-23.643h15.381z"/></svg>
+                </a>
+                <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video" class="platform-prime">
+                    <svg viewBox="0 0 560 400"><g fill-rule="nonzero"><g fill="#232f3e"><path d="m315.45 184.164c.315-1.049.63-2.046.945-3.096 2.414-8.134 4.828-16.216 7.242-24.351l.315-.945c.263-.944 1.155-1.521 2.099-1.521h7.977c1.995 0 2.415.577 1.732 2.466l-3.148 8.344c-3.517 9.132-7.033 18.316-10.549 27.448-.105.315-.262.629-.367.944-.368 1.102-1.47 1.837-2.624 1.732-2.31-.052-4.619-.052-6.928 0-1.627.053-2.571-.682-3.149-2.152-1.312-3.463-2.676-6.979-3.988-10.443-3.149-8.24-6.35-16.479-9.499-24.771-.315-.63-.525-1.364-.682-2.047-.158-1.049.21-1.574 1.259-1.574 2.992-.052 5.983 0 8.922 0 1.259 0 1.837.84 2.152 1.942.577 1.994 1.154 4.041 1.784 6.035 2.152 7.295 4.251 14.642 6.402 21.937-.052.052 0 .052.105.052z"/><path d="m352.607 174.718v18.893c-.105 1.049-.578 1.522-1.627 1.574-2.834.053-5.616.053-8.45 0-1.049 0-1.522-.525-1.627-1.522-.052-.315-.052-.682-.052-.997v-36.316c.052-1.627.472-2.099 2.099-2.099h7.557c1.627 0 2.1.472 2.1 2.099z"/><path d="m346.781 135.41c1.05-.105 2.099.105 3.097.525 2.046.787 3.463 2.676 3.568 4.881.42 4.775-2.781 7.189-7.032 7.084-.577 0-1.155-.105-1.732-.21-3.254-.787-4.933-3.306-4.618-6.927.262-2.886 2.519-5.038 5.615-5.3.367-.053.735-.105 1.102-.053z"/></g><g fill="#00a8e1"><path d="m278.017 264.403c-2.864-.155-5.728-.26-8.592-.469-7.662-.577-15.272-1.731-22.724-3.463-25.768-5.983-48.387-18.001-68.119-35.477-1.837-1.627-3.569-3.306-5.353-4.986-.42-.367-.787-.892-.997-1.417-.315-.734-.158-1.522.367-2.099s1.365-.787 2.099-.472c.473.21.945.42 1.365.682 18.84 11.651 39.412 20.153 60.982 25.191 7.242 1.679 14.537 2.991 21.884 3.936 10.549 1.312 21.202 1.784 31.803 1.417 5.721-.158 11.388-.683 17.056-1.417 13.225-1.68 26.293-4.671 38.941-8.869 6.665-2.205 13.172-4.724 19.522-7.663.945-.524 2.1-.682 3.149-.419 1.732.419 2.782 2.204 2.362 3.936-.053.209-.158.472-.263.682-.419.787-.997 1.469-1.731 1.994-6.036 4.723-12.543 8.869-19.418 12.333-12.963 6.56-26.818 11.231-41.092 13.907-8.224 1.467-16.499 2.358-24.827 2.675l-.049.002v.21h-6.298v-.21z"/></g></g></svg>
+                </a>
+                <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+" class="platform-disney">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-linejoin="round"><path d="M17.5 14H23m-3.5-3c.565 2.146.696 3.352.5 5.5"/><path stroke-linecap="round" d="M2.5 8.5s-1.1-.173-.982-.647C2.062 5.66 14.795 7.726 15 14c.182 5.591-11.666 3-11.5 0c.079-1.42 7.838-1.824 8.418-.433c.344.825-.396 1.13-.87 1.198"/><path stroke-linecap="round" d="M7.5 10.5c-.153 2.87-.264 4.47 0 7.5"/></svg>
+                </a>
+                <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max" class="platform-hbo">
+                    <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="8" fill="#000000"/><text x="24" y="30" font-family="Arial Black" font-size="16" font-weight="900" fill="white" text-anchor="middle">HBO</text></svg>
+                </a>
+                <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay" class="platform-globo">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#009C3B"/><circle cx="24" cy="24" r="8" fill="white"/><path d="M20 18L28 24L20 30V18Z" fill="#009C3B"/></svg>
+                </a>
+                <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV" class="platform-pluto">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#212121"/><circle cx="24" cy="24" r="12" fill="#FFDD00"/><line x1="24" y1="12" x2="24" y2="36" stroke="#212121" stroke-width="4"/></svg>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="${getLegalPageUrl('about')}">${t('about')}</a>
+                <span class="footer-divider">|</span>
+                <a href="${getLegalPageUrl('privacy')}">${t('privacy')}</a>
+                <span class="footer-divider">|</span>
+                <a href="${getLegalPageUrl('terms')}">${t('terms')}</a>
+                <span class="footer-divider">|</span>
+                <a href="${getLegalPageUrl('cookies')}">${t('cookies')}</a>
+            </div>
+            <p>${t('footer')} <strong>Brenda Tavares</strong> | <strong>AlabasterDev</strong></p>
+        `;
+    }
+    
+    // Also update nav links
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) {
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        if (navLinks.length >= 5) {
+            navLinks[1].href = getLegalPageUrl('about');
+            navLinks[2].href = getLegalPageUrl('privacy');
+            navLinks[3].href = getLegalPageUrl('terms');
+            navLinks[4].href = getLegalPageUrl('cookies');
+        }
     }
 }
 
@@ -857,10 +1012,12 @@ function showMovieModal(movie) {
         const buy = movie.streaming.filter(p => p.type === 'buy');
         const freeAlt = movie.streaming.filter(p => p.type === 'free-alt');
         
+        const langStreaming = translations[state.currentLanguage] || translations['pt-BR'];
+        
         let html = '<div class="modal-platforms">';
         
         if (flatrate.length > 0 || flatrateFree.length > 0 || freeAlt.length > 0) {
-            html += '<h4><i class="fas fa-play"></i> Assistir</h4>';
+            html += '<h4><i class="fas fa-play"></i> ' + langStreaming.watch + '</h4>';
             html += '<div class="streaming-list">';
             
             if (freeAlt.length > 0) {
@@ -896,7 +1053,7 @@ function showMovieModal(movie) {
         }
         
         if (rent.length > 0) {
-            html += '<h4><i class="fas fa-shopping-cart"></i> Alugar</h4>';
+            html += '<h4><i class="fas fa-shopping-cart"></i> ' + langStreaming.rent + '</h4>';
             html += '<div class="streaming-list">';
             html += rent.map(p => {
                 const url = getPlatformUrl(p.name, movie.title) || p.link;
@@ -908,7 +1065,7 @@ function showMovieModal(movie) {
         }
         
         if (buy.length > 0) {
-            html += '<h4><i class="fas fa-shopping-bag"></i> Comprar</h4>';
+            html += '<h4><i class="fas fa-shopping-bag"></i> ' + langStreaming.buy + '</h4>';
             html += '<div class="streaming-list">';
             html += buy.map(p => {
                 const url = getPlatformUrl(p.name, movie.title) || p.link;
