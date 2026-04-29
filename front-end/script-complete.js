@@ -1,7 +1,6 @@
-// Supabase Configuration - CineWorld
+// CineWorld - Complete Script with Supabase Integration
 
-
-// CineWorld - Main Script
+// State
 let state = {
     movies: [],
     currentPage: 1,
@@ -318,7 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initAuth();
     loadFromURL();
     setupEvents();
-    updateNavLinks();
     loadData();
     
     setTimeout(() => {
@@ -344,12 +342,6 @@ function loadFromURL() {
     }
     if (params.has('lang')) {
         state.currentLanguage = params.get('lang');
-        localStorage.setItem('cineworld_language', state.currentLanguage);
-    } else {
-        const savedLang = localStorage.getItem('cineworld_language');
-        if (savedLang) {
-            state.currentLanguage = savedLang;
-        }
     }
     if (params.has('year')) {
         state.currentYear = params.get('year');
@@ -396,21 +388,21 @@ function setupEvents() {
     document.getElementById('langSelect').addEventListener('change', function() {
         state.currentLanguage = this.value;
         state.currentPage = 1;
-        localStorage.setItem('cineworld_language', state.currentLanguage);
-        localStorage.setItem('cineworld_lang', state.currentLanguage);
         
         if (langLabel) {
             langLabel.textContent = t('language') || 'Idioma:';
         }
         
         document.getElementById('htmlLang').lang = state.currentLanguage;
-        updateNavLinks();
         updateURL();
         window.location.href = window.location.pathname + '?lang=' + state.currentLanguage;
     });
     
     // Login
     document.getElementById('authBtn').addEventListener('click', openLoginModal);
+    
+    // Favorites
+    document.getElementById('favoritesBtn').addEventListener('click', showFavorites);
     
     // Filter origin
     document.getElementById('filterOriginSelect').addEventListener('change', function() {
@@ -472,13 +464,18 @@ function setupEvents() {
         if (e.target === this) closeLoginModal();
     });
     
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+        if (e.target === this) closeContactModal();
+    });
+    
     // ESC key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeMovieModal();
             closeLoginModal();
+            closeContactModal();
             const aiPanel = document.getElementById('aiPanel');
-            if (aiPanel && aiPanel.classList.contains('open')) {
+            if (aiPanel.classList.contains('open')) {
                 aiPanel.classList.remove('open');
             }
         }
@@ -898,26 +895,6 @@ function getLegalPageUrl(pageType) {
     const lang = state.currentLanguage;
     const paths = legalPagePaths[lang] || legalPagePaths['pt-BR'];
     return paths[pageType] || paths.about;
-}
-
-function updateNavLinks() {
-    const navAboutLink = document.getElementById('navAboutLink');
-    const navPrivacyLink = document.getElementById('navPrivacyLink');
-    const navTermsLink = document.getElementById('navTermsLink');
-    const navCookiesLink = document.getElementById('navCookiesLink');
-    const footerAbout = document.getElementById('footerAbout');
-    const footerPrivacy = document.getElementById('footerPrivacy');
-    const footerTerms = document.getElementById('footerTerms');
-    const footerCookies = document.getElementById('footerCookies');
-
-    if (navAboutLink) navAboutLink.href = getLegalPageUrl('about');
-    if (navPrivacyLink) navPrivacyLink.href = getLegalPageUrl('privacy');
-    if (navTermsLink) navTermsLink.href = getLegalPageUrl('terms');
-    if (navCookiesLink) navCookiesLink.href = getLegalPageUrl('cookies');
-    if (footerAbout) footerAbout.href = getLegalPageUrl('about');
-    if (footerPrivacy) footerPrivacy.href = getLegalPageUrl('privacy');
-    if (footerTerms) footerTerms.href = getLegalPageUrl('terms');
-    if (footerCookies) footerCookies.href = getLegalPageUrl('cookies');
 }
 
 // Search
@@ -1509,8 +1486,44 @@ function loadTheme() {
 }
 
 // Contact
+function openContactModal() {
+    document.getElementById('contactModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
 
+function closeContactModal() {
+    document.getElementById('contactModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
 
+window.openContactModal = openContactModal;
+window.closeContactModal = closeContactModal;
+
+function submitContact(e) {
+    e.preventDefault();
+    const formUrl = 'https://formspree.io/f/mjkyanwk';
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+    
+    fetch(formUrl, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            alert(t('contactSuccess') || 'Formulário enviado com sucesso!');
+            form.reset();
+            closeContactModal();
+        } else {
+            alert(t('contactError') || 'Erro ao enviar. Tente novamente.');
+        }
+    }).catch(() => {
+        window.open(formUrl.replace('/f/', '/p/'), '_blank');
+        alert(t('contactOpenForm') || 'O formulário foi aberto! Por favor, preencha e envie.');
+        form.reset();
+        closeContactModal();
+    });
+}
 
 // Google login handler
 window.handleGoogleLogin = function(response) {

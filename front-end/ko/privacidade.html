@@ -30,15 +30,29 @@
                     <span class="logo-sub">영화 가이드</span>
                 </div>
             </a>
-            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
-                <option value="/privacidade">Português</option>
-                <option value="/en/privacidade">English</option>
-                <option value="/es/privacidade">Español</option>
-                <option value="/zh/privacidade">中文</option>
-                <option value="/ja/privacidade">日本語</option>
-                <option value="/ru/privacidade">Русский</option>
-                <option value="/ko/privacidade" selected>한국어</option>
+            
+            <select id="langSelectSubpage" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="pt-BR">Português</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="zh-CN">中文</option>
+                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+                <option value="ko">한국어</option>
             </select>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const select = document.getElementById('langSelectSubpage');
+                    const savedLang = localStorage.getItem('cineworld_language') || 'ko';
+                    select.value = savedLang;
+                    select.addEventListener('change', function() {
+                        localStorage.setItem('cineworld_language', this.value);
+                        localStorage.setItem('cineworld_lang', this.value);
+                        const langCode = this.value === 'pt-BR' ? '' : '/' + this.value.split('-')[0];
+                        window.location.href = langCode + '/privacidade';
+                    });
+                });
+            </script>
         </div>
     </header>
     <div class="legal-page">

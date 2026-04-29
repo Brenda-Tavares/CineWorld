@@ -28,14 +28,15 @@ async function getGenres(language = 'pt-BR') {
 }
 
 module.exports = async (req, res) => {
-    const { language = 'pt-BR', page = 1, sort = 'popular' } = req.query;
+    const { language = 'pt-BR', page = 1, sort = 'popular', genre = '0' } = req.query;
     
-    const sortMap = {
-        'popular': 'popularity.desc',
-        'top': 'vote_average.desc',
-        'now_playing': 'release_date.desc',
-        'upcoming': 'primary_release_date.desc'
-    };
+const sortMap = {
+    'popularity': 'popularity.desc',
+    'rating_desc': 'vote_average.desc',
+    'worst': 'vote_average.asc',
+    'release_desc': 'primary_release_date.desc',
+    'upcoming': 'primary_release_date.desc'
+};
     
     try {
         const [genresRes, moviesRes] = await Promise.all([
@@ -46,6 +47,7 @@ module.exports = async (req, res) => {
                     language: language,
                     page: page,
                     sort_by: sortMap[sort] || 'popularity.desc',
+                    ...(genre !== '0' && { with_genres: genre }),
                     'vote_count.gte': 10
                 }
             })

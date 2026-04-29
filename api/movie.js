@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const TMDB_API_KEY = process.env.TMDB_API_KEY || '08d264815baddc8059d7a7bd88e18057';
+const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
@@ -65,7 +65,6 @@ module.exports = async (req, res) => {
             'Apple TV': 'https://tv.apple.com',
             'Paramount': 'https://www.paramountplus.com',
             'Globo': 'https://globoplay.globo.com',
-            'Netflix': 'https://www.netflix.com',
             
             // Streamings gratuitos
             'Tubi': 'https://tubi.tv',

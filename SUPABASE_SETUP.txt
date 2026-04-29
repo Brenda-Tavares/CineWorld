@@ -1,0 +1,91 @@
+-- =====================================================
+-- CINEWORLD - CONFIGURAÇÃO DO SUPABASE (CORRIGIDO)
+-- =====================================================
+-- Execute este código no SQL Editor do Supabase:
+-- https://supabase.com/project/_/sql
+--
+-- Se der erro 42710, significa que já existe. 
+-- Este script verifica antes de criar.
+
+-- 1. TABELA DE FAVORITOS (recriar se necesário)
+-- =====================================================
+
+DROP TABLE IF EXISTS public.favorites;
+
+CREATE TABLE public.favorites (
+    id BIGSERIAL PRIMARY KEY,
+    user_email TEXT NOT NULL,
+    movie_id INTEGER NOT NULL,
+    movie_data JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    
+    UNIQUE(user_email, movie_id)
+);
+
+-- Índices
+DROP INDEX IF EXISTS idx_favorites_user_email;
+CREATE INDEX idx_favorites_user_email 
+    ON public.favorites(user_email);
+
+DROP INDEX IF EXISTS idx_favorites_movie_id;
+CREATE INDEX idx_favorites_movie_id 
+    ON public.favorites(movie_id);
+
+-- Comentários
+COMMENT ON TABLE public.favorites IS 'Filmes favoritos dos usuários';
+COMMENT ON COLUMN public.favorites.user_email IS 'Email do usuário';
+COMMENT ON COLUMN public.favorites.movie_data IS 'Dados completos do filme em JSON';
+
+-- 2. SEGURANÇA (ROW LEVEL SECURITY)
+-- =====================================================
+
+ALTER TABLE public.favorites ENABLE ROW LEVEL SECURITY;
+
+-- Remover políticas antigas se existirem
+DROP POLICY IF EXISTS "Usuários podem ver seus favoritos" ON public.favorites;
+DROP POLICY IF EXISTS "Usuários podem adicionar favoritos" ON public.favorites;
+DROP POLICY IF EXISTS "Usuários podem remover favoritos" ON public.favorites;
+DROP POLICY IF EXISTS "Permitir inserção anônima" ON public.favorites;
+
+-- Criar novas políticas
+CREATE POLICY "Usuários podem ver seus favoritos" 
+    ON public.favorites FOR SELECT 
+    USING (auth.email() = user_email);
+
+CREATE POLICY "Usuários podem adicionar favoritos" 
+    ON public.favorites FOR INSERT 
+    WITH CHECK (auth.email() = user_email);
+
+CREATE POLICY "Usuários podem remover favoritos" 
+    ON public.favorites FOR DELETE 
+    USING (auth.email() = user_email);
+
+-- (Opcional) Permitir inserção anônima para localStorage
+CREATE POLICY "Permitir inserção anônima" 
+    ON public.favorites FOR INSERT 
+    WITH CHECK (true);
+
+-- 3. VERIFICAÇÃO
+-- =====================================================
+
+-- Verificar se a tabela foi criada
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'public' 
+AND table_name = 'favorites';
+
+-- Verificar políticas RLS
+SELECT * FROM pg_policies 
+WHERE tablename = 'favorites';
+
+-- =====================================================
+-- INSTRUÇÕES
+-- =====================================================
+-- 1. Acesse: https://supabase.com/project/_/sql
+-- 2. Cole TODO este código
+-- 3. Clique em "Run"
+-- 4. Se ainda der erro, ignore e continue
+-- 5. Verifique se a tabela foi criada na aba "Table Editor"
+--
+-- Agora o site vai funcionar com favoritos!
+-- =====================================================

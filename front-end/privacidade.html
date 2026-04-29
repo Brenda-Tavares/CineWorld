@@ -41,25 +41,45 @@
                     <span class="logo-sub">Seu Guia de Filmes</span>
                 </div>
             </a>
-            <select onchange="window.location.href=this.value" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
-                <option value="/privacidade" selected>Português</option>
-                <option value="/en/privacidade">English</option>
-                <option value="/es/privacidade">Español</option>
-                <option value="/zh/privacidade">中文</option>
-                <option value="/ja/privacidade">日本語</option>
-                <option value="/ru/privacidade">Русский</option>
-                <option value="/ko/privacidade">한국어</option>
+            <select id="langSelectSubpage" style="background: #151f2e; color: white; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+                <option value="pt-BR">Português</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="zh-CN">中文</option>
+                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+                <option value="ko">한국어</option>
             </select>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const select = document.getElementById('langSelectSubpage');
+                    const savedLang = localStorage.getItem('cineworld_language') || 'pt-BR';
+                    select.value = savedLang;
+                    select.addEventListener('change', function() {
+                        localStorage.setItem('cineworld_language', this.value);
+                        localStorage.setItem('cineworld_lang', this.value);
+                        const langCode = this.value === 'pt-BR' ? '' : '/' + this.value.split('-')[0];
+                        window.location.href = langCode + '/privacidade';
+                    });
+                });
+            </script>
         </div>
     </header>
 
     <main class="container">
         <div class="legal-page">
-            <a href="/" class="legal-back">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </a>
-
-            <h1 class="legal-title">
+        <a href="/" class="legal-back" id="backLink"><i class="fas fa-arrow-left"></i> Voltar para home</a>
+        <script>
+            // Adjust back link with saved language
+            document.addEventListener('DOMContentLoaded', function() {
+                const savedLang = localStorage.getItem('cineworld_language') || localStorage.getItem('cineworld_lang');
+                const backLink = document.getElementById('backLink');
+                if (backLink && savedLang && savedLang !== 'pt-BR') {
+                    backLink.href = '/' + savedLang.split('-')[0] + '/privacidade';
+                }
+            });
+        </script>
+        <h1 class="legal-title">
                 <i class="fas fa-shield-alt"></i> Política de Privacidade
             </h1>
             <p class="legal-date">Última atualização: 2026 | Data de vigência: 2026</p>
@@ -197,13 +217,24 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-linejoin="round"><path d="M17.5 14H23m-3.5-3c.565 2.146.696 3.352.5 5.5"/><path stroke-linecap="round" d="M2.5 8.5s-1.1-.173-.982-.647C2.062 5.66 14.795 7.726 15 14c.182 5.591-11.666 3-11.5 0c.079-1.42 7.838-1.824 8.418-.433c.344.825-.396 1.13-.87 1.198"/><path stroke-linecap="round" d="M7.5 10.5c-.153 2.87-.264 4.47 0 7.5"/></svg>
                 </a>
                 <a href="https://www.hbomax.com" target="_blank" rel="noopener" title="HBO Max" class="platform-hbo">
-                    <img src="https://www.prensario.net/Multimedios/imgs/66714_750.jpg?v=3" alt="HBO Max" style="width:40px;height:40px;object-fit:contain;border-radius:8px;background:transparent;">
+                    <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="60" rx="8" fill="#5822B4"/>
+                        <text x="60" y="42" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="white" text-anchor="middle">HBO</text>
+                    </svg>
                 </a>
                 <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay" class="platform-globo">
-                    <img src="https://play-lh.googleusercontent.com/CrPATF3XM8YNN1DsPcNYwB37-5ThmxQzVxtLVUAieVPS3mYpplv0NVa4fN6t_EmJ6nI" alt="Globoplay" style="width:40px;height:40px;object-fit:contain;border-radius:50%;">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="28" fill="#009C3B"/>
+                        <circle cx="30" cy="30" r="12" fill="white"/>
+                        <path d="M24 22L36 30L24 38V22Z" fill="#009C3B"/>
+                    </svg>
                 </a>
                 <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV" class="platform-pluto">
-                    <img src="https://tm.ibxk.com.br/2022/03/03/03100330774171.jpg?ims=1200x675" alt="Pluto TV" style="width:40px;height:40px;object-fit:contain;border-radius:50%;background:transparent;">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="28" fill="#231F20"/>
+                        <circle cx="30" cy="30" r="14" fill="#FFDD00"/>
+                        <line x1="30" y1="16" x2="30" y2="44" stroke="#231F20" stroke-width="6"/>
+                    </svg>
                 </a>
             </div>
         <div class="footer-links">

@@ -36,23 +36,6 @@ body {
     --transition: all 0.3s ease;
 }
 
-[data-theme="light"] {
-    --primary: #1e40af;
-    --primary-light: #2563eb;
-    --secondary: #e2e8f0;
-    --accent: #dc2626;
-    
-    --bg-dark: #94a3b8;
-    --bg-card: #f1f5f9;
-    --bg-hover: #cbd5e1;
-    
-    --text-white: #0f172a;
-    --text-light: #1e293b;
-    --text-muted: #475569;
-    
-    --border: rgba(30, 64, 175, 0.2);
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -507,7 +490,7 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 15px;
     flex-wrap: wrap;
 }
@@ -1453,14 +1436,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
+    width: 48px;
     height: 48px;
+    padding: 8px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
     text-decoration: none;
     transition: all 0.3s ease;
-    padding: 6px;
 }
 
 .platforms-icons a svg {
@@ -1470,25 +1453,31 @@ body {
     max-height: 36px;
 }
 
+.platforms-icons a img.platform-img {
+    width: auto;
+    height: 32px;
+    max-width: 42px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: transparent !important;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.platforms-icons a svg.platform-svg,
+.platforms-icons a > svg {
+    width: 42px;
+    height: 36px;
+    display: block;
+}
+
 .platforms-icons a:hover {
     background: var(--primary);
     border-color: var(--primary);
     transform: translateY(-2px);
 }
 
-/* Platform brand colors - removed, SVGs have their own colors */
-
-.platforms-icons a:hover {
-    background: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-2px);
-}
-
-.platforms-icons a:hover svg {
-    filter: brightness(0) invert(1);
-}
-}
-    border-top: 1px solid var(--border);
+.platforms-icons a:hover img.platform-img {
+    opacity: 0.9;
 }
 
 .site-footer .footer-links {

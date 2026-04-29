@@ -334,21 +334,51 @@ app.use('*', (req, res) => {
   });
 });
 
-// Funções auxiliares (mantém suas funções sortMovies, getMockMoviesByGenre, etc.)
+// Funções auxiliares
 function sortMovies(movies, sortType) {
-  // ... (sua função sortMovies aqui)
+  const sorted = [...movies];
+  switch(sortType) {
+    case 'rating_desc':
+      return sorted.sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0));
+    case 'rating_asc':
+      return sorted.sort((a, b) => (a.vote_average || 0) - (b.vote_average || 0));
+    case 'release_desc':
+      return sorted.sort((a, b) => new Date(b.release_date || 0) - new Date(a.release_date || 0));
+    case 'release_asc':
+      return sorted.sort((a, b) => new Date(a.release_date || 0) - new Date(b.release_date || 0));
+    case 'popularity':
+    default:
+      return sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+  }
 }
 
 function getMockMoviesByGenre(genreId) {
-  // ... (sua função getMockMoviesByGenre aqui)
+  const mockMovies = [
+    { id: 1, title: 'Exemplo Filme 1', vote_average: 7.5, release_date: '2024-01-01', poster_path: null, popularity: 100, original_language: 'en' },
+    { id: 2, title: 'Exemplo Filme 2', vote_average: 6.8, release_date: '2023-06-15', poster_path: null, popularity: 85, original_language: 'pt' },
+    { id: 3, title: 'Exemplo Filme 3', vote_average: 8.2, release_date: '2024-03-20', poster_path: null, popularity: 120, original_language: 'en' }
+  ];
+  
+  if (genreId === '0' || genreId === 'all') return mockMovies;
+  return mockMovies.filter(m => m.genre_ids && m.genre_ids.includes(parseInt(genreId)));
 }
 
 function getLanguageName(languageCode) {
-  // ... (sua função getLanguageName aqui)
+  const langMap = {
+    'en': 'Inglês', 'pt': 'Português', 'es': 'Espanhol', 'fr': 'Francês',
+    'ja': 'Japonês', 'ko': 'Coreano', 'zh': 'Chinês', 'de': 'Alemão',
+    'it': 'Italiano', 'ru': 'Russo', 'hi': 'Hindi'
+  };
+  return langMap[languageCode] || languageCode;
 }
 
 function getCountryFromLanguage(languageCode) {
-  // ... (sua função getCountryFromLanguage aqui)
+  const countryMap = {
+    'en': 'EUA', 'pt': 'Brasil', 'es': 'Espanha', 'fr': 'França',
+    'ja': 'Japão', 'ko': 'Coreia do Sul', 'zh': 'China', 'de': 'Alemanha',
+    'it': 'Itália', 'ru': 'Rússia', 'hi': 'Índia'
+  };
+  return countryMap[languageCode] || 'Desconhecido';
 }
 
 // Iniciar servidor

@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const TMDB_API_KEY = process.env.TMDB_API_KEY || '08d264815baddc8059d7a7bd88e18057';
+const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 
 module.exports = async (req, res) => {
@@ -64,7 +64,7 @@ module.exports = async (req, res) => {
             logo: p.logo_path ? 'https://image.tmdb.org/t/p/w92' + p.logo_path : null,
             type: p.type || 'flatrate',
             isFree: checkFree(p.provider_name),
-            link: `https://www.google.com/search?q=${encodeURIComponent('filme ' + movie_id + ' ' + p.provider_name + ' streaming')}
+            link: `https://www.google.com/search?q=${encodeURIComponent('filme ' + movie_id + ' ' + p.provider_name + ' streaming')}`
         }));
         
         // Adicionar mensagem de verificação

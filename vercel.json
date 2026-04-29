@@ -1,10 +1,5 @@
 {
   "rewrites": [
-    { "source": "/api/movies", "destination": "/api/index.js" },
-    { "source": "/api/movie", "destination": "/api/index.js" },
-    { "source": "/api/genres", "destination": "/api/index.js" },
-    { "source": "/api/streaming", "destination": "/api/index.js" },
-    { "source": "/api/ai-search", "destination": "/api/index.js" },
     { "source": "/sobre", "destination": "/front-end/sobre.html" },
     { "source": "/privacidade", "destination": "/front-end/privacidade.html" },
     { "source": "/termos", "destination": "/front-end/termos.html" },
