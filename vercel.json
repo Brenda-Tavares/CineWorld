@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/sobre", "destination": "/front-end/sobre.html" },
     { "source": "/privacidade", "destination": "/front-end/privacidade.html" },
     { "source": "/termos", "destination": "/front-end/termos.html" },
