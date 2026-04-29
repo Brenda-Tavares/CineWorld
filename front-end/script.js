@@ -319,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFromURL();
     setupEvents();
     updateNavLinks();
+    applyTranslations();
     loadData();
     
     setTimeout(() => {
@@ -397,13 +398,14 @@ function setupEvents() {
         state.currentLanguage = this.value;
         state.currentPage = 1;
         localStorage.setItem('cineworld_language', state.currentLanguage);
-        localStorage.setItem('cineworld_lang', state.currentLanguage);
+        localStorage.setItem('cineworld_lang', this.value);
         
         if (langLabel) {
             langLabel.textContent = t('language') || 'Idioma:';
         }
         
         document.getElementById('htmlLang').lang = state.currentLanguage;
+        applyTranslations();
         updateNavLinks();
         updateURL();
         window.location.href = window.location.pathname + '?lang=' + state.currentLanguage;
@@ -918,6 +920,40 @@ function updateNavLinks() {
     if (footerPrivacy) footerPrivacy.href = getLegalPageUrl('privacy');
     if (footerTerms) footerTerms.href = getLegalPageUrl('terms');
     if (footerCookies) footerCookies.href = getLegalPageUrl('cookies');
+}
+
+function applyTranslations() {
+    const lang = translations[state.currentLanguage] || translations['pt-BR'];
+    if (!lang) return;
+    
+    const elements = {
+        'siteTagline': 'tagline',
+        'navHome': 'navHome',
+        'navAbout': 'navAbout',
+        'navPrivacy': 'navPrivacy',
+        'navTerms': 'navTerms',
+        'navCookies': 'navCookies',
+        'footerAbout': 'footerAbout',
+        'footerPrivacy': 'footerPrivacy',
+        'footerTerms': 'footerTerms',
+        'footerCookies': 'footerCookies',
+        'langLabel': 'language'
+    };
+    
+    for (const [id, key] of Object.entries(elements)) {
+        const el = document.getElementById(id);
+        if (el && lang[key]) {
+            if (id === 'langLabel') {
+                el.textContent = lang[key] + ':';
+            } else {
+                const icon = el.querySelector('i');
+                const textSpan = el.querySelector('span');
+                if (textSpan && lang[key]) {
+                    textSpan.textContent = lang[key];
+                }
+            }
+        }
+    }
 }
 
 // Search
