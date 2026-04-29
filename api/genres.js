@@ -8,6 +8,14 @@ const CACHE_DURATION = 60 * 60 * 1000;
 let genresCache = {};
 
 module.exports = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+    
     let { language = 'pt-BR' } = req.query;
     
     language = ALLOWED_LANGUAGES.includes(language) ? language : 'pt-BR';
