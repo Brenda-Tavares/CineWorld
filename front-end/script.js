@@ -822,22 +822,29 @@ function updateFooter() {
         footer.innerHTML = `
             <div class="platforms-icons">
                 <a href="https://www.netflix.com" target="_blank" rel="noopener" title="Netflix">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="platform-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="platform-img" style="height: 34px; width: auto;">
                 </a>
                 <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.svg" alt="Prime Video" class="platform-img">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" height="34" style="vertical-align: middle;">
+                        <rect width="120" height="60" rx="8" fill="#0F79AF"/>
+                        <text x="60" y="38" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">PRIME</text>
+                        <text x="60" y="52" font-family="Arial" font-size="14" fill="white" text-anchor="middle">VIDEO</text>
+                    </svg>
                 </a>
                 <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="platform-img">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" height="34" style="vertical-align: middle;">
+                        <rect width="120" height="60" rx="8" fill="#113CCF"/>
+                        <text x="60" y="40" font-family="Arial" font-size="22" font-weight="bold" fill="white" text-anchor="middle">Disney+</text>
+                    </svg>
                 </a>
                 <a href="https://www.max.com" target="_blank" rel="noopener" title="Max (HBO)">
-                    <img src="https://www.citypng.com/public/uploads/preview/hbo-max-white-logo-png-701751694707739y4d41kme7y.png" alt="Max" class="platform-img">
+                    <img src="https://www.citypng.com/public/uploads/preview/hbo-max-white-logo-png-701751694707739y4d41kme7y.png" alt="Max" class="platform-img" style="height: 34px; width: auto;">
                 </a>
                 <a href="https://globoplay.globo.com" target="_blank" rel="noopener" title="Globoplay">
-                    <img src="https://static.wixstatic.com/media/64ad72_f22b0aff0a514bb7b341dcf7740ca3ce~mv2.png/v1/fill/w_456,h_468,al_c/globoplayicon.png" alt="Globoplay" class="platform-img">
+                    <img src="https://static.wixstatic.com/media/64ad72_f22b0aff0a514bb7b341dcf7740ca3ce~mv2.png/v1/fill/w_456,h_468,al_c/globoplayicon.png" alt="Globoplay" class="platform-img" style="height: 40px; width: auto;">
                 </a>
                 <a href="https://pluto.tv" target="_blank" rel="noopener" title="Pluto TV">
-                    <img src="https://images.seeklogo.com/logo-png/52/3/pluto-tv-logo-png_seeklogo-520780.png" alt="Pluto TV" class="platform-img">
+                    <img src="https://images.seeklogo.com/logo-png/52/3/pluto-tv-logo-png_seeklogo-520780.png" alt="Pluto TV" class="platform-img" style="height: 40px; width: auto;">
                 </a>
             </div>
             <div class="footer-links">
