@@ -1,0 +1,21 @@
+name = "cineworld-workers"
+type = "javascript"
+compatibility_date = "2024-01-01"
+
+[[workers]]
+name = "cineworld-movies"
+main = "movies.js"
+routes = [{ pattern = "cineworld.pages.dev/api/movies" }]
+
+[[workers]]
+name = "cineworld-genres"
+main = "genres.js"
+routes = [{ pattern = "cineworld.pages.dev/api/genres" }]
+
+[[workers]]
+name = "cineworld-movie"
+main = "movie.js"
+routes = [{ pattern = "cineworld.pages.dev/api/movie/*" }]
+
+[vars]
+TMDB_API_KEY = "your_tmdb_api_key_here"
