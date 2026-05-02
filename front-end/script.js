@@ -825,7 +825,7 @@ function updateFooter() {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="platform-img" style="height: 34px; width: auto;">
                 </a>
                 <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">
-                    <img src="https://logodownload.org/wp-content/uploads/2018/07/prime-video-logo-0.png" alt="Prime Video" style="height: 42px; width: auto;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Amazon_Prime_Video_logo_%282024%29.svg/960px-Amazon_Prime_Video_logo_%282024%29.svg.png" alt="Prime Video" style="height: 42px; width: auto;">
                 </a>
                 <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" style="height: 26px; width: auto; filter: brightness(0) invert(1);">
