@@ -385,11 +385,65 @@
         <div class="ai-panel-results" id="aiResults"></div>
     </div>
     
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1e3a5f; color:white; padding:15px; text-align:center; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,0.3);">
+        <p style="margin:0 0 10px 0; font-size:14px;">
+            Este site usa cookies para exibir anúncios personalizados e analisar tráfego.
+        </p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+            <button onclick="acceptCookies()" style="background:#e63946; color:white; border:none; padding:10px 25px; border-radius:5px; cursor:pointer; font-weight:bold;">Consentir</button>
+            <button onclick="declineCookies()" style="background:transparent; color:white; border:1px solid white; padding:10px 25px; border-radius:5px; cursor:pointer;">Não Consentir</button>
+            <button onclick="manageCookies()" style="background:transparent; color:#a8b2c1; border:none; padding:10px; cursor:pointer; text-decoration:underline;">Gerenciar Opções</button>
+        </div>
+    </div>
+    
+    <script>
+        // Cookie consent logic
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            }
+        }
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').style.display = 'none';
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                'analytics_storage': 'granted'
+            });
+        }
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+        function manageCookies() {
+            localStorage.removeItem('cookieConsent');
+            alert('Você pode gerenciar suas preferências de cookies nas configurações do navegador.');
+        }
+        checkCookieConsent();
+    </script>
+    
     <!-- Supabase and main script -->
     
     <script src="/front-end/script.js"></script>
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7072295078376521" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+        });
+    </script>
 </body>
 </html>
