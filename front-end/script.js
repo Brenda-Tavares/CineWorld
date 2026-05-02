@@ -825,10 +825,10 @@ function updateFooter() {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="platform-img" style="height: 34px; width: auto;">
                 </a>
                 <a href="https://www.primevideo.com" target="_blank" rel="noopener" title="Prime Video">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Amazon_Prime_Video_logo_%282024%29.svg/960px-Amazon_Prime_Video_logo_%282024%29.svg.png" alt="Prime Video" style="height: 42px; width: auto;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Amazon_Prime_Video_logo_%282024%29.svg/960px-Amazon_Prime_Video_logo_%282024%29.svg.png" alt="Prime Video" style="height: 38px; width: auto; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 4px;">
                 </a>
                 <a href="https://www.disneyplus.com" target="_blank" rel="noopener" title="Disney+">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" style="height: 26px; width: auto; filter: brightness(0) invert(1);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" style="height: 24px; width: auto; filter: brightness(0) invert(1); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 4px;">
                 </a>
                 <a href="https://www.max.com" target="_blank" rel="noopener" title="Max (HBO)">
                     <img src="https://www.citypng.com/public/uploads/preview/hbo-max-white-logo-png-701751694707739y4d41kme7y.png" alt="Max" class="platform-img" style="height: 38px; width: auto;">
