@@ -52,6 +52,7 @@ module.exports = async (req, res) => {
         // Processa streaming - apenas plataformas 100% gratuitas
         const freeStreamingServices = ['Tubi', 'Pluto TV', 'Peacock', 'Crackle'];
         const checkFreeStreaming = (name) => freeStreamingServices.some(free => name.toLowerCase().includes(free.toLowerCase()));
+        console.log('Providers data:', JSON.stringify(providers).slice(0, 500));
         
         // Mapeamento de links diretos para plataformas populares
         const platformLinks = {
@@ -172,7 +173,8 @@ module.exports = async (req, res) => {
             poster_path: movieRes.data.poster_path ? TMDB_IMAGE + movieRes.data.poster_path : null,
             backdrop_path: movieRes.data.backdrop_path ? 'https://image.tmdb.org/t/p/w780' + movieRes.data.backdrop_path : null,
             streaming: streaming,
-            trailer: trailerUrl
+            trailer: trailerUrl,
+            _debug: { providersKeys: Object.keys(providers), streamingCount: streaming.length }
         };
 
         res.json({ success: true, movie });
