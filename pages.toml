@@ -2,10 +2,7 @@ compatibility_date = "2024-01-01"
 name = "cineworld"
 
 [build]
-command = ""
+command = "echo static site"
 directory = "front-end"
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+[vars]
