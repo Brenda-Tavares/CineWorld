@@ -1,6 +1,5 @@
 name = "cineworld"
 compatibility_date = "2024-01-01"
 
-pages_build = {
-  dir = "front-end"
-}
+[cloudflare_pages]
+directories = { static_assets = "front-end" }
