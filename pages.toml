@@ -2,7 +2,7 @@ compatibility_date = "2024-01-01"
 name = "cineworld"
 
 [build]
-command = "echo static site"
+command = "npx wrangler deploy"
 directory = "front-end"
 
 [vars]
