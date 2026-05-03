@@ -1,10 +1,10 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/sobre", "destination": "/front-end/sobre.html" },
-    { "source": "/privacidade", "destination": "/front-end/privacidade.html" },
-    { "source": "/termos", "destination": "/front-end/termos.html" },
-    { "source": "/cookies", "destination": "/front-end/cookies.html" },
+    { "source": "/sobre(/.*)?", "destination": "/front-end/sobre.html" },
+    { "source": "/privacidade(/.*)?", "destination": "/front-end/privacidade.html" },
+    { "source": "/termos(/.*)?", "destination": "/front-end/termos.html" },
+    { "source": "/cookies(/.*)?", "destination": "/front-end/cookies.html" },
     { "source": "/en/sobre", "destination": "/front-end/en/sobre.html" },
     { "source": "/en/privacidade", "destination": "/front-end/en/privacidade.html" },
     { "source": "/en/termos", "destination": "/front-end/en/termos.html" },
@@ -30,5 +30,6 @@
     { "source": "/ko/termos", "destination": "/front-end/ko/termos.html" },
     { "source": "/ko/cookies", "destination": "/front-end/ko/cookies.html" },
     { "source": "/(.*)", "destination": "/front-end/index.html" }
-  ]
+  ],
+  "trailingSlash": false
 }
