@@ -36,8 +36,8 @@ const translations = {
         searchPlaceholder: 'Buscar filmes...',
         popular: 'Populares', bestRated: 'Melhores Avaliados', worstRated: 'Piores Avaliados', release: 'Lançamentos', upcoming: 'Próximos Lançamentos',
         all: 'Todos', national: 'Nacionais', international: 'Internacionais', originLabel: 'Filmes:',
-        genres: 'Gêneros', movies: 'filmes', page: 'Página', of: 'de',
-        language: 'Idioma:',
+        allYears: 'Todos os anos', genres: 'Gêneros', movies: 'filmes', page: 'Página', of: 'de',
+        language: 'Idioma',
         prev: 'Anterior', next: 'Próxima', details: 'Detalhes',
         rating: 'Avaliação', year: 'Ano', synopsis: 'Sinopse', synopsisNotAvailable: 'Sinopse não disponível.',
         originalTitle: 'Título original', close: 'Fechar',
@@ -68,9 +68,9 @@ const translations = {
     'en': {
         searchPlaceholder: 'Search movies...',
         popular: 'Popular', bestRated: 'Top Rated', worstRated: 'Lowest Rated', release: 'New Releases', upcoming: 'Upcoming Releases',
-        all: 'All', national: 'National', international: 'International', originLabel: 'Movies:',
+        all: 'All', allYears: 'All years', national: 'National', international: 'International', originLabel: 'Movies:',
         genres: 'Genres', movies: 'movies', page: 'Page', of: 'of',
-        language: 'Language:',
+        language: 'Language',
         prev: 'Previous', next: 'Next', details: 'Details',
         rating: 'Rating', year: 'Year', synopsis: 'Synopsis', synopsisNotAvailable: 'Synopsis not available',
         originalTitle: 'Original title', close: 'Close',
@@ -101,9 +101,9 @@ const translations = {
     'es': {
         searchPlaceholder: 'Buscar películas...',
         popular: 'Películas Populares', bestRated: 'Mejor Valoradas', worstRated: 'Peor Valoradas', release: 'Estrenos', upcoming: 'Próximos Estrenos',
-        all: 'Todos', national: 'Nacionales', international: 'Internacionales', originLabel: 'Películas:',
+        all: 'Todos', allYears: 'Todos los años', national: 'Nacionales', international: 'Internacionales', originLabel: 'Películas:',
         genres: 'Géneros', movies: 'películas', page: 'Página', of: 'de',
-        language: 'Idioma:',
+        language: 'Idioma',
         prev: 'Anterior', next: 'Siguiente', details: 'Detalles',
         rating: 'Valoración', year: 'Año', synopsis: 'Sinopsis', synopsisNotAvailable: 'Sinopsis no disponible.',
         originalTitle: 'Título original', close: 'Cerrar',
@@ -134,9 +134,9 @@ const translations = {
     'zh-CN': {
         searchPlaceholder: '搜索电影...',
         popular: '热门电影', bestRated: '评分最高', worstRated: '评分最低', release: '最新', upcoming: '即将上映',
-        all: '全部', national: '国产', international: '国际', originLabel: '电影:',
+        all: '全部', allYears: '全部年份', national: '国产', international: '国际', originLabel: '电影:',
         genres: '类型', movies: '部电影', page: '第', of: '页，共',
-        language: '语言:',
+        language: '语言',
         prev: '上一页', next: '下一页', details: '详情',
         rating: '评分', year: '年份', synopsis: '简介', synopsisNotAvailable: '简介不可用',
         originalTitle: '原名', close: '关闭',
@@ -167,9 +167,9 @@ const translations = {
     'zh-HK': {
         searchPlaceholder: '搜尋電影...',
         popular: '熱門電影', bestRated: '評分最高', worstRated: '評分最低', release: '最新', upcoming: '即將上映',
-        all: '全部', national: '本土', international: '國際', originLabel: '電影:',
+        all: '全部', allYears: '全部年份', national: '本土', international: '國際', originLabel: '電影:',
         genres: '類型', movies: '部電影', page: '第', of: '頁，共',
-        language: '語言:',
+        language: '語言',
         prev: '上一頁', next: '下一頁', details: '詳情',
         rating: '評分', year: '年份', synopsis: '簡介', synopsisNotAvailable: '簡介不可用',
         originalTitle: '原名', close: '關閉',
@@ -200,9 +200,9 @@ const translations = {
     'ja': {
         searchPlaceholder: '映画を検索...',
         popular: '人気映画', bestRated: '高評価', worstRated: '低評価', release: '最新作', upcoming: '公開予定',
-        all: 'すべて', national: '日本', international: '外国', originLabel: '映画:',
+        all: 'すべて', allYears: '全ての年', national: '日本', international: '外国', originLabel: '映画:',
         genres: 'ジャンル', movies: '映画', page: 'ページ', of: '/',
-        language: '言語:',
+        language: '言語',
         prev: '前へ', next: '次へ', details: '詳細',
         rating: '評価', year: '年', synopsis: 'あらすじ', synopsisNotAvailable: 'あらすじはありません',
         originalTitle: '原題', close: '閉じる',
@@ -233,9 +233,9 @@ const translations = {
     'ru': {
         searchPlaceholder: 'Поиск фильмов...',
         popular: 'Популярные фильмы', bestRated: 'Лучшие оценки', worstRated: 'Худшие оценки', release: 'Новейшие', upcoming: 'Скоро в прокате',
-        all: 'Все', national: 'Националные', international: 'Международные', originLabel: 'Фильмы:',
+        all: 'Все', allYears: 'Все годы', national: 'Националные', international: 'Международные', originLabel: 'Фильмы:',
         genres: 'Жанры', movies: 'фильмов', page: 'Страница', of: 'из',
-        language: 'Язык:',
+        language: 'Язык',
         prev: 'Предыдущая', next: 'Следующая', details: 'Детали',
         rating: 'Рейтинг', year: 'Год', synopsis: 'Описание', synopsisNotAvailable: 'Описание недоступно',
         originalTitle: 'Оригиналное название', close: 'Закрыть',
@@ -266,9 +266,9 @@ const translations = {
     'ko': {
         searchPlaceholder: '영화 검색...',
         popular: '인기 영화', bestRated: '높은 평점', worstRated: '낮은 평점', release: '최신', upcoming: '개봉 예정',
-        all: '전체', national: '국내', international: '해외', originLabel: '영화:',
+        all: '전체', allYears: '모든 연도', national: '국내', international: '해외', originLabel: '영화:',
         genres: '장르', movies: '편', page: '페이지', of: '/',
-        language: '언어:',
+        language: '언어',
         prev: '이전', next: '다음', details: '상세정보',
         rating: '평점', year: '연도', synopsis: '시놉시스', synopsisNotAvailable: '시놉시스 없음',
         originalTitle: '원제', close: '닫기',
@@ -754,6 +754,11 @@ function updateTranslations() {
             filterSortSelect.options[1].text = t('bestRated') || t('rating');
             filterSortSelect.options[2].text = t('worstRated') || 'Piores Avaliados';
             filterSortSelect.options[3].text = t('release');
+        }
+        
+        const filterYearSelect = document.getElementById('filterYearSelect');
+        if (filterYearSelect && filterYearSelect.options.length > 0) {
+            filterYearSelect.options[0].text = t('allYears') || 'Todos';
         }
         
         const genresTitle = document.getElementById('genresTitle');
