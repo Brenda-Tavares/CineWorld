@@ -631,17 +631,25 @@ function renderMovies() {
                             onclick="event.stopPropagation(); toggleFavorite(${movie.id})">
                         <i class="fas fa-heart"></i>
                     </button>
-                </div>
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title || t('noTitle')}</h3>
-                    <div class="movie-meta">
-                        ${year ? `<span class="year">${year}</span>` : ''}
-                        ${movie.production_countries?.[0]?.name ? 
-                            `<span>${movie.production_countries[0].name}</span>` : ''}
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">${movie.title || t('noTitle')}</h3>
+                        <div class="movie-meta">
+                            ${year ? `<span class="year">${year}</span>` : ''}
+                            ${movie.production_countries?.[0]?.name ? 
+                                `<span>${movie.production_countries[0].name}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="movie-actions" style="display:flex; gap:8px; margin-top:12px;">
+                        <button class="action-btn-small" onclick="event.stopPropagation(); window.open('https://www.themoviedb.org/movie/${movie.id}','_blank')" title="${t('watch')}">
+                            <i class="fas fa-play"></i> ${t('watch')}
+                        </button>
+                        <button class="action-btn-small secondary" onclick="event.stopPropagation(); showMovieDetails(${movie.id})" title="${t('rent')}">
+                            <i class="fas fa-ticket-alt"></i> ${t('rent')}
+                        </button>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
     }).join('');
 }
 

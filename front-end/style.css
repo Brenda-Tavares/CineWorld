@@ -375,6 +375,37 @@ body {
     font-weight: 700;
 }
 
+.action-btn-small {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--primary);
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.action-btn-small:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.action-btn-small.secondary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-light);
+}
+
+.action-btn-small.secondary:hover {
+    background: var(--bg-hover);
+    color: white;
+}
+
 .login-btn {
     background: var(--primary);
     border: none;
