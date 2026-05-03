@@ -1,6 +1,0 @@
-name = "cineworld-movies"
-main = "movies.js"
-compatibility_date = "2024-01-01"
-
-[vars]
-TMDB_API_KEY = "your_tmdb_api_key_here"
