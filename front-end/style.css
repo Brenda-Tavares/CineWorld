@@ -402,6 +402,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
+    min-height: calc(100vh - 80px);
 }
 
 /* SIDEBAR */
@@ -579,6 +580,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 25px 20px;
+    width: 100%;
 }
 
 .content-header {
