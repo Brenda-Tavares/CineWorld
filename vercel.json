@@ -31,5 +31,15 @@
     { "source": "/ko/cookies", "destination": "/front-end/ko/cookies.html" },
     { "source": "/(.*)", "destination": "/front-end/index.html" }
   ],
-  "trailingSlash": false
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "ALLOW" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "no-referrer-when-downgrade" }
+      ]
+    }
+  ]
 }
