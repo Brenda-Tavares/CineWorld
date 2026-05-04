@@ -1152,7 +1152,6 @@ const platformUrls = {
             'hulu': 'https://www.hulu.com',
             'directv': 'https://www.directv.com',
             'fandango at home': 'https://athome.fandango.com',
-            'fandango at home': 'https://athome.fandango.com',
             'vudu': 'https://vudu.com',
             'fandango': 'https://athome.fandango.com',
             'sonyliv': 'https://www.sonyliv.com',
@@ -1165,29 +1164,12 @@ const platformUrls = {
             'stan': 'https://www.stan.com.au',
             'fetch tv': 'https://www.fetchtv.com.au',
             'binge': 'https://www.binge.com.au'
-        };
+};
         
         const getPlatformUrl = (platformName) => {
             const normalized = platformName.toLowerCase().replace(/\s+/g, ' ').trim();
             for (const [key, url] of Object.entries(platformUrls)) {
                 if (normalized === key || normalized.includes(key) || key.includes(normalized)) {
-                    return url;
-                }
-            }
-            return null;
-        };
-        
-        const normalizePlatformName = (name) => {
-            return name.toLowerCase().replace(/\s+/g, ' ').trim();
-        };
-        
-        const getPlatformUrl = (platformName) => {
-            const normalized = normalizePlatformName(platformName);
-            for (const [key, url] of Object.entries(platformUrls)) {
-                const keyNormalized = normalizePlatformName(key);
-                if (keyNormalized === normalized || 
-                    normalized.includes(keyNormalized) ||
-                    keyNormalized.includes(normalized)) {
                     return url;
                 }
             }
