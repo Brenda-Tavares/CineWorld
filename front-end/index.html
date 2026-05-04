@@ -365,7 +365,7 @@
         <div class="ai-panel-header">
             <div class="ai-panel-title">
                 <i class="fas fa-robot"></i>
-                <span>O que deseja assistir?</span>
+                <span id="aiTitleText">O que deseja assistir?</span>
             </div>
             <button class="ai-panel-close" onclick="toggleAIPanel()">
                 <i class="fas fa-times"></i>
@@ -374,9 +374,9 @@
         <div class="ai-panel-messages" id="aiMessages">
             <div class="ai-message ai-message-bot">
                 <div class="ai-message-content">
-                    <p>Olá! Sou a assistente de filmes do CineWorld.</p>
-                    <p>Descreva o que você quer assistir:</p>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">Ex: "filme de ação com robôs", "comédia romântica indiana"</p>
+                    <p id="aiGreetingText">Olá! Sou a assistente de filmes do CineWorld.</p>
+                    <p id="aiDescribeText">Descreva o que você quer assistir:</p>
+                    <p id="aiExampleText" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">Ex: "filme de ação com robôs", "comédia romântica indiana"</p>
                 </div>
             </div>
         </div>

@@ -58,6 +58,7 @@ const translations = {
         navHome: 'Início', navAbout: 'Sobre', navPrivacy: 'Privacidade', navTerms: 'Termos', navCookies: 'Cookies',
         footerAbout: 'Sobre', footerPrivacy: 'Privacidade', footerTerms: 'Termos', footerCookies: 'Cookies',
         addToFavorites: 'Adicionar aos favoritos', removeFromFavorites: 'Remover dos favoritos', watchTrailer: 'Ver Trailer',
+        aiTitle: 'O que deseja assistir?', aiGreeting: 'Olá! Sou a assistente de filmes do CineWorld.', aiDescribe: 'Descreva o que você quer assistir:', aiExample: 'Ex: "filme de ação com robôs", "comédia romântica indiana"', aiPlaceholder: 'Descreva o filme...',
         noTitle: 'Sem título',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Senha', registerLink: 'Cadastre-se', login: 'Entrar',
         namePlaceholder: 'Nome', noAccount: 'Não tem conta?', hasAccount: 'Já tenho conta', login: 'Entrar',
@@ -91,6 +92,7 @@ const translations = {
         navHome: 'Home', navAbout: 'About', navPrivacy: 'Privacy', navTerms: 'Terms', navCookies: 'Cookies',
         footerAbout: 'About', footerPrivacy: 'Privacy', footerTerms: 'Terms', footerCookies: 'Cookies',
         addToFavorites: 'Add to favorites', removeFromFavorites: 'Remove from favorites', watchTrailer: 'Watch Trailer',
+        aiTitle: 'What would you like to watch?', aiGreeting: 'Hello! I am the CineWorld movie assistant.', aiDescribe: 'Describe what you want to watch:', aiExample: 'Ex: "action movie with robots", "Indian romantic comedy"', aiPlaceholder: 'Describe the movie...',
         noTitle: 'No Title',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Password', registerLink: 'Sign up', login: 'Sign In',
         namePlaceholder: 'Name', noAccount: 'No account?', hasAccount: 'Already have account', login: 'Sign In',
@@ -124,6 +126,7 @@ const translations = {
         navHome: 'Inicio', navAbout: 'Acerca de', navPrivacy: 'Privacidad', navTerms: 'Términos', navCookies: 'Cookies',
         footerAbout: 'Acerca de', footerPrivacy: 'Privacidad', footerTerms: 'Términos', footerCookies: 'Cookies',
         addToFavorites: 'Agregar a favoritos', removeFromFavorites: 'Quitar de favoritos', watchTrailer: 'Ver Trailer',
+        aiTitle: '¿Qué quieres ver?', aiGreeting: '¡Hola! Soy el asistente de películas de CineWorld.', aiDescribe: 'Describe lo que quieres ver:', aiExample: 'Ej: "película de acción con robots"', aiPlaceholder: 'Describe la película...',
         noTitle: 'Sin título',
         emailPlaceholder: 'Correo electrónico', passwordPlaceholder: 'Contraseña', registerLink: 'Regístrate', login: 'Entrar',
         namePlaceholder: 'Nombre', noAccount: '¿No tienes cuenta?', hasAccount: 'Ya tengo cuenta', login: 'Entrar',
@@ -157,6 +160,7 @@ const translations = {
         navHome: '首页', navAbout: '关于', navPrivacy: '隐私', navTerms: '条款', navCookies: 'Cookies',
         footerAbout: '关于', footerPrivacy: '隐私', footerTerms: '条款', footerCookies: 'Cookies',
         addToFavorites: '添加到收藏', removeFromFavorites: '从收藏中删除', watchTrailer: '观看预告片',
+        aiTitle: '想看什么?', aiGreeting: '你好！我是 CineWorld 电影助手。', aiDescribe: '描述你想看什么:', aiExample: '例如："机器人动作片"', aiPlaceholder: '描述电影...',
         noTitle: '无标题',
         emailPlaceholder: '邮箱', passwordPlaceholder: '密码', registerLink: '注册', login: '登录',
         namePlaceholder: '姓名', noAccount: '没有账户？', hasAccount: '已有账户', login: '登录',
@@ -190,6 +194,7 @@ const translations = {
         navHome: '首頁', navAbout: '關於', navPrivacy: '隱私', navTerms: '條款', navCookies: 'Cookies',
         footerAbout: '關於', footerPrivacy: '隱私', footerTerms: '條款', footerCookies: 'Cookies',
         addToFavorites: '添加到收藏', removeFromFavorites: '從收藏中刪除', watchTrailer: '觀看預告片',
+        aiTitle: '想睇咩?', aiGreeting: '你好！我是 CineWorld 電影助手。', aiDescribe: '描述你想睇咩:', aiExample: '例如："机器人动作片"', aiPlaceholder: '描述電影...',
         noTitle: '無標題',
         emailPlaceholder: '電子郵件', passwordPlaceholder: '密碼', registerLink: '註冊', login: '登入',
         namePlaceholder: '姓名', noAccount: '沒有賬戶？', hasAccount: '已有賬戶', login: '登入',
@@ -223,6 +228,7 @@ const translations = {
         navHome: 'ホーム', navAbout: 'について', navPrivacy: 'プライバシー', navTerms: '利用規約', navCookies: 'Cookies',
         footerAbout: 'について', footerPrivacy: 'プライバシー', footerTerms: '利用規約', footerCookies: 'Cookies',
         addToFavorites: 'お気に入りに追加', removeFromFavorites: 'お気に入りから削除', watchTrailer: '予告編を見る',
+        aiTitle: '何を見たいですか？', aiGreeting: 'こんにちは！CineWorld 映画アシスタントです。', aiDescribe: '見たいものを描述:', aiExample: '例："ロボットアクション映画"', aiPlaceholder: '映画を描述...',
         noTitle: '無題',
         emailPlaceholder: 'メールアドレス', passwordPlaceholder: 'パスワード', registerLink: '登録', login: 'ログイン',
         namePlaceholder: '名前', noAccount: 'アカウントがありませんか？', hasAccount: 'すでにアカウントあり', login: 'ログイン',
@@ -256,6 +262,7 @@ const translations = {
         navHome: 'Главная', navAbout: 'О нас', navPrivacy: 'Конфиденциальность', navTerms: 'Условия', navCookies: 'Cookies',
         footerAbout: 'О нас', footerPrivacy: 'Конфиденциальность', footerTerms: 'Условия', footerCookies: 'Cookies',
         addToFavorites: 'Добавить в избранное', removeFromFavorites: 'Удалить из избранного', watchTrailer: 'Смотреть трейлер',
+        aiTitle: 'Что хотите смотреть?', aiGreeting: 'Привет! Я помощник фильмов CineWorld.', aiDescribe: 'Опишите, что хотите смотреть:', aiExample: 'Например: "боевик с роботами"', aiPlaceholder: 'Опишите фильм...',
         noTitle: 'Без названия',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Пароль', registerLink: 'Регистрация', login: 'Войти',
         namePlaceholder: 'Имя', noAccount: 'Нет аккаунта?', hasAccount: 'Уже есть аккаунт', login: 'Войти',
@@ -289,6 +296,7 @@ const translations = {
         navHome: '홈', navAbout: '정보', navPrivacy: '개인정보', navTerms: '이용약관', navCookies: 'Cookies',
         footerAbout: '정보', footerPrivacy: '개인정보', footerTerms: '이용약관', footerCookies: 'Cookies',
         addToFavorites: '즐겨찾기에 추가', removeFromFavorites: '즐겨찾기에서 삭제', watchTrailer: '예고편 보기',
+        aiTitle: '무엇을 보고 싶나요?', aiGreeting: '안녕하세요! CineWorld 영화 도우미입니다.', aiDescribe: '보고 싶은 것을 설명:', aiExample: '예: "로봇 액션 영화"', aiPlaceholder: '영화 설명...',
         noTitle: '제목 없음',
         emailPlaceholder: '이메일', passwordPlaceholder: '비밀번호', registerLink: '회원가입', login: '로그인',
         namePlaceholder: '이름', noAccount: '계정이 없으신가요?', hasAccount: '이미 계정이 있음', login: '로그인',
@@ -755,6 +763,17 @@ function updateTranslations() {
         
         const genresTitle = document.getElementById('genresTitle');
         if (genresTitle) genresTitle.textContent = t('genres');
+        
+        const aiTitleText = document.getElementById('aiTitleText');
+        if (aiTitleText) aiTitleText.textContent = t('aiTitle') || 'O que deseja assistir?';
+        const aiGreetingText = document.getElementById('aiGreetingText');
+        if (aiGreetingText) aiGreetingText.textContent = t('aiGreeting') || 'Olá! Sou a assistente de filmes do CineWorld.';
+        const aiDescribeText = document.getElementById('aiDescribeText');
+        if (aiDescribeText) aiDescribeText.textContent = t('aiDescribe') || 'Descreva o que você quer assistir:';
+        const aiExampleText = document.getElementById('aiExampleText');
+        if (aiExampleText) aiExampleText.textContent = t('aiExample') || 'Ex: "filme de ação com robôs", "comédia romântica indiana"';
+        const aiSearchInput = document.getElementById('aiSearchInput');
+        if (aiSearchInput) aiSearchInput.placeholder = t('aiPlaceholder') || 'Descreva o filme...';
         
         const prevText = document.getElementById('prevText');
         if (prevText) prevText.textContent = t('prev');
