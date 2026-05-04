@@ -73,7 +73,7 @@ const translations = {
         aiTitle: 'O que deseja assistir?', aiGreeting: 'Olá! Sou a assistente de filmes do CineWorld.', aiDescribe: 'Descreva o que você quer assistir:', aiExample: 'Ex: "filme de ação com robôs", "comédia romântica indiana"', aiPlaceholder: 'Descreva o filme...',
         noTitle: 'Sem título',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Senha', registerLink: 'Cadastre-se', login: 'Entrar',
-        namePlaceholder: 'Nome', noAccount: 'Não tem conta?', hasAccount: 'Já tenho conta', login: 'Entrar',
+        namePlaceholder: 'Nome', noAccount: 'Não tem conta?', hasAccount: 'Já tem conta', login: 'Entrar', confirmPasswordPlaceholder: 'Confirmar Senha', createAccount: 'Crie sua conta',
         contactSuccess: 'Formulário enviado com sucesso!', contactError: 'Erro ao enviar. Tente novamente.', contactOpenForm: 'O formulário foi aberto! Por favor, preencha e envie.',
         loginFirst: 'Por favor, entre na sua conta para adicionar favoritos!',
         myFavorites: 'Meus Favoritos'
@@ -108,6 +108,7 @@ const translations = {
         noTitle: 'No Title',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Password', registerLink: 'Sign up', login: 'Sign In',
         namePlaceholder: 'Name', noAccount: 'No account?', hasAccount: 'Already have account', login: 'Sign In',
+        confirmPasswordPlaceholder: 'Confirm Password', createAccount: 'Create your account',
         contactSuccess: 'Form submitted successfully!', contactError: 'Error submitting. Try again.', contactOpenForm: 'The form has been opened! Please fill and send.',
         loginFirst: 'Please login to add favorites!',
         myFavorites: 'My Favorites'
@@ -142,6 +143,7 @@ const translations = {
         noTitle: 'Sin título',
         emailPlaceholder: 'Correo electrónico', passwordPlaceholder: 'Contraseña', registerLink: 'Regístrate', login: 'Entrar',
         namePlaceholder: 'Nombre', noAccount: '¿No tienes cuenta?', hasAccount: 'Ya tengo cuenta', login: 'Entrar',
+        confirmPasswordPlaceholder: 'Confirmar Contraseña', createAccount: 'Crea tu cuenta',
         contactSuccess: '¡Formulario enviado con éxito!', contactError: 'Error al enviar. Inténtalo de nuevo.', contactOpenForm: '¡El formulario se ha abierto! Por favor, llena y envía.',
         loginFirst: '¡Por favor, entra en tu cuenta para agregar favoritos!',
         myFavorites: 'Mis Favoritos'
@@ -176,6 +178,7 @@ const translations = {
         noTitle: '无标题',
         emailPlaceholder: '邮箱', passwordPlaceholder: '密码', registerLink: '注册', login: '登录',
         namePlaceholder: '姓名', noAccount: '没有账户？', hasAccount: '已有账户', login: '登录',
+        confirmPasswordPlaceholder: '确认密码', createAccount: '创建账户',
         contactSuccess: '表单提交成功！', contactError: '提交错误，请重试。', contactOpenForm: '表单已打开！请填写并发送。',
         loginFirst: '请登录以添加收藏！',
         myFavorites: '我的收藏'
@@ -210,6 +213,7 @@ const translations = {
         noTitle: '無標題',
         emailPlaceholder: '電子郵件', passwordPlaceholder: '密碼', registerLink: '註冊', login: '登入',
         namePlaceholder: '姓名', noAccount: '沒有賬戶？', hasAccount: '已有賬戶', login: '登入',
+        confirmPasswordPlaceholder: '確認密碼', createAccount: '創建賬戶',
         contactSuccess: '表單提交成功！', contactError: '提交錯誤，請重試。', contactOpenForm: '表單已打開！請填寫並發送。',
         loginFirst: '請登入以添加收藏！',
         myFavorites: '我的收藏'
@@ -244,6 +248,7 @@ const translations = {
         noTitle: '無題',
         emailPlaceholder: 'メールアドレス', passwordPlaceholder: 'パスワード', registerLink: '登録', login: 'ログイン',
         namePlaceholder: '名前', noAccount: 'アカウントがありませんか？', hasAccount: 'すでにアカウントあり', login: 'ログイン',
+        confirmPasswordPlaceholder: 'パスワード確認', createAccount: 'アカウント作成',
         contactSuccess: 'フォーム送信成功！', contactError: '送信エラー。もう一度お試しください。', contactOpenForm: 'フォームが開きました！記入して送信してください。',
         loginFirst: 'お気に入りを追加するにはログインしてください！',
         myFavorites: 'お気に入り'
@@ -278,6 +283,7 @@ const translations = {
         noTitle: 'Без названия',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Пароль', registerLink: 'Регистрация', login: 'Войти',
         namePlaceholder: 'Имя', noAccount: 'Нет аккаунта?', hasAccount: 'Уже есть аккаунт', login: 'Войти',
+        confirmPasswordPlaceholder: 'Подтвердите пароль', createAccount: 'Создайте аккаунт',
         contactSuccess: 'Форма успешно отправлена!', contactError: 'Ошибка отправки. Попробуйте снова.', contactOpenForm: 'Форма открыта! Пожалуйста, заполните и отправьте.',
         loginFirst: 'Пожалуйста, войдите, чтобы добавить в избранное!',
         myFavorites: 'Избранное'
@@ -312,6 +318,7 @@ const translations = {
         noTitle: '제목 없음',
         emailPlaceholder: '이메일', passwordPlaceholder: '비밀번호', registerLink: '회원가입', login: '로그인',
         namePlaceholder: '이름', noAccount: '계정이 없으신가요?', hasAccount: '이미 계정이 있음', login: '로그인',
+        confirmPasswordPlaceholder: '비밀번호 확인', createAccount: '계정 만들기',
         contactSuccess: '양식이 성공적으로 제출되었습니다!', contactError: '제출 오류. 다시 시도하십시오.', contactOpenForm: '양식이 열렸습니다! 내용을 입력하고 보내십시오.',
         loginFirst: '즐겨찾기에 추가하려면 로그인하십시오!',
         myFavorites: '나의 즐겨찾기'
@@ -1484,18 +1491,23 @@ function showRegisterForm() {
     document.getElementById('registerForm').style.display = 'block';
     document.getElementById('loginModalTitle').textContent = t('registerTitle') || 'Cadastrar';
     
+    const registerSubTitle = document.getElementById('registerSubTitle');
+    if (registerSubTitle) registerSubTitle.textContent = t('createAccount') || 'Crie sua conta';
+    
     const nameInput = document.getElementById('registerName');
     if (nameInput) nameInput.placeholder = t('namePlaceholder') || 'Nome';
     const emailInput = document.getElementById('registerEmail');
     if (emailInput) emailInput.placeholder = t('emailPlaceholder') || 'Email';
     const passwordInput = document.getElementById('registerPassword');
     if (passwordInput) passwordInput.placeholder = t('passwordPlaceholder') || 'Senha';
+    const confirmPasswordInput = document.getElementById('registerConfirmPassword');
+    if (confirmPasswordInput) confirmPasswordInput.placeholder = t('confirmPasswordPlaceholder') || 'Confirmar Senha';
     const registerBtn = document.getElementById('registerBtn');
     if (registerBtn) registerBtn.textContent = t('registerTitle') || 'Cadastrar';
     
-    const noAccountText = document.getElementById('noAccountText');
-    if (noAccountText) {
-        noAccountText.innerHTML = t('hasAccount') + ' <a href="#" onclick="showLogin(event)" style="color: var(--accent);">' + t('login') + '</a>';
+    const hasAccountText = document.getElementById('hasAccountText');
+    if (hasAccountText) {
+        hasAccountText.innerHTML = t('hasAccount') + ' <a href="#" onclick="showLogin(event)" style="color: var(--accent);">' + t('login') + '</a>';
     }
 }
 
