@@ -640,14 +640,6 @@ function renderMovies() {
                                 `<span>${movie.production_countries[0].name}</span>` : ''}
                         </div>
                     </div>
-                    <div class="movie-actions" style="display:flex; gap:8px; margin-top:12px;">
-                        <button class="action-btn-small" onclick="event.stopPropagation(); window.open('https://www.themoviedb.org/movie/${movie.id}','_blank')" title="${t('watch')}">
-                            <i class="fas fa-play"></i> ${t('watch')}
-                        </button>
-                        <button class="action-btn-small secondary" onclick="event.stopPropagation(); showMovieDetails(${movie.id})" title="${t('rent')}">
-                            <i class="fas fa-ticket-alt"></i> ${t('rent')}
-                        </button>
-                    </div>
                 </div>
             `;
     }).join('');
@@ -1086,25 +1078,27 @@ function showMovieModal(movie) {
     let streamingHtml = '';
     if (movie.streaming && movie.streaming.length > 0) {
         const platformUrls = {
-            'Netflix': 'https://www.netflix.com/search?',
-            'Amazon Prime Video': 'https://www.primevideo.com/search/?phrase=',
-            'Disney+': 'https://www.disneyplus.com/search?query=',
-            'HBO Max': 'https://www.max.com/search?query=',
-            'HBO': 'https://www.max.com/search?query=',
-            'Paramount+': 'https://www.paramountplus.com/search/',
-            'Apple TV+': 'https://tv.apple.com/search?term=',
-            'Google Play Movies': 'https://play.google.com/store/movies/search?query=',
-            'YouTube': 'https://www.youtube.com/results?search_query=',
-            'Crunchyroll': 'https://www.crunchyroll.com/search?q=',
-            'Globoplay': 'https://globoplay.globo.com/busca/?query=',
-            'Claro tv+': 'https://www.claro.com.br/tvplus/busca?termo=',
-            'Netflix Standard with Ads': 'https://www.netflix.com/search?'
+            'Netflix': 'https://www.netflix.com',
+            'Amazon Prime Video': 'https://www.primevideo.com',
+            'Disney+': 'https://www.disneyplus.com',
+            'HBO Max': 'https://www.max.com',
+            'HBO': 'https://www.max.com',
+            'Paramount+': 'https://www.paramountplus.com',
+            'Apple TV+': 'https://tv.apple.com',
+            'Google Play Movies': 'https://play.google.com/store/movies',
+            'YouTube': 'https://www.youtube.com',
+            'Crunchyroll': 'https://www.crunchyroll.com',
+            'Globoplay': 'https://globoplay.globo.com',
+            'Claro tv+': 'https://www.claro.com.br/tvplus',
+            'Netflix Standard with Ads': 'https://www.netflix.com',
+            'Tubi': 'https://tubi.tv',
+            'Pluto TV': 'https://pluto.tv',
+            'Peacock': 'https://www.peacocktv.com',
+            'Crackle': 'https://www.crackle.com'
         };
         
-        const getPlatformUrl = (platformName, movieTitle) => {
-            const baseUrl = platformUrls[platformName];
-            if (!baseUrl) return null;
-            return baseUrl + encodeURIComponent(movieTitle);
+        const getPlatformUrl = (platformName) => {
+            return platformUrls[platformName] || null;
         };
         
         const flatrate = movie.streaming.filter(p => p.type === 'flatrate' && !p.isFree);
@@ -1133,7 +1127,7 @@ function showMovieModal(movie) {
             
             if (flatrateFree.length > 0) {
                 html += flatrateFree.map(p => {
-                    const url = getPlatformUrl(p.name, movie.title) || p.link;
+                    const url = getPlatformUrl(p.name) || 'https://www.google.com/search?q=' + encodeURIComponent(movie.title + ' ' + p.name + ' streaming');
                     return `<a href="${url}" target="_blank" class="stream-tag stream-free" title="${p.name} (Gratuito)">
                         <span>${p.name}</span>
                         <i class="fas fa-tag" title="Gratuito"></i>
@@ -1143,7 +1137,7 @@ function showMovieModal(movie) {
             
             if (flatrate.length > 0) {
                 html += flatrate.map(p => {
-                    const url = getPlatformUrl(p.name, movie.title) || p.link;
+                    const url = getPlatformUrl(p.name) || 'https://www.google.com/search?q=' + encodeURIComponent(movie.title + ' ' + p.name + ' streaming');
                     return `<a href="${url}" target="_blank" class="stream-tag" title="${p.name}">
                         <span>${p.name}</span>
                     </a>`;
@@ -1157,7 +1151,7 @@ function showMovieModal(movie) {
             html += '<h4><i class="fas fa-shopping-cart"></i> ' + langStreaming.rent + '</h4>';
             html += '<div class="streaming-list">';
             html += rent.map(p => {
-                const url = getPlatformUrl(p.name, movie.title) || p.link;
+                const url = getPlatformUrl(p.name) || 'https://www.google.com/search?q=' + encodeURIComponent(movie.title + ' ' + p.name + ' alugar');
                 return `<a href="${url}" target="_blank" class="stream-tag stream-rent" title="Alugar em ${p.name}">
                     <span>${p.name}</span>
                 </a>`;
@@ -1169,7 +1163,7 @@ function showMovieModal(movie) {
             html += '<h4><i class="fas fa-shopping-bag"></i> ' + langStreaming.buy + '</h4>';
             html += '<div class="streaming-list">';
             html += buy.map(p => {
-                const url = getPlatformUrl(p.name, movie.title) || p.link;
+                const url = getPlatformUrl(p.name) || 'https://www.google.com/search?q=' + encodeURIComponent(movie.title + ' ' + p.name + ' comprar');
                 return `<a href="${url}" target="_blank" class="stream-tag stream-buy" title="Comprar em ${p.name}">
                     <span>${p.name}</span>
                 </a>`;
