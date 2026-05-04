@@ -2144,3 +2144,25 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary);
+    color: var(--text-light);
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    animation: toastFadeIn 0.3s ease;
+    font-size: 0.95rem;
+    border: 1px solid var(--accent);
+}
+
+@keyframes toastFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

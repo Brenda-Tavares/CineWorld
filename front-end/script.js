@@ -1,5 +1,17 @@
 // Supabase Configuration - CineWorld
 
+// Toast notification function
+function showToast(message) {
+    const existing = document.querySelector('.toast-notification');
+    if (existing) existing.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.remove(), 3000);
+}
 
 // CineWorld - Main Script
 let state = {
@@ -42,7 +54,7 @@ const translations = {
         rating: 'Avaliação', year: 'Ano', synopsis: 'Sinopse', synopsisNotAvailable: 'Sinopse não disponível.',
         originalTitle: 'Título original', close: 'Fechar',
         noResults: 'Nenhum filme encontrado', tryAgain: 'Tente outro gênero ou busca', resultsFor: 'Resultados para',
-        login: 'Entrar', logout: 'Sair', loginTitle: 'Entrar',
+        login: 'Entrar', logout: 'Sair', loginTitle: 'Entrar', registerTitle: 'Cadastrar', logoutMessage: 'Volte logo!',
         loginDesc: 'Escolha uma opção para continuar',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Onde Assistir', runtime: 'min',
@@ -76,7 +88,7 @@ const translations = {
         rating: 'Rating', year: 'Year', synopsis: 'Synopsis', synopsisNotAvailable: 'Synopsis not available',
         originalTitle: 'Original title', close: 'Close',
         noResults: 'No movies found', tryAgain: 'Try another genre or search', resultsFor: 'Results for',
-        login: 'Sign In', logout: 'Sign Out', loginTitle: 'Sign In',
+        login: 'Sign In', logout: 'Sign Out', loginTitle: 'Sign In', registerTitle: 'Sign Up', logoutMessage: 'Come back soon!',
         loginDesc: 'Choose an option to continue',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Watch On', runtime: 'min',
@@ -110,7 +122,7 @@ const translations = {
         rating: 'Valoración', year: 'Año', synopsis: 'Sinopsis', synopsisNotAvailable: 'Sinopsis no disponible.',
         originalTitle: 'Título original', close: 'Cerrar',
         noResults: 'No se encontraron películas', tryAgain: 'Intenta otro género o búsqueda', resultsFor: 'Resultados para',
-        login: 'Entrar', logout: 'Salir', loginTitle: 'Entrar',
+        login: 'Entrar', logout: 'Salir', loginTitle: 'Entrar', registerTitle: 'Registrarse', logoutMessage: '¡Vuelve pronto!',
         loginDesc: 'Elige una opción para continuar',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Ver en', runtime: 'min',
@@ -144,7 +156,7 @@ const translations = {
         rating: '评分', year: '年份', synopsis: '简介', synopsisNotAvailable: '简介不可用',
         originalTitle: '原名', close: '关闭',
         noResults: '未找到电影', tryAgain: '尝试其他类型或搜索', resultsFor: '搜索结果',
-        login: '登录', logout: '登出', loginTitle: '登录', registerTitle: '注册',
+        login: '登录', logout: '登出', loginTitle: '登录', registerTitle: '注册', logoutMessage: '欢迎下次光临！',
         loginDesc: '选择一个选项继续',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '在线观看', runtime: '分钟',
@@ -178,7 +190,7 @@ const translations = {
         rating: '評分', year: '年份', synopsis: '簡介', synopsisNotAvailable: '簡介不可用',
         originalTitle: '原名', close: '關閉',
         noResults: '未找到電影', tryAgain: '嘗試其他類型或搜尋', resultsFor: '搜尋結果',
-        login: '登入', logout: '登出', loginTitle: '登入', registerTitle: '註冊',
+        login: '登入', logout: '登出', loginTitle: '登入', registerTitle: '註冊', logoutMessage: '歡迎下次光臨！',
         loginDesc: '選擇一個選項繼續',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '線上觀看', runtime: '分鐘',
@@ -212,7 +224,7 @@ const translations = {
         rating: '評価', year: '年', synopsis: 'あらすじ', synopsisNotAvailable: 'あらすじはありません',
         originalTitle: '原題', close: '閉じる',
         noResults: '映画が見つかりません', tryAgain: '他のジャンルで検索', resultsFor: '検索結果',
-        login: 'ログイン', logout: 'ログアウト', loginTitle: 'ログイン', registerTitle: '登録',
+        login: 'ログイン', logout: 'ログアウト', loginTitle: 'ログイン', registerTitle: '登録', logoutMessage: 'また来てね！',
         loginDesc: 'オプションを選択してください',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '視聴', runtime: '分',
@@ -246,7 +258,7 @@ const translations = {
         rating: 'Рейтинг', year: 'Год', synopsis: 'Описание', synopsisNotAvailable: 'Описание недоступно',
         originalTitle: 'Оригиналное название', close: 'Закрыть',
         noResults: 'Фильмы не найдены', tryAgain: 'Попробуйте другой жанр или поиск', resultsFor: 'Результаты для',
-        login: 'Войти', logout: 'Выйти', loginTitle: 'Войти', registerTitle: 'Регистрация',
+        login: 'Войти', logout: 'Выйти', loginTitle: 'Войти', registerTitle: 'Регистрация', logoutMessage: 'До скорой встречи！',
         loginDesc: 'Выберите вариант',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: 'Смотреть', runtime: 'мин',
@@ -280,7 +292,7 @@ const translations = {
         rating: '평점', year: '연도', synopsis: '시놉시스', synopsisNotAvailable: '시놉시스 없음',
         originalTitle: '원제', close: '닫기',
         noResults: '영화를 찾을 수 없습니다', tryAgain: '다른 장르 또는 검색을 시도하세요', resultsFor: '검색 결과',
-        login: '로그인', logout: '로그아웃', loginTitle: '로그인', registerTitle: '회원가입',
+        login: '로그인', logout: '로그아웃', loginTitle: '로그인', registerTitle: '회원가입', logoutMessage: '다음에 봐요！',
         loginDesc: '옵션을 선택하세요',
         loginGoogle: 'Google', loginFacebook: 'Facebook',
         streaming: '시청', runtime: '분',
@@ -1326,7 +1338,7 @@ function toggleNavMenu() {
 // Favorites - now using Supabase
 function toggleFavorite(movieId) {
     if (!currentUser) {
-        alert(t('loginFirst') || 'Por favor, entre na sua conta para adicionar favoritos!');
+        showToast(t('loginFirst') || 'Por favor, entre na sua conta para adicionar favoritos!');
         openLoginModal();
         return;
     }
@@ -1541,7 +1553,7 @@ function doLogin(userObj) {
         localStorage.setItem('cineworld_user', JSON.stringify(currentUser));
         updateAuthUI();
         closeLoginModal();
-        alert(t('welcome') + ', ' + currentUser.name + '!');
+        showToast((t('welcome') || 'Bem-vindo!') + ' ' + currentUser.name);
     } else {
         const email = document.getElementById('loginEmail').value.trim();
         const password = document.getElementById('loginPassword').value;
@@ -1579,6 +1591,7 @@ window.logout = function() {
     localStorage.removeItem('cineworld_favorites');
     updateAuthUI();
     updateFavoritesCount();
+    showToast(t('logoutMessage') || 'Volte logo!');
 };
 
 function updateAuthUI() {
@@ -1661,7 +1674,7 @@ window.handleGoogleLogin = function(response) {
         alert(t('welcome') + ', ' + user.name + '!');
     } catch (error) {
         console.error('Google login error:', error);
-        alert(t('loginError') || 'Erro no login com Google.');
+        showToast(t('loginError') || 'Erro no login com Google.');
     }
 };
 
