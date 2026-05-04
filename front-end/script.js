@@ -1149,8 +1149,10 @@ let streamingHtml = '';
             'Hulu': 'https://www.hulu.com',
             'Directv': 'https://www.directv.com',
             'DIRECTV': 'https://www.directv.com',
-            'Fandango At Home': 'https://www.fandango.com',
-            'Fandango': 'https://www.fandango.com',
+            'Fandango At Home': 'https://athome.fandango.com',
+            'Fandango at Home': 'https://athome.fandango.com',
+            'Vudu': 'https://vudu.com',
+            'Fandango': 'https://athome.fandango.com',
             'VUDU': 'https://www.vudu.com',
             'Microsoft Store': 'https://www.microsoft.com/store/movies',
             'AMC on Demand': 'https://www.amcplus.com',
@@ -1196,9 +1198,10 @@ let streamingHtml = '';
         const getPlatformUrl = (platformName) => {
             const normalized = normalizePlatformName(platformName);
             for (const [key, url] of Object.entries(platformUrls)) {
-                if (normalizePlatformName(key) === normalized || 
-                    normalizePlatformName(key).includes(normalized) ||
-                    normalized.includes(normalizePlatformName(key))) {
+                const keyNormalized = normalizePlatformName(key);
+                if (keyNormalized === normalized || 
+                    normalized.includes(keyNormalized) ||
+                    keyNormalized.includes(normalized)) {
                     return url;
                 }
             }
