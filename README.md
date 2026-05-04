@@ -1,19 +1,19 @@
 # 🎬 CineWorld TMDB
 
 ![App](https://img.shields.io/badge/app-CineWorld_TMDB-blue)
-![Developer](https://img.shields.io/badge/by-Alabaster_Developer-red)
-![License](https://img.shields.io/badge/license-View--Only_Alabaster-green)
+![Developer](https://img.shields.io/badge/by-Brenda_Tavares-red)
+![License](https://img.shields.io/badge/license-View--Only-green)
 
-**Movie discovery app** • **Portfolio project by Alabaster Developer**
+**Movie discovery app** • **Portfolio project by Brenda Tavares**
 
 ## 👨‍💻 About the Developer
-**Alabaster Developer** - Full-stack developer specializing in:
+**Brenda Tavares** - Full-stack developer specializing in:
 - Modern web applications
 - API integration (TMDB)
 - Responsive design
 - Secure backend development
 
-Contact: alabasterdeveloper@gmail.com
+Contact: brendatavaresti@gmail.com
 ## ✨ Funcionalidades
 
 - 🔍 **Busca avançada** de filmes
@@ -46,6 +46,6 @@ This project is shared as a **portfolio demonstration** under a **view-only lice
 ❌ **Not allowed:** Copying, modification, commercial use, redistribution
 
 **Full license:** [LICENSE](LICENSE)  
-**Contact for permissions:** alabasterdeveloper@gmail.com
+**Contact for permissions:** brendatavaresti@gmail.com
 
 *This code demonstrates my full-stack development skills. It is not intended for reuse.*

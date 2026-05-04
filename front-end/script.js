@@ -862,7 +862,7 @@ function updateFooter() {
                 <span class="footer-divider">|</span>
                 <a href="/cookies" id="footerCookies">${t('cookies')}</a>
             </div>
-            <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Brenda Tavares</strong> | <strong>NicoClaw</strong></p>
+            <p>&copy; 2026 - Todos os direitos reservados | Desenvolvido por <strong>Brenda Tavares</strong></p>
         `;
     }
 }
@@ -1098,7 +1098,6 @@ function showMovieModal(movie) {
             'Crunchyroll': 'https://www.crunchyroll.com/search?q=',
             'Globoplay': 'https://globoplay.globo.com/busca/?query=',
             'Claro tv+': 'https://www.claro.com.br/tvplus/busca?termo=',
-            'Oldflix': 'https://oldflix.com/search?query=',
             'Netflix Standard with Ads': 'https://www.netflix.com/search?'
         };
         

@@ -1,7 +1,7 @@
 /*!
  CINEWORLD BACKEND API
- © 2026 Alabaster Developer
-*/
+ © 2026 Brenda Tavares
+ */
 
 const express = require('express');
 const cors = require('cors');

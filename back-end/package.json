@@ -24,7 +24,7 @@
     "node": ">=16.0.0"
   },
   "keywords": ["movies", "tmdb", "api", "secure", "cineworld"],
-  "author": "Alabaster Developer",
+  "author": "Brenda Tavares",
   "license": "MIT",
   "repository": {
     "type": "git",
