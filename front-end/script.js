@@ -845,6 +845,11 @@ function updateTranslations() {
             }
         }
         
+        const registerBtn = document.getElementById('registerBtn');
+        if (registerBtn) {
+            registerBtn.textContent = t('registerTitle') || 'Cadastrar';
+        }
+        
         updateFavoritesCount();
     } catch (e) {
         console.error('Error updating translations:', e);
