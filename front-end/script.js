@@ -1482,7 +1482,7 @@ function showLoginForm() {
 function showRegisterForm() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
-    document.getElementById('loginModalTitle').textContent = t('registerTitle');
+    document.getElementById('loginModalTitle').textContent = t('registerTitle') || 'Cadastrar';
     
     const nameInput = document.getElementById('registerName');
     if (nameInput) nameInput.placeholder = t('namePlaceholder') || 'Nome';
@@ -1490,8 +1490,8 @@ function showRegisterForm() {
     if (emailInput) emailInput.placeholder = t('emailPlaceholder') || 'Email';
     const passwordInput = document.getElementById('registerPassword');
     if (passwordInput) passwordInput.placeholder = t('passwordPlaceholder') || 'Senha';
-    const registerBtn = document.querySelector('#registerForm button[onclick="doRegister()"]');
-    if (registerBtn) registerBtn.textContent = t('register') || 'Cadastrar';
+    const registerBtn = document.getElementById('registerBtn');
+    if (registerBtn) registerBtn.textContent = t('registerTitle') || 'Cadastrar';
     
     const noAccountText = document.getElementById('noAccountText');
     if (noAccountText) {
