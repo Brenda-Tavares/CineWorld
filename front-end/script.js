@@ -1057,7 +1057,7 @@ window.performAiSearch = function() {
 window.showMovieDetails = async function(movieId) {
     try {
         const tmdbLang = languageMap[state.currentLanguage] || 'pt-BR';
-        const response = await fetch(API_BASE + '/movie/' + movieId + '?language=' + tmdbLang);
+        const response = await fetch(API_BASE + '/movie?id=' + movieId + '&language=' + tmdbLang);
         const data = await response.json();
         
         if (data.movie) {
