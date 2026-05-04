@@ -1099,9 +1099,9 @@ let streamingHtml = '';
 const platformUrls = {
             'netflix': 'https://www.netflix.com',
             'netflix standard with ads': 'https://www.netflix.com',
-            'amazon prime video': 'https://www.primevideo.com',
-            'amazon prime': 'https://www.primevideo.com',
+'amazon prime video': 'https://www.primevideo.com',
             'prime video': 'https://www.primevideo.com',
+            'amazon': 'https://www.primevideo.com',
             'prime': 'https://www.primevideo.com',
             'disney+': 'https://www.disneyplus.com',
             'disney plus': 'https://www.disneyplus.com',
@@ -1166,15 +1166,14 @@ const platformUrls = {
             'binge': 'https://www.binge.com.au'
 };
         
-        const getPlatformUrl = (platformName, movieTitle) => {
+        const getPlatformUrl = (platformName) => {
             const normalized = platformName.toLowerCase().replace(/\s+/g, ' ').trim();
             for (const [key, url] of Object.entries(platformUrls)) {
                 if (normalized === key || normalized.includes(key) || key.includes(normalized)) {
                     return url;
                 }
             }
-            // Fallback: Google search for the platform
-            return 'https://www.google.com/search?q=' + encodeURIComponent(platformName + ' streaming');
+            return null;
         };
         
         const flatrate = movie.streaming.filter(p => p.type === 'flatrate' && !p.isFree);
@@ -1203,20 +1202,26 @@ const platformUrls = {
             
             if (flatrateFree.length > 0) {
                 html += flatrateFree.map(p => {
-                    const url = getPlatformUrl(p.name, movie.title);
-                    return `<a href="${url}" target="_blank" class="stream-tag stream-free" title="${p.name} (Gratuito)">
-                        <span>${p.name}</span>
-                        <i class="fas fa-tag" title="Gratuito"></i>
-                    </a>`;
+                    const url = getPlatformUrl(p.name);
+                    if (url) {
+                        return `<a href="${url}" target="_blank" class="stream-tag stream-free" title="${p.name} (Gratuito)">
+                            <span>${p.name}</span>
+                            <i class="fas fa-tag" title="Gratuito"></i>
+                        </a>`;
+                    }
+                    return '';
                 }).join('');
             }
             
             if (flatrate.length > 0) {
                 html += flatrate.map(p => {
-                    const url = getPlatformUrl(p.name, movie.title);
-                    return `<a href="${url}" target="_blank" class="stream-tag" title="${p.name}">
-                        <span>${p.name}</span>
-                    </a>`;
+                    const url = getPlatformUrl(p.name);
+                    if (url) {
+                        return `<a href="${url}" target="_blank" class="stream-tag" title="${p.name}">
+                            <span>${p.name}</span>
+                        </a>`;
+                    }
+                    return '';
                 }).join('');
             }
             
@@ -1227,10 +1232,13 @@ const platformUrls = {
             html += '<h4><i class="fas fa-shopping-cart"></i> ' + langStreaming.rent + '</h4>';
             html += '<div class="streaming-list">';
             html += rent.map(p => {
-                const url = getPlatformUrl(p.name, movie.title);
-                return `<a href="${url}" target="_blank" class="stream-tag stream-rent" title="Alugar em ${p.name}">
-                    <span>${p.name}</span>
-                </a>`;
+                const url = getPlatformUrl(p.name);
+                if (url) {
+                    return `<a href="${url}" target="_blank" class="stream-tag stream-rent" title="Alugar em ${p.name}">
+                        <span>${p.name}</span>
+                    </a>`;
+                }
+                return '';
             }).join('');
             html += '</div>';
         }
@@ -1239,10 +1247,13 @@ const platformUrls = {
             html += '<h4><i class="fas fa-shopping-bag"></i> ' + langStreaming.buy + '</h4>';
             html += '<div class="streaming-list">';
             html += buy.map(p => {
-                const url = getPlatformUrl(p.name, movie.title);
-                return `<a href="${url}" target="_blank" class="stream-tag stream-buy" title="Comprar em ${p.name}">
-                    <span>${p.name}</span>
-                </a>`;
+                const url = getPlatformUrl(p.name);
+                if (url) {
+                    return `<a href="${url}" target="_blank" class="stream-tag stream-buy" title="Comprar em ${p.name}">
+                        <span>${p.name}</span>
+                    </a>`;
+                }
+                return '';
             }).join('');
             html += '</div>';
         }
