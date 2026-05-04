@@ -1094,24 +1094,36 @@ function showMovieModal(movie) {
     const isFav = favorites.includes(movie.id);
     const hasVotes = movie.vote_count > 0;
     
-    let streamingHtml = '';
-    if (movie.streaming && movie.streaming.length > 0) {
+let streamingHtml = '';
+        if (movie.streaming && movie.streaming.length > 0) {
         const platformUrls = {
             'Netflix': 'https://www.netflix.com',
+            'Netflix Standard with Ads': 'https://www.netflix.com',
             'Amazon Prime Video': 'https://www.primevideo.com',
+            'Amazon Prime': 'https://www.primevideo.com',
+            'Prime Video': 'https://www.primevideo.com',
             'Disney+': 'https://www.disneyplus.com',
+            'Disney Plus': 'https://www.disneyplus.com',
             'HBO Max': 'https://www.max.com',
             'HBO': 'https://www.max.com',
+            'Max': 'https://www.max.com',
             'Paramount+': 'https://www.paramountplus.com',
+            'Paramount Plus': 'https://www.paramountplus.com',
             'Apple TV+': 'https://tv.apple.com',
+            'Apple TV': 'https://tv.apple.com',
             'Google Play Movies': 'https://play.google.com/store/movies',
+            'Google Play': 'https://play.google.com/store/movies',
             'YouTube': 'https://www.youtube.com',
             'Crunchyroll': 'https://www.crunchyroll.com',
             'Globoplay': 'https://globoplay.globo.com',
+            'Claro tv+': 'https://www.claro.com.br/tvplus',
+            'Claro video': 'https://www.claro.com.br/tvplus',
             'Tubi': 'https://tubi.tv',
             'Pluto TV': 'https://pluto.tv',
             'Peacock': 'https://www.peacocktv.com',
+            'Peacock TV': 'https://www.peacocktv.com',
             'Rakuten TV': 'https://www.rakutentv.com',
+            'Rakuten': 'https://www.rakutentv.com',
             'Mubi': 'https://mubi.com',
             'Arte': 'https://www.arte.tv',
             'Klub': 'https://www.klub.tv',
@@ -1121,12 +1133,76 @@ function showMovieModal(movie) {
             'Fandor': 'https://www.fandor.com',
             'Vimeo': 'https://vimeo.com',
             'Viki': 'https://www.viki.com',
-            'Sony Crackle': 'https://www.crackle.com'
+            'Sony Crackle': 'https://www.crackle.com',
+            'Crackle': 'https://www.crackle.com',
+            'Freevee': 'https://www.freevee.com',
+            'Twitch': 'https://www.twitch.tv',
+            'Star+': 'https://www.starplus.com',
+            'Star Plus': 'https://www.starplus.com',
+            'Movistar+': 'https://ver.movistarplus.es',
+            'Sky': 'https://www.sky.com',
+            'Now TV': 'https://www.nowtv.it',
+            'ITV': 'https://www.itv.com',
+            'All 4': 'https://www.channel4.com',
+            'BBC iPlayer': 'https://www.bbc.co.uk/iplayer',
+            'Amazon Channels': 'https://www.primevideo.com',
+            'Hulu': 'https://www.hulu.com',
+            'Directv': 'https://www.directv.com',
+            'DIRECTV': 'https://www.directv.com',
+            'Fandango At Home': 'https://www.fandango.com',
+            'Fandango': 'https://www.fandango.com',
+            'VUDU': 'https://www.vudu.com',
+            'Microsoft Store': 'https://www.microsoft.com/store/movies',
+            'AMC on Demand': 'https://www.amcplus.com',
+            'AMC': 'https://www.amcplus.com',
+            'Showtime': 'https://www.showtime.com',
+            'Starz': 'https://www.starz.com',
+            'Epix': 'https://www.epix.com',
+            'FXNow': 'https://www.fxnetwork.com',
+            'TNT': 'https://www.tntdrama.com',
+            'TBS': 'https://www.tbs.com',
+            'USA Network': 'https://www.usanetwork.com',
+            'Syfy': 'https://www.syfy.com',
+            'USA': 'https://www.usanetwork.com',
+            'BET': 'https://www.bet.com',
+            'Comcast': 'https://www.xfinity.com',
+            'Xfinity': 'https://www.xfinity.com',
+            'Cox': 'https://www.cox.com',
+            'Verizon': 'https://www.verizon.com',
+            'AT&T': 'https://www.att.com',
+            'Spectrum': 'https://www.spectrum.com',
+            'Sling TV': 'https://sling.com',
+            'Philo': 'https://www.philo.com',
+            'fuboTV': 'https://www.fubo.tv',
+            'fubo': 'https://www.fubo.tv',
+            'SonyLIV': 'https://www.sonyliv.com',
+            'Zee5': 'https://www.zee5.com',
+            'JioCinema': 'https://www.jiocinema.com',
+            'Voot': 'https://www.voot.com',
+            'Eros Now': 'https://erosnow.com',
+            'Shahid': 'https://shahid.mbc.net',
+            'OSN': 'https://www.osn.com',
+            'STAN': 'https://www.stan.com.au',
+            'Fetch TV': 'https://www.fetchtv.com.au',
+            'Telstra TV': 'https://www.telstra.com.au',
+            'Binge': 'https://www.binge.com.au',
+            'Now': 'https://www.now.com.au'
+        };
+        
+        const normalizePlatformName = (name) => {
+            return name.toLowerCase().replace(/\s+/g, ' ').trim();
         };
         
         const getPlatformUrl = (platformName) => {
-            const key = platformName.replace(' with ads', '').replace(' Standard', '').replace('(ads)', '').trim();
-            return platformUrls[key] || platformUrls[platformName] || null;
+            const normalized = normalizePlatformName(platformName);
+            for (const [key, url] of Object.entries(platformUrls)) {
+                if (normalizePlatformName(key) === normalized || 
+                    normalizePlatformName(key).includes(normalized) ||
+                    normalized.includes(normalizePlatformName(key))) {
+                    return url;
+                }
+            }
+            return null;
         };
         
         const flatrate = movie.streaming.filter(p => p.type === 'flatrate' && !p.isFree);
