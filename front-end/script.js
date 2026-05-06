@@ -72,7 +72,9 @@ const translations = {
         addToFavorites: 'Adicionar aos favoritos', removeFromFavorites: 'Remover dos favoritos', watchTrailer: 'Ver Trailer',
         aiTitle: 'O que deseja assistir?', aiGreeting: 'Olá! Sou a assistente de filmes do CineWorld.', aiDescribe: 'Descreva o que você quer assistir:', aiExample: 'Ex: "filme de ação com robôs", "comédia romântica indiana"', aiPlaceholder: 'Descreva o filme...',
         noTitle: 'Sem título',
-        emailPlaceholder: 'Email', passwordPlaceholder: 'Senha', registerLink: 'Cadastre-se', login: 'Entrar',
+        emailPlaceholder: 'Email', passwordPlaceholder: 'Senha', registerLink: 'Cadastre-se', login: 'Entrar', 
+        invalidCredentials: 'Email ou senha incorretos!', fillEmailPassword: 'Preencha email e senha!', 
+        passwordMismatch: 'As senhas não coincidem!', passwordLength: 'A senha deve ter pelo menos 4 caracteres!',
         namePlaceholder: 'Nome', noAccount: 'Não tem conta?', hasAccount: 'Já tem conta', login: 'Entrar', confirmPasswordPlaceholder: 'Confirmar Senha', createAccount: 'Crie sua conta',
         contactSuccess: 'Formulário enviado com sucesso!', contactError: 'Erro ao enviar. Tente novamente.', contactOpenForm: 'O formulário foi aberto! Por favor, preencha e envie.',
         loginFirst: 'Por favor, entre na sua conta para adicionar favoritos!',
@@ -107,6 +109,7 @@ const translations = {
         aiTitle: 'What would you like to watch?', aiGreeting: 'Hello! I am the CineWorld movie assistant.', aiDescribe: 'Describe what you want to watch:', aiExample: 'Ex: "action movie with robots", "Indian romantic comedy"', aiPlaceholder: 'Describe the movie...',
         noTitle: 'No Title',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Password', registerLink: 'Sign up', login: 'Sign In',
+        invalidCredentials: 'Email or password incorrect!', fillEmailPassword: 'Fill in email and password!', passwordMismatch: 'Passwords do not match!', passwordLength: 'Password must be at least 4 characters!',
         namePlaceholder: 'Name', noAccount: 'No account?', hasAccount: 'Already have account', login: 'Sign In',
         confirmPasswordPlaceholder: 'Confirm Password', createAccount: 'Create your account',
         contactSuccess: 'Form submitted successfully!', contactError: 'Error submitting. Try again.', contactOpenForm: 'The form has been opened! Please fill and send.',
@@ -142,6 +145,7 @@ const translations = {
         aiTitle: '¿Qué quieres ver?', aiGreeting: '¡Hola! Soy el asistente de películas de CineWorld.', aiDescribe: 'Describe lo que quieres ver:', aiExample: 'Ej: "película de acción con robots"', aiPlaceholder: 'Describe la película...',
         noTitle: 'Sin título',
         emailPlaceholder: 'Correo electrónico', passwordPlaceholder: 'Contraseña', registerLink: 'Regístrate', login: 'Entrar',
+        invalidCredentials: '¡Email o contraseña incorrectos!', fillEmailPassword: '¡Completa email y contraseña!', passwordMismatch: '¡Las contraseñas no coinciden!', passwordLength: '¡La contraseña debe tener al menos 4 caracteres!',
         namePlaceholder: 'Nombre', noAccount: '¿No tienes cuenta?', hasAccount: 'Ya tengo cuenta', login: 'Entrar',
         confirmPasswordPlaceholder: 'Confirmar Contraseña', createAccount: 'Crea tu cuenta',
         contactSuccess: '¡Formulario enviado con éxito!', contactError: 'Error al enviar. Inténtalo de nuevo.', contactOpenForm: '¡El formulario se ha abierto! Por favor, llena y envía.',
@@ -177,6 +181,7 @@ const translations = {
         aiTitle: '想看什么?', aiGreeting: '你好！我是 CineWorld 电影助手。', aiDescribe: '描述你想看什么:', aiExample: '例如："机器人动作片"', aiPlaceholder: '描述电影...',
         noTitle: '无标题',
         emailPlaceholder: '邮箱', passwordPlaceholder: '密码', registerLink: '注册', login: '登录',
+        invalidCredentials: '邮箱或密码错误！', fillEmailPassword: '请填写邮箱和密码！', passwordMismatch: '密码不匹配！', passwordLength: '密码必须至少4个字符！',
         namePlaceholder: '姓名', noAccount: '没有账户？', hasAccount: '已有账户', login: '登录',
         confirmPasswordPlaceholder: '确认密码', createAccount: '创建账户',
         contactSuccess: '表单提交成功！', contactError: '提交错误，请重试。', contactOpenForm: '表单已打开！请填写并发送。',
@@ -212,6 +217,7 @@ const translations = {
         aiTitle: '想睇咩?', aiGreeting: '你好！我是 CineWorld 電影助手。', aiDescribe: '描述你想睇咩:', aiExample: '例如："机器人动作片"', aiPlaceholder: '描述電影...',
         noTitle: '無標題',
         emailPlaceholder: '電子郵件', passwordPlaceholder: '密碼', registerLink: '註冊', login: '登入',
+        invalidCredentials: '郵箱或密碼錯誤！', fillEmailPassword: '請填寫郵箱和密碼！', passwordMismatch: '密碼不匹配！', passwordLength: '密碼必須至少4個字符！',
         namePlaceholder: '姓名', noAccount: '沒有賬戶？', hasAccount: '已有賬戶', login: '登入',
         confirmPasswordPlaceholder: '確認密碼', createAccount: '創建賬戶',
         contactSuccess: '表單提交成功！', contactError: '提交錯誤，請重試。', contactOpenForm: '表單已打開！請填寫並發送。',
@@ -247,6 +253,7 @@ const translations = {
         aiTitle: '何を見たいですか？', aiGreeting: 'こんにちは！CineWorld 映画アシスタントです。', aiDescribe: '見たいものを描述:', aiExample: '例："ロボットアクション映画"', aiPlaceholder: '映画を描述...',
         noTitle: '無題',
         emailPlaceholder: 'メールアドレス', passwordPlaceholder: 'パスワード', registerLink: '登録', login: 'ログイン',
+        invalidCredentials: 'メールアドレスまたはパスワードが正しくありません！', fillEmailPassword: 'メールアドレスとパスワードを入力してください！', passwordMismatch: 'パスワードが一致しません！', passwordLength: 'パスワードは4文字以上である必要があります！',
         namePlaceholder: '名前', noAccount: 'アカウントがありませんか？', hasAccount: 'すでにアカウントあり', login: 'ログイン',
         confirmPasswordPlaceholder: 'パスワード確認', createAccount: 'アカウント作成',
         contactSuccess: 'フォーム送信成功！', contactError: '送信エラー。もう一度お試しください。', contactOpenForm: 'フォームが開きました！記入して送信してください。',
@@ -282,6 +289,7 @@ const translations = {
         aiTitle: 'Что хотите смотреть?', aiGreeting: 'Привет! Я помощник фильмов CineWorld.', aiDescribe: 'Опишите, что хотите смотреть:', aiExample: 'Например: "боевик с роботами"', aiPlaceholder: 'Опишите фильм...',
         noTitle: 'Без названия',
         emailPlaceholder: 'Email', passwordPlaceholder: 'Пароль', registerLink: 'Регистрация', login: 'Войти',
+        invalidCredentials: 'Неверный email или пароль!', fillEmailPassword: 'Заполните email и пароль!', passwordMismatch: 'Пароли не совпадают!', passwordLength: 'Пароль должен быть не менее 4 символов!',
         namePlaceholder: 'Имя', noAccount: 'Нет аккаунта?', hasAccount: 'Уже есть аккаунт', login: 'Войти',
         confirmPasswordPlaceholder: 'Подтвердите пароль', createAccount: 'Создайте аккаунт',
         contactSuccess: 'Форма успешно отправлена!', contactError: 'Ошибка отправки. Попробуйте снова.', contactOpenForm: 'Форма открыта! Пожалуйста, заполните и отправьте.',
@@ -317,6 +325,7 @@ const translations = {
         aiTitle: '무엇을 보고 싶나요?', aiGreeting: '안녕하세요! CineWorld 영화 도우미입니다.', aiDescribe: '보고 싶은 것을 설명:', aiExample: '예: "로봇 액션 영화"', aiPlaceholder: '영화 설명...',
         noTitle: '제목 없음',
         emailPlaceholder: '이메일', passwordPlaceholder: '비밀번호', registerLink: '회원가입', login: '로그인',
+        invalidCredentials: '이메일 또는 비밀번호가不正确합니다!', fillEmailPassword: '이메일과 비밀번호를 입력하세요!', passwordMismatch: '비밀번호가 일치하지 않습니다!', passwordLength: '비밀번호는 최소 4자 이상이어야 합니다!',
         namePlaceholder: '이름', noAccount: '계정이 없으신가요?', hasAccount: '이미 계정이 있음', login: '로그인',
         confirmPasswordPlaceholder: '비밀번호 확인', createAccount: '계정 만들기',
         contactSuccess: '양식이 성공적으로 제출되었습니다!', contactError: '제출 오류. 다시 시도하십시오.', contactOpenForm: '양식이 열렸습니다! 내용을 입력하고 보내십시오.',
@@ -1098,7 +1107,7 @@ window.showMovieDetails = async function(movieId) {
         if (data.movie) {
             showMovieModal(data.movie);
         } else if (data.error) {
-            alert('Error: ' + data.error);
+            showToast('Error: ' + data.error);
         }
     } catch (error) {
         console.error('Error loading movie:', error);
@@ -1386,7 +1395,7 @@ function toggleFavorite(movieId) {
             }
             updateFavoritesCount();
             renderMovies();
-            alert(t('syncError') || 'Erro ao sincronizar favoritos.');
+            showToast(t('syncError') || 'Erro ao sincronizar favoritos.');
         });
     }
 }
@@ -1400,7 +1409,7 @@ function updateFavoritesCount() {
 
 function showFavorites() {
     if (favorites.length === 0) {
-        alert(t('noFavorites') || 'Você ainda não tem filmes favoritos!');
+        showToast(t('noFavorites') || 'Você ainda não tem filmes favoritos!');
         return;
     }
     
@@ -1456,7 +1465,7 @@ function initAuth() {
 // Login/Register functions
 function openLoginModal() {
     if (currentUser) {
-        alert(t('welcome') + ', ' + currentUser.name + '!');
+        showToast(t('welcome') + ', ' + currentUser.name + '!');
     } else {
         showLoginForm();
         document.getElementById('loginModal').classList.add('open');
@@ -1528,24 +1537,24 @@ function doRegister() {
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     
     if (!name || !email || !password) {
-        alert(t('fillAllFields') || 'Preencha todos os campos!');
+        showToast(t('fillAllFields') || 'Preencha todos os campos!');
         return;
     }
     
     if (password !== confirmPassword) {
-        alert(t('passwordMismatch') || 'As senhas não coincidem!');
+        showToast(t('passwordMismatch') || 'As senhas não coincidem!');
         return;
     }
     
     if (password.length < 4) {
-        alert(t('passwordLength') || 'A senha deve ter pelo menos 4 caracteres!');
+        showToast(t('passwordLength') || 'A senha deve ter pelo menos 4 caracteres!');
         return;
     }
     
     const users = JSON.parse(localStorage.getItem('cineworld_users') || '[]');
     
     if (users.find(u => u.email === email)) {
-        alert(t('emailExists') || 'Este email já está cadastrado!');
+        showToast(t('emailExists') || 'Este email já está cadastrado!');
         return;
     }
     
@@ -1561,7 +1570,7 @@ function doRegister() {
     localStorage.setItem('cineworld_users', JSON.stringify(users));
     
     doLogin({ id: newUser.id, name: newUser.name, email: newUser.email });
-    alert(t('accountCreated') || 'Conta criada com sucesso! Bem-vindo, ' + name + '!');
+    showToast(t('accountCreated') || 'Conta criada com sucesso! Bem-vindo, ' + name + '!');
 }
 
 function doLogin(userObj) {
@@ -1576,7 +1585,7 @@ function doLogin(userObj) {
         const password = document.getElementById('loginPassword').value;
         
         if (!email || !password) {
-            alert(t('fillEmailPassword') || 'Preencha email e senha!');
+            showToast(t('fillEmailPassword') || 'Preencha email e senha!');
             return;
         }
         
@@ -1594,9 +1603,9 @@ function doLogin(userObj) {
             document.getElementById('loginEmail').value = '';
             document.getElementById('loginPassword').value = '';
             
-            alert(t('welcomeBack') || 'Bem-vindo de volta, ' + user.name + '!');
+            showToast(t('welcomeBack') || 'Bem-vindo de volta, ' + user.name + '!');
         } else {
-            alert(t('invalidCredentials') || 'Email ou senha incorretos!');
+            showToast(t('invalidCredentials') || 'Email ou senha incorretos!');
         }
     }
 }
@@ -1688,7 +1697,7 @@ window.handleGoogleLogin = function(response) {
         updateAuthUI();
         closeLoginModal();
         
-        alert(t('welcome') + ', ' + user.name + '!');
+        showToast(t('welcome') + ', ' + user.name + '!');
     } catch (error) {
         console.error('Google login error:', error);
         showToast(t('loginError') || 'Erro no login com Google.');
