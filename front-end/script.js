@@ -1575,7 +1575,9 @@ function doRegister() {
     };
     
     users.push(newUser);
+    console.log('New user registered:', newUser);
     localStorage.setItem('cineworld_users', JSON.stringify(users));
+    console.log('All users after registration:', JSON.parse(localStorage.getItem('cineworld_users') || '[]'));
     
     doLogin({ id: newUser.id, name: newUser.name, email: newUser.email });
     showToast(t('accountCreated') || 'Conta criada com sucesso! Bem-vindo, ' + name + '!');
@@ -1598,6 +1600,8 @@ function doLogin(userObj) {
         }
         
         const users = JSON.parse(localStorage.getItem('cineworld_users') || '[]');
+        console.log('Users in storage:', users);
+        console.log('Trying to login with:', email, password);
         const user = users.find(u => u.email === email && u.password === password);
         
         if (user) {
