@@ -91,14 +91,16 @@
 <option value="ko">Coreano (한국어)</option>
                 </select>
                 
-                <button class="login-btn" id="authBtn" onclick="toggleUserMenu()">
-                    <i class="fas fa-user"></i>
-                    <span id="authText">Entrar</span>
-                </button>
-                
-                <!-- User Menu Dropdown -->
-                <div id="userMenu" class="user-menu" style="display: none;">
-                    <div id="userMenuContent"></div>
+                <div style="position: relative; display: flex; align-items: center; gap: 10px;">
+                    <button class="login-btn" id="authBtn" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                        <span id="authText">Entrar</span>
+                    </button>
+                    
+                    <!-- User Menu Dropdown -->
+                    <div id="userMenu" class="user-menu" style="display: none;">
+                        <div id="userMenuContent"></div>
+                    </div>
                 </div>
             </div>
         </div>

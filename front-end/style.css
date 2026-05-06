@@ -363,6 +363,7 @@ body {
     gap: 10px;
     flex-shrink: 0;
     margin-left: auto;
+    position: relative;
 }
 
 /* Favorites Button */
@@ -398,11 +399,12 @@ body {
     font-weight: 600;
 }
 
-/* User Menu */
-.user-menu {
-    position: fixed;
-    top: 70px;
-    right: 20px;
+/* User Menu - Position relative to button */
+#userMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
     background: var(--secondary);
     border: 1px solid var(--border);
     border-radius: 8px;
