@@ -337,7 +337,8 @@ body {
     
     .lang-select {
         padding: 6px 8px;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+        font-family: inherit;
     }
     
     .action-btn, .login-btn {
@@ -428,7 +429,8 @@ body {
 
 .lang-label {
     color: var(--text-light);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-family: inherit;
     white-space: nowrap;
 }
 
@@ -1446,10 +1448,14 @@ body {
         gap: 6px;
     }
     
+    .lang-label {
+        display: none;
+    }
+    
     .lang-select {
         display: block;
         padding: 6px 8px;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         min-width: auto;
     }
     
