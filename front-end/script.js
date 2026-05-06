@@ -1655,6 +1655,9 @@ function toggleUserMenu() {
             <div class="user-menu-item" onclick="showProfile()">
                 <i class="fas fa-user"></i> ${t('profile') || 'Perfil'}
             </div>
+            <div class="user-menu-item" onclick="showFavorites()">
+                <i class="fas fa-heart"></i> ${t('myFavorites') || 'Meus Favoritos'}
+            </div>
             <div class="user-menu-item" onclick="showChangePassword()">
                 <i class="fas fa-key"></i> ${t('changePassword') || 'Alterar Senha'}
             </div>
