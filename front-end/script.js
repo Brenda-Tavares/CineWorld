@@ -75,6 +75,7 @@ const translations = {
         emailPlaceholder: 'Email', passwordPlaceholder: 'Senha', registerLink: 'Cadastre-se', login: 'Entrar', 
         invalidCredentials: 'Email ou senha incorretos!', fillEmailPassword: 'Preencha email e senha!', 
         passwordMismatch: 'As senhas não coincidem!', passwordLength: 'A senha deve ter pelo menos 4 caracteres!',
+        profile: 'Perfil', changePassword: 'Alterar Senha',
         namePlaceholder: 'Nome', noAccount: 'Não tem conta?', hasAccount: 'Já tem conta', login: 'Entrar', confirmPasswordPlaceholder: 'Confirmar Senha', createAccount: 'Crie sua conta',
         contactSuccess: 'Formulário enviado com sucesso!', contactError: 'Erro ao enviar. Tente novamente.', contactOpenForm: 'O formulário foi aberto! Por favor, preencha e envie.',
         loginFirst: 'Por favor, entre na sua conta para adicionar favoritos!',
@@ -114,7 +115,8 @@ const translations = {
         confirmPasswordPlaceholder: 'Confirm Password', createAccount: 'Create your account',
         contactSuccess: 'Form submitted successfully!', contactError: 'Error submitting. Try again.', contactOpenForm: 'The form has been opened! Please fill and send.',
         loginFirst: 'Please login to add favorites!',
-        myFavorites: 'My Favorites'
+        myFavorites: 'My Favorites',
+        profile: 'Profile', changePassword: 'Change Password'
     },
     'es': {
         searchPlaceholder: 'Buscar películas...',
@@ -150,7 +152,8 @@ const translations = {
         confirmPasswordPlaceholder: 'Confirmar Contraseña', createAccount: 'Crea tu cuenta',
         contactSuccess: '¡Formulario enviado con éxito!', contactError: 'Error al enviar. Inténtalo de nuevo.', contactOpenForm: '¡El formulario se ha abierto! Por favor, llena y envía.',
         loginFirst: '¡Por favor, entra en tu cuenta para agregar favoritos!',
-        myFavorites: 'Mis Favoritos'
+        myFavorites: 'Mis Favoritos',
+        profile: 'Perfil', changePassword: 'Cambiar Contraseña'
     },
     'zh-CN': {
         searchPlaceholder: '搜索电影...',
@@ -186,7 +189,8 @@ const translations = {
         confirmPasswordPlaceholder: '确认密码', createAccount: '创建账户',
         contactSuccess: '表单提交成功！', contactError: '提交错误，请重试。', contactOpenForm: '表单已打开！请填写并发送。',
         loginFirst: '请登录以添加收藏！',
-        myFavorites: '我的收藏'
+        myFavorites: '我的收藏',
+        profile: '个人资料', changePassword: '修改密码'
     },
     'zh-HK': {
         searchPlaceholder: '搜尋電影...',
@@ -222,7 +226,8 @@ const translations = {
         confirmPasswordPlaceholder: '確認密碼', createAccount: '創建賬戶',
         contactSuccess: '表單提交成功！', contactError: '提交錯誤，請重試。', contactOpenForm: '表單已打開！請填寫並發送。',
         loginFirst: '請登入以添加收藏！',
-        myFavorites: '我的收藏'
+        myFavorites: '我的收藏',
+        profile: '個人資料', changePassword: '修改密碼'
     },
     'ja': {
         searchPlaceholder: '映画を検索...',
@@ -258,7 +263,8 @@ const translations = {
         confirmPasswordPlaceholder: 'パスワード確認', createAccount: 'アカウント作成',
         contactSuccess: 'フォーム送信成功！', contactError: '送信エラー。もう一度お試しください。', contactOpenForm: 'フォームが開きました！記入して送信してください。',
         loginFirst: 'お気に入りを追加するにはログインしてください！',
-        myFavorites: 'お気に入り'
+        myFavorites: 'お気に入り',
+        profile: 'プロフィール', changePassword: 'パスワード変更'
     },
     'ru': {
         searchPlaceholder: 'Поиск фильмов...',
@@ -294,7 +300,8 @@ const translations = {
         confirmPasswordPlaceholder: 'Подтвердите пароль', createAccount: 'Создайте аккаунт',
         contactSuccess: 'Форма успешно отправлена!', contactError: 'Ошибка отправки. Попробуйте снова.', contactOpenForm: 'Форма открыта! Пожалуйста, заполните и отправьте.',
         loginFirst: 'Пожалуйста, войдите, чтобы добавить в избранное!',
-        myFavorites: 'Избранное'
+        myFavorites: 'Избранное',
+        profile: 'Профиль', changePassword: 'Изменить пароль'
     },
     'ko': {
         searchPlaceholder: '영화 검색...',
@@ -330,7 +337,8 @@ const translations = {
         confirmPasswordPlaceholder: '비밀번호 확인', createAccount: '계정 만들기',
         contactSuccess: '양식이 성공적으로 제출되었습니다!', contactError: '제출 오류. 다시 시도하십시오.', contactOpenForm: '양식이 열렸습니다! 내용을 입력하고 보내십시오.',
         loginFirst: '즐겨찾기에 추가하려면 로그인하십시오!',
-        myFavorites: '나의 즐겨찾기'
+        myFavorites: '나의 즐겨찾기',
+        profile: '프로필', changePassword: '비밀번호 변경'
     }
 };
 
@@ -1622,16 +1630,60 @@ window.logout = function() {
 
 function updateAuthUI() {
     const btn = document.getElementById('authBtn');
-    const text = btn.querySelector('span') || document.getElementById('authText');
+    const text = document.getElementById('authText');
     
     if (currentUser) {
-        btn.innerHTML = `<i class="fas fa-user-check"></i><span>${t('logout')}</span>`;
-        btn.onclick = logout;
+        btn.innerHTML = `<i class="fas fa-user-check"></i><span>${currentUser.name}</span>`;
     } else {
         btn.innerHTML = `<i class="fas fa-user"></i><span>${t('login')}</span>`;
-        btn.onclick = openLoginModal;
     }
 }
+
+function toggleUserMenu() {
+    const menu = document.getElementById('userMenu');
+    if (!currentUser) {
+        openLoginModal();
+        return;
+    }
+    if (menu.style.display === 'none') {
+        const userMenuContent = document.getElementById('userMenuContent');
+        userMenuContent.innerHTML = `
+            <div class="user-menu-item" onclick="showProfile()">
+                <i class="fas fa-user"></i> ${t('profile') || 'Perfil'}
+            </div>
+            <div class="user-menu-item" onclick="showChangePassword()">
+                <i class="fas fa-key"></i> ${t('changePassword') || 'Alterar Senha'}
+            </div>
+            <div class="user-menu-divider"></div>
+            <div class="user-menu-item" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> ${t('logout') || 'Sair'}
+            </div>
+        `;
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
+    }
+}
+
+function showProfile() {
+    toggleUserMenu();
+    showToast(t('profile') + ': ' + currentUser.name);
+}
+
+function showChangePassword() {
+    toggleUserMenu();
+    // Implementation for change password
+    showToast(t('changePassword') || 'Funcionalidade em desenvolvimento');
+}
+
+// Close user menu when clicking outside
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('userMenu');
+    const btn = document.getElementById('authBtn');
+    if (menu && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.style.display = 'none';
+    }
+});
 
 // Theme toggle
 function toggleTheme() {

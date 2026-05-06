@@ -358,6 +358,74 @@ body {
     margin-left: auto;
 }
 
+/* Favorites Button */
+.fav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.fav-btn:hover {
+    color: var(--accent);
+    background: var(--bg-hover);
+}
+
+.fav-btn i {
+    color: var(--accent);
+}
+
+#favCount {
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* User Menu */
+.user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 180px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-menu-item {
+    display: block;
+    padding: 10px 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.user-menu-item:hover {
+    background: var(--bg-hover);
+    color: white;
+}
+
+.user-menu-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+}
+
 .lang-label {
     color: var(--text-light);
     font-size: 0.8rem;
