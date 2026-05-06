@@ -353,6 +353,20 @@ function t(key) {
     }
 }
 
+// Initialize auth - load user from localStorage
+function initAuth() {
+    const savedUser = localStorage.getItem('cineworld_user');
+    if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        const savedFavs = localStorage.getItem('cineworld_favorites');
+        if (savedFavs) {
+            favorites = JSON.parse(savedFavs);
+        }
+    }
+    updateAuthUI();
+    updateFavoritesCount();
+}
+
 // API Base
 const API_BASE = '/api';
 
@@ -1575,9 +1589,7 @@ function doRegister() {
     };
     
     users.push(newUser);
-    console.log('New user registered:', newUser);
     localStorage.setItem('cineworld_users', JSON.stringify(users));
-    console.log('All users after registration:', JSON.parse(localStorage.getItem('cineworld_users') || '[]'));
     
     doLogin({ id: newUser.id, name: newUser.name, email: newUser.email });
     showToast(t('accountCreated') || 'Conta criada com sucesso! Bem-vindo, ' + name + '!');
@@ -1600,8 +1612,6 @@ function doLogin(userObj) {
         }
         
         const users = JSON.parse(localStorage.getItem('cineworld_users') || '[]');
-        console.log('Users in storage:', users);
-        console.log('Trying to login with:', email, password);
         const user = users.find(u => u.email === email && u.password === password);
         
         if (user) {
@@ -1636,10 +1646,16 @@ function updateAuthUI() {
     const btn = document.getElementById('authBtn');
     const text = document.getElementById('authText');
     
-    if (currentUser) {
+    if (currentUser && currentUser.name) {
         btn.innerHTML = `<i class="fas fa-user-check"></i><span>${currentUser.name}</span>`;
     } else {
-        btn.innerHTML = `<i class="fas fa-user"></i><span>${t('login')}</span>`;
+        const saved = localStorage.getItem('cineworld_user');
+        if (saved) {
+            currentUser = JSON.parse(saved);
+            btn.innerHTML = `<i class="fas fa-user-check"></i><span>${currentUser.name}</span>`;
+        } else {
+            btn.innerHTML = `<i class="fas fa-user"></i><span>${t('login')}</span>`;
+        }
     }
 }
 
